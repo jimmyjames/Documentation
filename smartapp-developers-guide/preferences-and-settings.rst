@@ -40,10 +40,9 @@ following hierarchy:
          -  description: A string that will be displayed to the user
             that will be the default selection. Ex. "Tap to set"
          -  multiple: A boolean that sets whether the selection box
-            allows
+            allows multiple devices to be selected. Ex. true, false
          -  required: A boolean that sets if this input must be selected
-            by the user. Ex. true, false multiple devices to be
-            selected. Ex. true, false
+            by the user. Ex. true, false
 
       -  app: A child app to include.
       -  label: A string to display.
