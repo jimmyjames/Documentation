@@ -340,6 +340,10 @@ You can also view the SmartApp job history, which shows the previous executions 
 
 .. image:: ../img/smartapps/ide-job-history.png
 
+.. note::
+
+    As we migrate to our new back-end scheduling service, job history may not be available in the IDE.
+    
 ----
 
 .. _limitations_best_practices:
