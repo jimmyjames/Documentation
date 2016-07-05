@@ -13,6 +13,20 @@ Before we discuss the specifics of what is and what is not available to your Sma
 
 ----
 
+Groovy Version
+--------------
+
+The SmartThings platform utilizes the `Grails Framework <https://grails.org/>`__, which controls the version of Groovy SmartApps and Device Handlers are executed on.
+The following table shows the current Grails and Groovy versions used by SmartThings:
+
+============== ==============
+Grails Version Groovy Version
+============== ==============
+2.5.4          2.4.4
+============== ==============
+
+----
+
 How It Works
 ------------
 
