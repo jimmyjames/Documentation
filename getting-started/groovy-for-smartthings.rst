@@ -13,6 +13,20 @@ Before we discuss the specifics of what is and what is not available to your Sma
 
 ----
 
+How It Works
+------------
+
+One of the first things you'll notice when starting to develop with SmartThings, is that there are many methods available to you that do not require any import statements. In fact, it's rare to see import statements at all in SmartThings.
+
+This is because every SmartApp or Device Handler is actually an instance of an abstract *Executor* class defined in the SmartThings platform. This *Executor* class defines or includes many methods. The result of this is that every SmartApp or Device Handler has available to it (through inheritance) a large number of methods without importing anything.
+
+This model provides a simple framework in which you can develop your SmartApps and Device Handlers - all the necessary methods are simply available to call without needing to import anything.
+
+Now that we understand (at least at a high level) how SmartApps and Device Handlers make various methods available, let's look at some of the things that are *not* allowed within SmartThings code. After that, we'll look at the entire whitelist of allowable classes.
+
+
+----
+
 Groovy Version
 --------------
 
@@ -25,19 +39,15 @@ Grails Version Groovy Version
 2.5.4          2.4.4
 ============== ==============
 
-----
+.. note::
 
-How It Works
-------------
+    The SmartThings public-facing APIs do not rely on Grails, and the fact that Grails is used should have no impact on developers.
+    We point it out here to provide some context into the Groovy version used.
 
-One of the first things you'll notice when starting to develop with SmartThings, is that there are many methods available to you that do not require any import statements. In fact, it's rare to see import statements at all in SmartThings.
+    Should you see any Grails-specific classes in your SmartApps or Device Handler, it should be replaced with a non-Grails specific equivalent.
 
-This is because every SmartApp or Device Handler is actually an instance of an abstract *Executor* class defined in the SmartThings platform. This *Executor* class defines or includes many methods. The result of this is that every SmartApp or Device Handler has available to it (through inheritance) a large number of methods without importing anything.
-
-This model provides a simple framework in which you can develop your SmartApps and Device Handlers - all the necessary methods are simply available to call without needing to import anything.
-
-Now that we understand (at least at a high level) how SmartApps and Device Handlers make various methods available, let's look at some of the things that are *not* allowed within SmartThings code. After that, we'll look at the entire whitelist of allowable classes.
-
+    Just keep in mind that SmartThings may replace the underlying Grails framework in the future, as this is not an external developer-facing framework.
+    
 ----
 
 Language Simplifications
