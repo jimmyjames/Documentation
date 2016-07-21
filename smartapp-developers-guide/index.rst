@@ -21,6 +21,7 @@ If you haven't written a SmartApp yet, you should work through the :ref:`first-s
    sunset-and-sunrise
    app-touch
    calling-web-services-in-smartapps
+   ../common/async-http
    sending-notifications
    parent-child-smartapps
    example-bon-voyage
