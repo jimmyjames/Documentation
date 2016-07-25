@@ -1,15 +1,10 @@
 .. async_http_api_ref:
 
-=================
-Asynchronous HTTP
-=================
+==============
+Async HTTP API
+==============
 
-.. admonition:: Beta Feature
-   :class: beta-feature
-
-   The ability to make asynchronous HTTP requests is currently available as a beta development feature.
-
-   These APIs are subject to change without notice.
+.. include:: ../common/async-http/beta-note.rst
 
 All asynchronous HTTP APIs are only availble after including the "asynchttp" API:
 
@@ -21,6 +16,9 @@ All asynchronous HTTP APIs are only availble after including the "asynchttp" API
         // invoke methods on the injected asynchttp object that was included
         asynchttp.get(...)
     }
+
+This documentation is specific to making requests using the Async HTTP API.
+For reference documentation on working with the response, see the :doc:`async-response-ref` documentation.
 
 ----
 

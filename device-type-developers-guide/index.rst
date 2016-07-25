@@ -27,7 +27,7 @@ Table of Contents:
    definition-metadata
    tiles-metadata
    device-preferences
-   common/async-http
+   async-http
    parse
    z-wave-primer
    building-z-wave-device-handlers

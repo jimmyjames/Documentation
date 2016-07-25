@@ -7,6 +7,12 @@ SmartApps or Device Handlers may need to make calls to external web services. Th
 
 The various APIs are named for the underlying HTTP method they will use. ``httpGet()`` makes an HTTP GET request, for example.
 
+.. note::
+
+    The APIs discussed here are executed synchrously, within a single SmartApp or Device Handler execution.
+
+    For information on making asynchronous HTTP requests, check out the :doc:`async-http` documentation.
+
 ----
 
 HTTP Methods
@@ -14,6 +20,8 @@ HTTP Methods
 
 The following methods are available for making HTTP requests.
 You can read more about each of them in the :ref:`smartapp_ref` API documentation.
+
+These methods execute synchrously, and there is a 10 second timeout limit for the response to be received.
 
 ============================== ================
 Method                         Description
@@ -158,6 +166,26 @@ We can easily get the humidity from this data structure as shown above:
 .. code-block:: groovy
 
     resp.data.main.humidity
+
+----
+
+Host and Timeout Limitations
+----------------------------
+
+Host and IP address restrictions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Requests can only be made to publicly accessible hosts.
+Remember that when executing an HTTP request, the request originates from the SmartThings platform (i.e., the SmartThings cloud), not from the hub itself.
+
+Requests made to local or private hosts are not allowed, and will fail with a ``SecurityException``.
+
+Request timeout limit
+^^^^^^^^^^^^^^^^^^^^^
+
+Requests will timeout after 10 seconds.
+
+Because the request is executed synchronously within a single execution, we encourage you to check out the new (currently beta) :doc:`async-http` feature.
 
 ----
 
