@@ -31,4 +31,5 @@ Making External HTTP Requests
 
 Device Handlers can make HTTP requests to third party services, just like SmartApps.
 
-You can learn about making HTTP requests in the :ref:`calling_web_services` guide.
+- :ref:`calling_web_services`
+- :ref:`async_http_guide`

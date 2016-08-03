@@ -71,3 +71,14 @@ div.column {
     margin-bottom: 24px;
     background: #eaf4fa;
 }
+
+.beta-feature {
+    padding: 12px;
+    line-height: 24px;
+    margin-bottom: 24px;
+    background: #eaf4fa;
+}
+
+.beta-feature .admonition-title {
+    background: #ff4d4d;
+}

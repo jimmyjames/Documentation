@@ -67,5 +67,7 @@ When appropriate, we have included various tips or warnings. In cases where an A
    mode-ref
    state-ref
    app-state-ref
+   async-http-ref
+   async-response-ref
    zigbee-ref
    z-wave-ref
