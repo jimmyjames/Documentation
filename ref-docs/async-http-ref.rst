@@ -41,7 +41,7 @@ Make a GET request which will not block execution and therefore can run longer t
     ================== ===========
     Key                Description
     ================== ===========
-    uri (required)     Either a URI or URL of of the endpoint to make a request from.
+    uri (required)     Either a URI or URL of the endpoint to make a request from.
     path               Request path that is merged with the URI.
     query              Map of URL query parameters.
     headers            Map of HTTP headers.
@@ -90,7 +90,7 @@ Make a HEAD request which will not block execution and therefore can run longer 
     ================== ===========
     Key                Description
     ================== ===========
-    uri (required)     Either a URI or URL of of the endpoint to make a request from.
+    uri (required)     Either a URI or URL of the endpoint to make a request from.
     path               Request path that is merged with the URI.
     query              Map of URL query parameters.
     headers            Map of HTTP headers.
@@ -138,7 +138,7 @@ Make a PATCH request which will not block execution and therefore can run longer
     ================== ===========
     Key                Description
     ================== ===========
-    uri (required)     Either a URI or URL of of the endpoint to make a request from.
+    uri (required)     Either a URI or URL of the endpoint to make a request from.
     path               Request path that is merged with the URI.
     query              Map of URL query parameters.
     headers            Map of HTTP headers.
@@ -187,7 +187,7 @@ Make a POST request which will not block execution and therefore can run longer 
     ================== ===========
     Key                Description
     ================== ===========
-    uri (required)     Either a URI or URL of of the endpoint to make a request from.
+    uri (required)     Either a URI or URL of the endpoint to make a request from.
     path               Request path that is merged with the URI.
     query              Map of URL query parameters.
     headers            Map of HTTP headers.
@@ -236,7 +236,7 @@ Make a PUT request which will not block execution and therefore can run longer t
     ================== ===========
     Key                Description
     ================== ===========
-    uri (required)     Either a URI or URL of of the endpoint to make a request from.
+    uri (required)     Either a URI or URL of the endpoint to make a request from.
     path               Request path that is merged with the URI.
     query              Map of URL query parameters.
     headers            Map of HTTP headers.

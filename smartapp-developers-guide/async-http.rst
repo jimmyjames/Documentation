@@ -12,7 +12,7 @@ Overview
 SmartApps and Device Handlers may need to communicate with third party services via HTTP.
 This can be accomplished using the various HTTP APIs such as ``httpGet()``, ``httpPost()``, ``httpPut()``, etc, as discussed in the :ref:`calling_web_services` documentation.
 But, these APIs are synchronous in nature - the currently executing SmartApp or Device Handler waits for the response from the third party.
-This synchronous execution occupies the current thread executing the SmartApp or Device Handler, and increases the likelihood of hitting the execution timeout.
+This synchronous execution blocks the current thread executing the SmartApp or Device Handler, and increases the likelihood of hitting the execution timeout.
 
 To address these issues, we're releasing new APIs so SmartApps and Device Handlers can make HTTP requests *asynchronously*.
 We specify the details of the request, along with the name of a method (that we must implement) to call with the response.
@@ -93,11 +93,11 @@ The Include Directive
 ---------------------
 
 One of the features that makes SmartThings development simple is the availability of logically-named methods in our SmartApps and Device Handlers.
-There's no packages or libraries to import; we simply invoke the method as if it we defined it right in our code.
+There are no packages or libraries to import; we simply invoke the method as if it we defined it right in our code.
 
 This strength is also a potential weakness, as you may have noted.
 Having all these methods defined and available in the *global namespace* leads to namespace pollution and possible collisions.
-Adding additional methods to SmartApps and Device Handlers becomes more difficult; the more methods defined in the global namespace, the more likely the chance for collisions.
+Adding additional methods to SmartApps and Device Handlers becomes more difficult; the more methods defined in the global namespace, the more likely a collision will occur.
 A large number of methods available in the global namespace also can lead to difficulty in finding and using the APIs that you need.
 
 To address this, SmartThings has begun piloting a way to include various APIs through a declarative *include* statement.
@@ -143,14 +143,14 @@ Configuring the Request
 -----------------------
 
 All asynchronous HTTP request methods require, as the first argument, the name of the method to call with the response.
-We also need to specify some information about the request, such as the URI, any optional path, URL query parameters, HTTP headers, and the content type of the request.
+We also need to specify some information about the request, such as the URI, an optional path, URL query parameters, HTTP headers, and the content type of the request.
 We do so by passing a map of parameters.
 The table below lists the supported keys in the map.
 
 ================== ===========
 Key                Description
 ================== ===========
-uri (required)     Either a URI or URL of of the endpoint to make a request from.
+uri (required)     Either a URI or URL of the endpoint to make a request from.
 path               Request path that is merged with the URI.
 query              Map of URL query parameters.
 headers            Map of HTTP headers.
@@ -306,7 +306,7 @@ And here's the request made by the above example:
 Handling the Response
 ---------------------
 
-Once SmartThings executes the response we specified and receives a response from the third party, the request handler method we specified will be called (in a new execution of the SmartApp or Device Handler).
+Once SmartThings executes the request we specified and receives a response from the third party, the request handler method we specified will be called (in a new execution of the SmartApp or Device Handler).
 It will be called with an instance of :ref:`AsyncResponse <async_http_response_ref>`, which allows us to get information about the response.
 
 The response handler method must also accept a map of data that may have been specified in the request.
@@ -506,8 +506,15 @@ If we want to get the raw response data, we can do that using :ref:`async_respon
 Passing Data to the Request Handler
 -----------------------------------
 
-Given that the response for an asynchronous HTTP request is process in a separate SmartApp or Device Handler execution, we may need a way to share data between when we make the request, and when the response handler is called.
+Given that the response for an asynchronous HTTP request is processed in a separate SmartApp or Device Handler execution, we may need a way to share data between when we make the request, and when the response handler is called.
 Rather than store such data in :ref:`State <storing-data>`, we can pass a map of data to any of the asynchronous HTTP methods, and this will be be passed along to the response handler:
+
+.. note::
+
+    All response handler methods must accept a second parameter for the data map, even if no data is specified on the request.
+    In that case, the value passed to the response handler will be ``null``.
+
+    If your response handler does not accept the second parameter, a ``MethodMissingException`` error will be thrown when the platform tries to call your response handler.
 
 .. code-block:: groovy
 
@@ -532,7 +539,7 @@ Available Methods
 -----------------
 
 The following methods are available on the ``asynchttp`` object.
-The HTTP request method will match the name of the method - see the reference documentation for more details on each method.
+The HTTP request method will match the name of the ``asynchttp`` method - see the reference documentation for more details on each method.
 
 ========= ======
 HTTP Verb Method
@@ -638,7 +645,7 @@ Consider the following synchronous HTTP example:
 In the example above, the ``initialize()`` method (and all methods it calls) will execute in a *single execution*.
 The execution will make the request, wait for the request to return a response, and then parse that response and do something with it.
 
-To change the above example to use the asynchronous HTTP methods, we need to move all code that expects the the results into the response handler.
+To change the above example to use the asynchronous HTTP methods, we need to move all code that expects the results into the response handler.
 We cannot simply update the ``getSomeData()`` method to use asynchronous HTTP, because the code in ``initialize()`` following the call to ``getSomeData()`` assumes that the response has been received.
 
 Below is the updated code to use asynchronous HTTP requests.
