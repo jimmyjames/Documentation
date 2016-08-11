@@ -22,6 +22,55 @@ For reference documentation on working with the response, see the :doc:`async-re
 
 ----
 
+.. _async_http_ref_delete:
+
+delete()
+--------
+
+Make a DELETE request which will not block execution and therefore can run longer than the execution timeout.
+
+**Signature:**
+    ``void delete(String callbackMethod, Map params, Map data = null)``
+
+**Parameters:**
+
+    `String`_ callbackMethod - the name of the method to call with the response.
+
+    `Map`_ params - parameters for the request. Supported keys below:
+
+    ================== ===========
+    Key                Description
+    ================== ===========
+    uri (required)     Either a URI or URL of the endpoint to make a request from.
+    path               Request path that is merged with the URI.
+    query              Map of URL query parameters.
+    headers            Map of HTTP headers.
+    requestContentType The value of the ``Content-Type`` request header. Defaults to ``'application/json'``.
+    contentType        The value of the ``Accept`` request header. Defaults to the value of the ``requestContentType`` parameter if not specified.
+    body               The request body to send. Can be a string, or if the ``requestContentType`` is ``"application/json"``, a Map or List (will be serialized to JSON).
+    ================== ===========
+
+    `Map`_ data *(optional)* - A map of data to pass to the response handler.
+
+**Example:**
+
+.. code-block:: groovy
+
+    include 'asynchttp'
+
+    def initialize() {
+        def params = [
+            uri: 'https://someapi.com',
+            path: '/some/path',
+            body: [key1: 'value 1']
+        ]
+        asynchttp.delete(processResponse, params)
+    }
+
+    def processResponse(response, data) { ... }
+
+----
+
 .. _async_http_ref_get:
 
 get()

@@ -27,7 +27,7 @@ Quick Example
 
 Let's jump right in and look at an example asynchronous HTTP request.
 Our example simply makes a ``GET`` request to the GitHub API, and logs the response.
-Don't worry about the details yet, the rest of this documentation will cover cover it.
+Don't worry about the details yet, the rest of this documentation will cover it.
 
 .. code-block:: groovy
 
@@ -40,10 +40,10 @@ Don't worry about the details yet, the rest of this documentation will cover cov
         ]
         def data = [key1: "hello world"]
 
-        asynchttp.get('requestHandlerMethod', params, data)
+        asynchttp.get('responseHandlerMethod', params, data)
     }
 
-    def requestHandlerMethod(response, data) {
+    def responseHandlerMethod(response, data) {
         log.debug "got response data: ${response.getData()}"
         log.debug "data map passed to handler method is: $data"
     }
@@ -54,9 +54,11 @@ Don't worry too much about it now, it is discussed in detail :ref:`below <includ
 For now, just think of it as a way to import a set of APIs that exist in a specific namespace - in this case, "``asynchttp"``.
 
 The code to make an asynchronous HTTP request is fairly straightforward.
-We specify information such as the URI in a parameter map, and then invoke the ``asynchttp.get()`` method passing the name of the method we want to handle the response, the request parameters, and an optional map of data to pass on to the response handler.
+We call ``asynchttp.get()`` with the name of the method we want to be called with the response, a map of data that is used to build the request, and an optional map of data to pass on to the response handler.
+The details of the request builder parameters are documented in the :ref:`async_http_configure_request` section.
 
 We then need to define our response handler method, which accepts the response of the request, as well as the optional data map we passed to the ``get()`` method.
+The details of handling the response are documented in the :ref:`async_http_response_handling` section.
 
 Synchronous versus Asynchronous
 -------------------------------
@@ -82,7 +84,7 @@ It is important to note that these executions are not necessarily sequential.
 Other executions may occur between making the request and receiving the response, either as a result of a scheduled execution or event callbacks.
 See :ref:`async_http_when_to_use` for more information about using asynchronous versus synchronous HTTP requests.
 
-Asynchronous requests are supported for the ``GET``, ``POST``, ``PUT``, ``HEAD``, and ``PATCH`` HTTP request methods.
+Asynchronous requests are supported for the ``GET``, ``POST``, ``PUT``, ``DELETE``, ``HEAD``, and ``PATCH`` HTTP request methods.
 A summary of the supported operations is documented :ref:`below <async_http_supported_methods>`.
 
 ----
@@ -139,6 +141,8 @@ Methods can then be invoked on this object just as you'd expect, for example ``a
 
 ----
 
+.. _async_http_configure_request:
+
 Configuring the Request
 -----------------------
 
@@ -156,7 +160,7 @@ query              Map of URL query parameters.
 headers            Map of HTTP headers.
 requestContentType The value of the ``Content-Type`` request header. Defaults to ``'application/json'``.
 contentType        The value of the ``Accept`` request header. Defaults to the value of the ``requestContentType`` parameter if not specified.
-body               The request body to send. Can be a string, or if the ``requestContentType`` is ``"application/json"``, a Map or List (will be serialized to JSON). Only valid for ``PUT``, ``POST``, and ``PATCH`` requests.
+body               The request body to send. Can be a string, or if the ``requestContentType`` is ``"application/json"``, a Map or List (will be serialized to JSON). Only valid for ``PUT``, ``POST``, ``DELETE``, and ``PATCH`` requests.
 ================== ===========
 
 URI and path
@@ -240,7 +244,7 @@ Request body
 
 HTTP request methods that may have a body can also specify a ``body`` in the parameters map.
 The value of ``body`` can be a string, or if the ``requestContentType`` is ``"application/json"``, a Map or List (will be serialized to JSON).
-The :ref:`async_http_ref_put`, :ref:`async_http_ref_post`, and :ref:`async_http_ref_patch` methods support the ``body`` option.
+The :ref:`async_http_ref_put`, :ref:`async_http_ref_post`, :ref:`async_http_ref_delete`, and :ref:`async_http_ref_patch` methods support the ``body`` option.
 
 Here's an example making a ``POST`` request using a map for the body:
 
@@ -302,6 +306,8 @@ And here's the request made by the above example:
     <entity><name>test</name></entity>
 
 ----
+
+.. _async_http_response_handling:
 
 Handling the Response
 ---------------------
@@ -547,6 +553,7 @@ HTTP Verb Method
 GET       :ref:`asynchttp.get(String callbackMethod, Map params, Map data = null) <async_http_ref_get>`
 PUT       :ref:`asynchttp.put(String callbackMethod, Map params, Map data = null) <async_http_ref_put>`
 POST      :ref:`asynchttp.post(String callbackMethod, Map params, Map data = null) <async_http_ref_post>`
+DELETE    :ref:`asynchttp.delete(String callbackMethod, Map params, Map data = null) <async_http_ref_delete>`
 PATCH     :ref:`asynchttp.patch(String callbackMethod, Map params, Map data = null) <async_http_ref_patch>`
 HEAD      :ref:`asynchttp.head(String callbackMethod, Map params, Map data = null) <async_http_ref_head>`
 ========= ======
