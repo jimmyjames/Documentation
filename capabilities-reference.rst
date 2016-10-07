@@ -648,7 +648,8 @@ saturation    ``0-100 (percent)``
 *setSaturation(number)*
     Sets the colors saturation value
 *setColor(color_map)*
-    Sets the color to the passed in maps values
+    Sets the color to the passed in maps values.
+    This also turns the bulb on if it is off.
 
 **SmartApp Example:**
 
@@ -667,7 +668,6 @@ saturation    ``0-100 (percent)``
 
   def contactHandler(evt) {
     if("open" == "$evt.value") {
-      if(bulb.hasCommand('on')) bulb.on()  // Turn the bulb on when open (this method does not come from the colorControl capability)
       bulb.setHue(80)
       bulb.setSaturation(100)  // Set the color to something fancy
       if(bulb.hasCommand('setLevel')) bulb.setLevel(100)  // Make sure the light brightness is 100% (this method does not come from the colorControl capability)
@@ -700,7 +700,7 @@ colorTemperature Number  A number that represents the color temperature, measure
 **Commands:**
 
 *setColorTemperature(number)*
-    Sets the color temperature
+    Sets the color temperature, and turns the bulb on for any non-zero value.
 
 **SmartApp Example:**
 
@@ -722,7 +722,6 @@ colorTemperature Number  A number that represents the color temperature, measure
   def changeColorTemp() {
     def temp = colorTemperature as Integer ?: 3300
     bulb.setColorTemperature(temp)
-    bulb.on()
   }
 
 ----
@@ -2004,12 +2003,13 @@ level           Number  A number that represents the current light level, usuall
 **Commands:**
 
 *setLevel(number, number)*
-    Set the level to the given numbers
+    Set the level to the given numbers.
+    The first number specifies the level (0-100), and any value greater than zero will also turn the switch on.
+    The second number specifies the rate of dimming.
 
 .. note::
 
-    The capability is defined to accept two parameters, the level and the rate of dimming.
-    The vast majority of Devices and Device Handlers will *not* support the rate parameter, however, so you'll typically only see this command in the form of ``setLevel(number)``.
+    The vast majority of Devices and Device Handlers will *not* support the rate parameter, so you'll typically only see this command in the form of ``setLevel(number)``.
 
 **SmartApp Example:**
 
