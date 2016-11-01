@@ -389,10 +389,23 @@ You can also view the SmartApp job history, which shows the previous executions 
 
 ----
 
+.. _scheduling_execution_limit:
+
+Scheduled Executions Limit
+--------------------------
+
+**The maximum number of pending schedules is six.**
+
+A ``physicalgraph.execution.ScheduleLimitExceededException`` exception will be thrown by all scheduling methods if this limit has been reached.
+
+:ref:`smartapp_can_schedule` can be used to check if any additional schedules can be created.
+
+----
+
 .. _limitations_best_practices:
 
-Scheduling Limitations, Best Practices, and Things Good to Know
----------------------------------------------------------------
+Best Practices
+--------------
 
 When using any of the scheduling APIs, it's important to understand some limitations and best practices.
 
@@ -454,14 +467,6 @@ As discussed above, ``unschedule()`` is currently a potentially expensive operat
 We plan to address this in the near future. Until we do, be aware of the potential performance impacts of calling ``unschedule()``.
 
 Note that when the SmartApp is uninstalled, all scheduled executions are removed - there is no need to call ``unschedule()`` in the ``uninstalled()`` method.
-
-Number of Scheduled Executions Limit
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The :ref:`smartapp_can_schedule` method returns false if four or more scheduled executions are created.
-
-This currently does not actually impact the ability to create additional schedules, but such a limit may be imposed in the near future.
-A community post will be made in advance of any such change.
 
 ----
 

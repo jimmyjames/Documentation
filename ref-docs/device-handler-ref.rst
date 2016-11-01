@@ -199,6 +199,25 @@ For any supported attribute, it is expected that the Device Handler creates and 
 
 ----
 
+canSchedule()
+-------------
+
+Returns true if the SmartApp is able to schedule jobs. Device Handlers are limited to 6 pending scheduled executions.
+
+**Signature:**
+    ``Boolean canSchedule()``
+
+**Returns:**
+    `Boolean`_ - ``true`` if additional jobs can be scheduled, ``false`` otherwise.
+
+**Example:**
+
+.. code-block:: groovy
+
+    log.debug "Can schedule? ${canSchedule()}"
+
+----
+
 capability()
 ------------
 
@@ -998,6 +1017,10 @@ runEvery5Minutes()
 Creates a recurring schedule that executes the specified ``handlerMethod`` every five minutes.
 Using this method will pick a random start time in the next five minutes, and run every five minutes after that.
 
+.. warning::
+
+    Throws a ``physicalgraph.exception.ScheduleLimitExceededException`` if the pending scheduled executions limit (six per installed SmartApp or Device Handler) has been exceeded.
+
 **Signature:**
     ``void runEvery5Minutes(handlerMethod[, options])``
 
@@ -1042,6 +1065,10 @@ runEvery10Minutes()
 
 Creates a recurring schedule that executes the specified ``handlerMethod`` every ten minutes.
 Using this method will pick a random start time in the next ten minutes, and run every ten minutes after that.
+
+.. warning::
+
+    Throws a ``physicalgraph.exception.ScheduleLimitExceededException`` if the pending scheduled executions limit (six per installed SmartApp or Device Handler) has been exceeded.
 
 **Signature:**
     ``void runEvery10Minutes(handlerMethod[, options])``
@@ -1088,6 +1115,10 @@ runEvery15Minutes()
 Creates a recurring schedule that executes the specified ``handlerMethod`` every fifteen minutes.
 Using this method will pick a random start time in the next five minutes, and run every five minutes after that.
 
+.. warning::
+
+    Throws a ``physicalgraph.exception.ScheduleLimitExceededException`` if the pending scheduled executions limit (six per installed SmartApp or Device Handler) has been exceeded.
+
 **Signature:**
     ``void runEvery15Minutes(handlerMethod[, options])``
 
@@ -1132,6 +1163,10 @@ runEvery30Minutes()
 
 Creates a recurring schedule that executes the specified ``handlerMethod`` every thirty minutes.
 Using this method will pick a random start time in the next thirty minutes, and run every thirty minutes after that.
+
+.. warning::
+
+    Throws a ``physicalgraph.exception.ScheduleLimitExceededException`` if the pending scheduled executions limit (six per installed SmartApp or Device Handler) has been exceeded.
 
 **Signature:**
     ``void runEvery30Minutes(handlerMethod[, options])``
@@ -1178,6 +1213,10 @@ runEvery1Hour()
 Creates a recurring schedule that executes the specified ``handlerMethod`` every hour.
 Using this method will pick a random start time in the next hour, and run every hour after that.
 
+.. warning::
+
+    Throws a ``physicalgraph.exception.ScheduleLimitExceededException`` if the pending scheduled executions limit (six per installed SmartApp or Device Handler) has been exceeded.
+
 **Signature:**
     ``void runEvery1Hour(handlerMethod[, options])``
 
@@ -1223,6 +1262,10 @@ runEvery3Hours()
 Creates a recurring schedule that executes the specified ``handlerMethod`` every three hours.
 Using this method will pick a random start time in the next hour, and run every three hours after that.
 
+.. warning::
+
+    Throws a ``physicalgraph.exception.ScheduleLimitExceededException`` if the pending scheduled executions limit (six per installed SmartApp or Device Handler) has been exceeded.
+
 **Signature:**
     ``void runEvery3Hours(handlerMethod[, options])``
 
@@ -1266,6 +1309,10 @@ runIn()
 -------
 
 Executes a specified ``handlerMethod`` after ``delaySeconds`` have elapsed.
+
+.. warning::
+
+    Throws a ``physicalgraph.exception.ScheduleLimitExceededException`` if the pending scheduled executions limit (six per installed SmartApp or Device Handler) has been exceeded.
 
 **Signature:**
     ``void runIn(delayInSeconds, handlerMethod [, options])``
@@ -1314,6 +1361,10 @@ runOnce()
 
 Executes the ``handlerMethod`` once at the specified date and time.
 
+.. warning::
+
+    Throws a ``physicalgraph.exception.ScheduleLimitExceededException`` if the pending scheduled executions limit (six per installed SmartApp or Device Handler) has been exceeded.
+
 **Signature:**
     ``void runOnce(dateTime, handlerMethod [, options])``
 
@@ -1353,6 +1404,10 @@ schedule()
 
 Creates a scheduled job that calls the ``handlerMethod`` once per day at the time specified, or according to a cron schedule.
 
+.. warning::
+
+    Throws a ``physicalgraph.exception.ScheduleLimitExceededException`` if the pending scheduled executions limit (six per installed SmartApp or Device Handler) has been exceeded.
+    
 **Signature:**
     ``void schedule(dateTime, handlerMethod)``
 

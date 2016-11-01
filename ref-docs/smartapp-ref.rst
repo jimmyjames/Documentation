@@ -1252,6 +1252,10 @@ runEvery5Minutes()
 Creates a recurring schedule that executes the specified ``handlerMethod`` every five minutes.
 Using this method will pick a random start time in the next five minutes, and run every five minutes after that.
 
+.. warning::
+
+    Throws a ``physicalgraph.exception.ScheduleLimitExceededException`` if the pending scheduled executions limit (six per installed SmartApp or Device Handler) has been exceeded.
+
 **Signature:**
     ``void runEvery5Minutes(handlerMethod[, options])``
 
@@ -1295,7 +1299,12 @@ Using this method will pick a random start time in the next five minutes, and ru
 runEvery10Minutes()
 -------------------
 
-Creates a recurring schedule that executes the specified ``handlerMethod`` every ten minutes. Using this method will pick a random start time in the next ten minutes, and run every ten minutes after that.
+Creates a recurring schedule that executes the specified ``handlerMethod`` every ten minutes.
+Using this method will pick a random start time in the next ten minutes, and run every ten minutes after that.
+
+.. warning::
+
+    Throws a ``physicalgraph.exception.ScheduleLimitExceededException`` if the pending scheduled executions limit (six per installed SmartApp or Device Handler) has been exceeded.
 
 **Signature:**
     ``void runEvery10Minutes(handlerMethod[, options])``
@@ -1340,7 +1349,12 @@ Creates a recurring schedule that executes the specified ``handlerMethod`` every
 runEvery15Minutes()
 -------------------
 
-Creates a recurring schedule that executes the specified ``handlerMethod`` every fifteen minutes. Using this method will pick a random start time in the next five minutes, and run every five minutes after that.
+Creates a recurring schedule that executes the specified ``handlerMethod`` every fifteen minutes.
+Using this method will pick a random start time in the next five minutes, and run every five minutes after that.
+
+.. warning::
+
+    Throws a ``physicalgraph.exception.ScheduleLimitExceededException`` if the pending scheduled executions limit (six per installed SmartApp or Device Handler) has been exceeded.
 
 **Signature:**
     ``void runEvery15Minutes(handlerMethod[, options])``
@@ -1385,7 +1399,12 @@ Creates a recurring schedule that executes the specified ``handlerMethod`` every
 runEvery30Minutes()
 -------------------
 
-Creates a recurring schedule that executes the specified ``handlerMethod`` every thirty minutes. Using this method will pick a random start time in the next thirty minutes, and run every thirty minutes after that.
+Creates a recurring schedule that executes the specified ``handlerMethod`` every thirty minutes.
+Using this method will pick a random start time in the next thirty minutes, and run every thirty minutes after that.
+
+.. warning::
+
+    Throws a ``physicalgraph.exception.ScheduleLimitExceededException`` if the pending scheduled executions limit (six per installed SmartApp or Device Handler) has been exceeded.
 
 **Signature:**
     ``void runEvery30Minutes(handlerMethod[, options])``
@@ -1430,7 +1449,12 @@ Creates a recurring schedule that executes the specified ``handlerMethod`` every
 runEvery1Hour()
 ---------------
 
-Creates a recurring schedule that executes the specified ``handlerMethod`` every hour. Using this method will pick a random start time in the next hour, and run every hour after that.
+Creates a recurring schedule that executes the specified ``handlerMethod`` every hour.
+Using this method will pick a random start time in the next hour, and run every hour after that.
+
+.. warning::
+
+    Throws a ``physicalgraph.exception.ScheduleLimitExceededException`` if the pending scheduled executions limit (six per installed SmartApp or Device Handler) has been exceeded.
 
 **Signature:**
     ``void runEvery1Hour(handlerMethod[, options])``
@@ -1475,7 +1499,12 @@ Creates a recurring schedule that executes the specified ``handlerMethod`` every
 runEvery3Hours()
 ----------------
 
-Creates a recurring schedule that executes the specified ``handlerMethod`` every three hours. Using this method will pick a random start time in the next hour, and run every three hours after that.
+Creates a recurring schedule that executes the specified ``handlerMethod`` every three hours.
+Using this method will pick a random start time in the next hour, and run every three hours after that.
+
+.. warning::
+
+    Throws a ``physicalgraph.exception.ScheduleLimitExceededException`` if the pending scheduled executions limit (six per installed SmartApp or Device Handler) has been exceeded.
 
 **Signature:**
     ``void runEvery3Hours(handlerMethod[, options])``
@@ -1522,6 +1551,10 @@ runOnce()
 
 Executes the ``handlerMethod`` once at the specified date and time.
 
+.. warning::
+
+    Throws a ``physicalgraph.exception.ScheduleLimitExceededException`` if the pending scheduled executions limit (six per installed SmartApp or Device Handler) has been exceeded.
+
 **Signature:**
     ``void runOnce(dateTime, handlerMethod [, options])``
 
@@ -1562,6 +1595,10 @@ schedule()
 
 Creates a scheduled job that calls the ``handlerMethod`` once per day at the time specified, or according to a cron schedule.
 
+.. warning::
+
+    Throws a ``physicalgraph.exception.ScheduleLimitExceededException`` if the pending scheduled executions limit (six per installed SmartApp or Device Handler) has been exceeded.
+    
 **Signature:**
     ``void schedule(dateTime, handlerMethod [, options])``
 
