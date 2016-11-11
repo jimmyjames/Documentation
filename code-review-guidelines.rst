@@ -369,8 +369,9 @@ The best practice is to subscribe explicitly to the attribute:
 
 .. code-block:: groovy
 
-    subscribe(contact1, “contact.open”, myContactHandler)
+    subscribe(contact1, "contact.open", myContactHandler)
 
+    
 However, if the SmartApp must subscribe to a variable (from state, for instance), the reviewer should be able to trace how the variable is set and what the expected attribute will be.
 
 Subscriptions should be specific

@@ -60,7 +60,7 @@ Consider the following example that simply forces a ``NullPointerException`` by 
 
 Executing the above code would result in the following message in Live Logging:
 
-.. code-block:: groovy
+.. code-block:: bash
 
     12:42:03 PM: debug caught exception java.lang.NullPointerException: Cannot invoke method boom() on null object @ line 47
 

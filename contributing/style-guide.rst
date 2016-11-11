@@ -120,7 +120,7 @@ It requires placing a label above a section, title, or image:
 
 Another document can then link to ``Some Section`` like this:
 
-.. code-block:: groovy
+.. code-block:: rst
 
     See :ref:`section_label` for more information.
 

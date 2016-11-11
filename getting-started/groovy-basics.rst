@@ -444,13 +444,13 @@ Getters and Setters
 Groovy adds in some convenience JavaBean style getter and setter methods.
 It's worth being aware of this in case you see some code that references a property that seemingly isn't defined anywhere:
 
-    .. code-block:: groovy
+.. code-block:: groovy
 
-        def getSomeValue() {
-            return "got it"
-        }
+    def getSomeValue() {
+        return "got it"
+    }
 
-        assert "got it" == someValue
+    assert "got it" == someValue
 
 How did referencing ``someValue`` end up invoking the method ``getSomeValue()``?
 When Groovy sees a reference to the property named ``someValue``, it first looks to see if it is defined somewhere.
