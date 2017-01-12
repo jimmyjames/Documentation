@@ -3,9 +3,12 @@
 GitHub Integration
 ==================
 
-.. note::
+.. warning::
 
-    GitHub IDE integration is only available in the US.
+    Before proceeding to enable GitHub integration in the IDE, be aware that:
+
+    1. GitHub IDE integration is not supported outside the US.
+    2. GitHub IDE integration may negatively impact the performance of the IDE. 
 
 As an open platform, we recognize that giving our community developers access to the repository housing our SmartApps and Device Handlers is extremely important.
 While you can browse the code in the IDE, not having access to the repository itself is limiting.
