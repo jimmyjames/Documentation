@@ -35,6 +35,26 @@ Gets the current state of the given attribute.
 
 ----
 
+getAccountId()
+-----------------
+
+Gets the account ID of the owner of the Location in to which this SmartApp is installed.
+
+**Signature:**
+    ``String getAccountId()``
+
+**Returns:**
+    `String`_ - The account ID of the owner of the Location in to which this SmartApp is installed.
+
+**Example:**
+
+.. code-block:: groovy
+
+    def accountId = app.getAccountId()
+    log.debug "This account ID of this installed SmartApp is $accountId"
+
+----
+
 getAllChildApps()
 -----------------
 
