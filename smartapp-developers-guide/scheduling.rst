@@ -25,7 +25,7 @@ We'll look at each scenario in detail, and at the methods SmartThings makes avai
 
 ----
 
-Schedule From Now - ``runIn()`` 
+Schedule From Now - ``runIn()``
 -------------------------------
 
 A SmartApp may want to take some action within a certain duration of time after some event has occurred.
@@ -38,7 +38,7 @@ Consider a few examples:
 All these scenarios follow a common pattern: when a certain event happens, take some action after a given duration of time.
 This can be accomplished this by using the :ref:`smartapp_run_in` method.
 
-The ``runIn()`` method executes a specified handler method after a given number of seconds have elapsed. 
+The ``runIn()`` method executes a specified handler method after a given number of seconds have elapsed.
 
 .. code-block:: groovy
     :emphasize-lines: 3
@@ -122,14 +122,14 @@ Like ``runIn()``, you can also specify the overwrite behavior of ``runOnce()``:
 
 ----
 
-Run on a Recurring Schedule - ``schedule()``
---------------------------------------------
+Run on a Recurring Schedule
+---------------------------
 
 Often, there is a need to schedule a job to run on a specific schedule.
 For example, maybe you want to turn the lights off at 11 PM every night.
 Or, you might need to execute a certain action every X minutes.
 
-SmartThings provides the :ref:`smartapp_schedule` method to allow you to create recurring schedules.
+SmartThings provides the :ref:`smartapp_schedule` and various ``runEvery*()`` methods to allow you to create recurring schedules.
 
 The various ``schedule()`` methods follow a similar form - they take an argument representing the desired schedule, and the method to be called on this schedule.
 
@@ -180,12 +180,54 @@ Finally, you can pass a Long representing the desired time in milliseconds (usin
         ...
     }
 
+.. _schedule_run_every:
+
+Schedule Every X Minutes or Hours
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For common recurring schedules, SmartThings provides a few convenience APIs that we can use.
+
+These methods work by creating a random start time in X minutes or hours, and then every X minutes or hours after that.
+For example, ``runEvery5Minutes(handlerMethod)`` will execute ``handlerMethod()`` at a random time in the next five minutes, and then run every five minutes from then.
+
+These methods have the advantage of randomizing the start time for schedules, which reduces the load on the SmartThings scheduler, and results in better performance for end users.
+As such, these methods should be preferred over cron expressions when available.
+
+The currently available methods are:
+
+- :ref:`smartapp_run_every_5_minutes`
+- :ref:`smartapp_run_every_10_minutes`
+- :ref:`smartapp_run_every_15_minutes`
+- :ref:`smartapp_run_every_30_minutes`
+- :ref:`smartapp_run_every_1_hours`
+- :ref:`smartapp_run_every_3_hours`
+
+Using these methods is similar to other scheduling methods:
+
+.. code-block:: groovy
+    :emphasize-lines: 2
+
+    def initialize() {
+        runEvery5Minutes(handlerMethod)
+    }
+
+    def handlerMethod() {
+        log.debug "handlerMethod called at ${new Date()}"
+    }
+
+----
+
 .. _schedule_using_cron:
 
 Schedule Using Cron
 ^^^^^^^^^^^^^^^^^^^
 
-Scheduling jobs to execute at a particular time is useful, but what if, for example, we want a method to execute at fifteen minutes past the hour, every hour? 
+.. important::
+
+    Prefer the ``runEvery*()`` methods to creating your own cron schedule when possible.
+    These methods are documented above in the :ref:`schedule_run_every` section.
+
+Scheduling jobs to execute at a particular time is useful, but what if, for example, we want a method to execute at fifteen minutes past the hour, every hour?
 SmartThings allows you to pass a cron expression to the ``schedule()`` method to accomplish this.
 
 .. code-block:: groovy
@@ -201,14 +243,14 @@ SmartThings allows you to pass a cron expression to the ``schedule()`` method to
     }
 
 A cron expression is a way to specify a recurring schedule, based on the UNIX cron tool.
-The cron expression supported by SmartThings is a string of six or seven fields, separated by white space. 
+The cron expression supported by SmartThings is a string of six or seven fields, separated by white space.
 The *seconds* field is the left most field.
-The below table describes these fields. 
+The below table describes these fields.
 
 ============ ================ ======== =================
 Field        Allowed Values   Required Allowed Wildcards
 ============ ================ ======== =================
-Seconds      0-59             Yes      \*  
+Seconds      0-59             Yes      \*
 Minutes      0-59             Yes      , - * /
 Hours        0-23             Yes      , - * /
 Day of Month 1-31             Yes      , - * ? / L W
@@ -229,10 +271,10 @@ Year         empty, 1970-2099 No       , - * /
 
 .. warning::
 
-    You cannot specify both the *Day of Month* and the *Day of Week* fields in the same cron expression. 
+    You cannot specify both the *Day of Month* and the *Day of Week* fields in the same cron expression.
     If you specifiy one of these fields, the other one must be ``?``.
 
-Here is an example with the two fields, i.e., the *Day of Month* and the *Day of Week*. 
+Here is an example with the two fields, i.e., the *Day of Month* and the *Day of Week*.
 In the table below cases A and C are invalid.
 
 ====== ============ =========== ====================================================
@@ -269,52 +311,18 @@ Expression Description                        Description
 
 .. warning::
 
-    Note how you use ``*`` as it may unwittingly lead to high-frequency schedules. 
-    You may have intended to use ``?``. 
-    Note the difference between ``*``, which means "every" and ``?``, which means "any". 
+    Note how you use ``*`` as it may unwittingly lead to high-frequency schedules.
+    You may have intended to use ``?``.
+    Note the difference between ``*``, which means "every" and ``?``, which means "any".
 
     For example, ``* */5 * * * ?`` means every 5th minute, run 60 times within that minute.
     That's almost surely not what you want, and SmartThings will not execute your schedule that frequently (see below).
 
     If you were trying to execute every X minutes, it would look like this: ``0 0/X * * * ?`` where X is the minute value.
 
-Schedule Every X Minutes or Hours
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-For common recurring schedules, SmartThings provides a few convenience APIs that we can use.
-These methods use cron under the hood, but nevertheless will save you the effort of writing up the expressions themselves.
-
-These methods work by creating a random start time in X minutes or hours, and then every X minutes or hours after that.
-For example, ``runEvery5Minutes(handlerMethod)`` will execute ``handlerMethod()`` at a random time in the next five minutes, and then run every five minutes from then.
-
-These methods have the advantage of randomizing the start time for schedules, which can reduce the load on the SmartThings cloud.
-As such, these methods should be preferred over cron expressions when available.
-
-The currently available methods are:
-
-- :ref:`smartapp_run_every_5_minutes`
-- :ref:`smartapp_run_every_10_minutes`
-- :ref:`smartapp_run_every_15_minutes`
-- :ref:`smartapp_run_every_30_minutes`
-- :ref:`smartapp_run_every_1_hours`
-- :ref:`smartapp_run_every_3_hours`
-
-Using these methods is similar to other scheduling methods:
-
-.. code-block:: groovy
-    :emphasize-lines: 2
-
-    def initialize() {
-        runEvery5Minutes(handlerMethod)
-    }
-
-    def handlerMethod() {
-        log.debug "handlerMethod called at ${new Date()}"
-    }
+.. _scheduling_passing_data:
 
 ----
-
-.. _scheduling_passing_data:
 
 Passing Data to the Handler Method
 ----------------------------------
@@ -423,8 +431,8 @@ You can also view the SmartApp job history, which shows the previous executions 
 
 .. _limitations_best_practices:
 
-Scheduling Limitations and Best Practices 
------------------------------------------
+Scheduling Best Practices
+-------------------------
 
 When using any of the scheduling APIs, it's important to understand some limitations and best practices.
 
@@ -462,6 +470,10 @@ If you need a recurring schedule, use cron.
     Using a chained ``runIn()`` pattern can be acceptable for certain short-running tasks, such as gradually dimming a bulb.
     But for anything long-running, use cron.
 
+Prefer `runEvery*()` over cron
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use any of the :ref:`runEvery*() <schedule_run_every>` methods instead of creating your own cron schedule when possible.
 
 Execution Time May Not Be in Exact Seconds
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
