@@ -2,31 +2,34 @@
 // and parts of Primer for tooltip support
 var copyCode = {
   init: function() {
-    $('.highlight').each(function() {
-      $(this).prepend('<button class="copy-btn" data-clipboard-snippet></button>');
+    $('.highlight pre').each(function() {
+      var code = $(this);
+      code.after('<span class="copy-to-clipboard">Copy</span>');
+      code.on('mouseenter', function() {
+        var copyBlock = $(this).next('.copy-to-clipboard');
+        copyBlock.addClass('copy-active');
+      });
+      code.on('mouseleave', function() {
+        var copyBlock = $(this).next('.copy-to-clipboard');
+        copyBlock.removeClass('copy-active');
+        copyBlock.html("Copy");
+      });
     });
-    var clipboardSnippets = new Clipboard('[data-clipboard-snippet]',{
-      target: function(trigger) {
-        return trigger.nextElementSibling;
-      }
-    });
-    clipboardSnippets.on('success', function(e) {
-      e.clearSelection();
-      copyCode.showTooltip(e.trigger, 'Copied to clipboard');
-    });
-    clipboardSnippets.on('error', function(e) {
-      copyCode.showTooltip(e.trigger, copyCode.fallbackMessage());
-    });
+    var text, clip = new Clipboard('.copy-to-clipboard', {
+        text: function(trigger) {
+          return $(trigger).prev('pre').text();
+        }
+      });
 
-    $('.copy-btn').each(function() {
-      $(this).mouseenter(function() {
-        copyCode.showTooltip(this, 'Click to copy');
+      clip.on('success', function(e) {
+        e.clearSelection();
+        console.log("copied!");
+        $(e.trigger).html("Copied!");
       });
-      $(this).mouseleave(function() {
-        $(this).removeAttr('aria-label');
-        $(this).removeClass('tooltipped tooltipped-nw');
+
+      clip.on('error', function(e) {
+        console.log("error: " + e);
       });
-    });
   },
 
   showTooltip: function(elem, msg) {
