@@ -122,6 +122,8 @@ Like ``runIn()``, you can also specify the overwrite behavior of ``runOnce()``:
 
 ----
 
+.. _scheduling_recurring_schedules:
+
 Run on a Recurring Schedule
 ---------------------------
 

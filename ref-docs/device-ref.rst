@@ -464,6 +464,8 @@ The name of the Device set by the user in the mobile application or Web IDE.
 
 ----
 
+.. _device_get_last_activity:
+
 getLastActivity()
 -----------------
 
@@ -540,6 +542,8 @@ Not applicable for cloud or LAN-connected devices (``null`` will be returned).
     }
 
 ----
+
+.. _device_get_status:
 
 getStatus()
 -----------

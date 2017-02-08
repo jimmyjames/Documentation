@@ -4,6 +4,19 @@
 Latest Updates
 ==============
 
+February 08 2017
+----------------
+
+- Z-Wave fingerprinting updates! The :ref:`zwave-fingerprinting` documentation has been expanded and updated with the latest information.
+- Get information about a Device's status and last activity using the new :ref:`device_get_status` and :ref:`device_get_last_activity` methods.
+- New to Device Handler development, or looking for a refresher? We've overhauled our :ref:`device-handler-quickstart` to ensure you can get up and running quickly and pain-free.
+- Do you use cron to create recurring schedules? Have you seen if you could replace that often-difficult to understand, write, and maintain cron expression with any of our :ref:`runEvery* <schedule_run_every>` methods? We've updated the :ref:`documentation <scheduling_recurring_schedules>` to highlight these methods and encourage their use, instead of using cron.
+- Did you know you can copy code examples right to your clipboard? We updated the UX to increase the visibility of this handy feature.
+
+`GitHub Release Tag <https://github.com/SmartThingsCommunity/Documentation/releases/tag/08-February-2017>`__
+
+----
+
 January 23 2017
 ---------------
 
