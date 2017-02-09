@@ -19,12 +19,6 @@ Capabilities Reference
 
     This page serves as a reference for the supported capabilities.
 
-    .. note::
-
-        This document is a work in progress.
-        Many capabilities are not yet fully documented.
-        We are continually working to document all the capabilities.
-
     ----
 
     Data Types

@@ -152,3 +152,83 @@ div[class^='highlight'] pre {
 .linenodiv pre {
     color: #fff !important;
 }
+
+/* homepage */
+.container {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.home-card-container {
+    margin-top: 50px;
+}
+
+@media only screen and (min-width: 64.0625em) {
+    .home-card-col {
+       width: 50%;
+       position: relative;
+       padding-left: .9375rem;
+       padding-right: .9375rem;
+       float: left;
+    }
+}
+
+.home-card-col a {
+    color: #3f3e43;
+    display: block;
+    border-radius: 5px;
+    height: 183px;
+    margin: 0 0 2em;
+    padding: .75em 1em .75em 5em;
+    position: relative;
+    border: 2px solid #e8e8e8;
+    background: #f8f8f8;
+    transition: all .2s ease-in-out;
+}
+
+.home-card-col a:hover {
+    box-shadow: 5px 4px 5px #3f3e43;
+    background: #ffffff;
+}
+
+.home-card-col a:after {
+    top: 33%;
+    left: 15px;
+    color: #3f3e43;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    position: absolute;
+    font-size: 50px;
+}
+
+.getting-started a:after {
+    content: "\f018";
+
+}
+
+.groovy-basics a:after {
+    content: "\f121";
+}
+
+.reference-docs a:after {
+    content: "\f03a";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    position: absolute;
+    font-size: 50px;
+}
+
+.guide a:after {
+    content: "\f02d";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    position: absolute;
+    font-size: 50px;
+}
+/* end homepage */

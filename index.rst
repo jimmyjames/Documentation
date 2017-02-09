@@ -6,35 +6,78 @@
 SmartThings Developer Documentation
 ===================================
 
-Welcome to the SmartThings developer documentation.
+.. raw:: html
 
-This documentation is organized into different sections:
+    <div class="home-card-container">
+        <div class="home-card-row">
+            <div class="home-card-col getting-started">
+                <a href="getting-started/overview.html">
+                    <h4>Getting Started</h4>
+                    <p>Get started developing with SmartThings.</p>
+                </a>
+            </div>
+            <div class="home-card-col groovy-basics">
+                <a href="getting-started/first-smartapp.html">
+                    <h4>Write Your First SmartApp</h4>
+                    <p>Ready to dive in? Write your first SmartApp by following our step-by-step tutorial.</p>
+                </a>
+            </div>
+        </div>
+        <div class="home-card-row">
+            <div class="home-card-col guide">
+                <a href="smartapp-developers-guide/index.html">
+                    <h4>SmartApps</h4>
+                    <p>SmartApps orchestrate devices in the home to perform specific actions based on events and triggers. Learn the what and how here.</p>
+                </a>
+            </div>
+            <div class="home-card-col guide">
+                <a href="smartapp-web-services-developers-guide/index.html">
+                    <h4>Web Services SmartApps</h4>
+                    <p>Create your own RESTful API with Web Services SmartApps.</p>
+                </a>
+            </div>
+        </div>
+        <div class="home-card-row">
+            <div class="home-card-col guide">
+                <a href="device-type-developers-guide/quick-start.html">
+                    <h4>Hub-Connected Devices</h4>
+                    <p>Learn how to integrate a ZigBee or Z-Wave device with SmartThings.</p>
+                </a>
+            </div>
+            <div class="home-card-col guide">
+                <a href="cloud-and-lan-connected-device-types-developers-guide/index.html">
+                    <h4>Cloud and LAN-Connected Devices</h4>
+                    <p>Learn how to integrate a Cloud or LAN-connected device with SmartThings.</p>
+                </a>
+            </div>
+        </div>
+        <div class="home-card-row">
+            <div class="home-card-col reference-docs">
+                <a href="capabilities-reference.html">
+                    <h4>Capabilities Reference</h4>
+                    <p>An up-to-date introduction and reference of all supported SmartThings Capabilities.</p>
+                </a>
+            </div>
+            <div class="home-card-col reference-docs">
+                <a href="ref-docs/reference.html">
+                    <h4>API Reference</h4>
+                    <p>Browse the complete Groovy API reference documentation.</p>
+                </a>
+            </div>
+        </div>
 
-Getting Started
-    If you are new to SmartThings development, check out our Getting Started documentation. Head over to the :ref:`get-started-overview`, and progress through the material there.
+    </div>
 
-Guides
-    You can use the guides to learn more about specific SmartThings development tasks. Most guides are organized into several chapters.
-
-Reference
-    The reference material is where you will find API documentation, as well as documentation for the available Capabilities.
-
-This documentation is actively being developed and expanded, so check back often!
-
-.. tip::
-
-    Find a bug, typo, or just want to make an improvement? This documentation is open source and available on `GitHub <https://github.com/SmartThingsCommunity/Documentation/>`__. We like contributions!
-
-Contents
---------
 
 .. toctree::
+   :hidden:
    :caption: What's New
    :maxdepth: 2
 
    latest-updates
-     
+
 .. toctree::
+   :hidden:
    :caption: Getting Started
    :maxdepth: 2
 
@@ -46,6 +89,7 @@ Contents
    getting-started/getting-help
 
 .. toctree::
+   :hidden:
    :maxdepth: 2
    :caption: Guides
 
@@ -61,6 +105,7 @@ Contents
    code-review-guidelines
 
 .. toctree::
+    :hidden:
     :maxdepth: 1
     :caption: Reference
 
@@ -68,6 +113,7 @@ Contents
     ref-docs/reference
 
 .. toctree::
+   :hidden:
    :maxdepth: 1
    :caption: Misc
 
