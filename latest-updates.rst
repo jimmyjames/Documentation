@@ -4,6 +4,15 @@
 Latest Updates
 ==============
 
+February 10 2017
+----------------
+
+- Did you notice? We've updated the :ref:`docs homepage <docs_home_page>` to help readers quickly identify and navigate to common areas of interest.
+
+`GitHub Release Tag <https://github.com/SmartThingsCommunity/Documentation/releases/tag/10-February-2017>`__
+
+----
+
 February 08 2017
 ----------------
 
