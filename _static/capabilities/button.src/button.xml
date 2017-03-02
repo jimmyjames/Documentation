@@ -2,6 +2,7 @@
 <capability name='Button' public='true'>
 	<attribute name='button' type='ENUM'>
 		<value name='pushed' />
+		<value name='held' />
 	</attribute>
 	<attribute name='numberOfButtons' type='NUMBER' />
 </capability>
