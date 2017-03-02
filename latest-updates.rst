@@ -4,6 +4,20 @@
 Latest Updates
 ==============
 
+March 02 2017
+-------------
+
+- Does your SmartApp or Device Handler need to execute every minute? Instead of writing your own cron expression, use the new :ref:`smartapp_run_every_1_minute`!
+- Need to convert color values between hexadecimal and RGB? The :ref:`color_util_ref` class has what you need.
+- If you are writing a parent-child SmartApp, check out the :ref:`expanded and clarified documentation <parent_child_smartapp_parent>` for using the ``app()`` input type.
+- A new capability, :ref:`bridge`, allows devices to declare they act as a bridge to other devices.
+- A new attribute, ``held``, has been added to the :ref:`button` capability!
+- The :ref:`style_guide` has been updated with guidelines for document title and headings capitalization and formatting. If you are a contributor to these docs, make sure you check it out!
+
+`GitHub Release Tag <https://github.com/SmartThingsCommunity/Documentation/releases/tag/02-March-2017>`__
+
+----
+
 February 10 2017
 ----------------
 

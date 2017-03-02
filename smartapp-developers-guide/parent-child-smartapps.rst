@@ -24,6 +24,8 @@ A child SmartApp can have only one parent.
 
 ----
 
+.. _parent_child_smartapp_parent:
+
 The parent SmartApp
 -------------------
 
