@@ -326,6 +326,44 @@ Returns true if the SmartApp is able to schedule jobs. SmartApps are limited to 
 
 ----
 
+.. _smartapp_create_access_token:
+
+createAccessToken()
+-------------------
+
+Creates an access token for this installed SmartApp.
+This token is intended to be used by third-party services that need to communicate with SmartThings during the :ref:`OAuth installation flow of cloud-connected devices <cloud_service_manager_oauth>`.
+
+The created token will then be available in ``state.accessToken``.
+
+**Signature:**
+    ``def createAccessToken()``
+
+**Returns:**
+    May return the access token itself, though this is not guaranteed (the token will be available in ``state.accessToken``).
+
+    **Example:**
+
+    .. code-block:: groovy
+
+        // Check to see if SmartApp has its own access token and create one if not.
+        if(!state.accessToken) {
+            // the createAccessToken() method will store the access token in state.accessToken
+            createAccessToken()
+        }
+
+        // Use token to allow third-party to communicate with SmartApp during setup
+
+        // Revoke the token once the third-party no longer needs it (after setup)
+        revokeAccessToken()
+
+    **See also:**
+
+    - :ref:`cloud_connected_service_manager`
+    - :ref:`smartapp_revoke_access_token`
+
+----
+
 .. _smartapp_find_all_child_apps_by_name:
 
 findAllChildAppsByName()
@@ -1210,6 +1248,38 @@ Returns a HTTP response to the calling client with the options specified.
 
         render contentType: "text/html", data: html
     }
+
+----
+
+.. _smartapp_revoke_access_token:
+
+revokeAccessToken()
+------------------
+
+Revokes the access token created with :ref:`smartapp_create_access_token` for this installed SmartApp.
+
+**Signature:**
+    ``def revokeAccessToken()``
+
+**Example:**
+
+.. code-block:: groovy
+
+    // Check to see if SmartApp has its own access token and create one if not.
+    if(!state.accessToken) {
+        // the createAccessToken() method will store the access token in state.accessToken
+        createAccessToken()
+    }
+
+    // Use token to allow third-party to communicate with SmartApp during setup
+
+    // Revoke the token once the third-party no longer needs it (after setup)
+    revokeAccessToken()
+
+**See also:**
+
+- :ref:`cloud_connected_service_manager`
+- :ref:`smartapp_create_access_token`
 
 ----
 

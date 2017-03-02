@@ -1,3 +1,5 @@
+.. _cloud_connected_service_manager:
+
 Building the Service Manager
 ============================
 
@@ -11,10 +13,12 @@ The Service Manager's responsibilities are:
 Below we will get into the details of what is outlined above.
 First, let's see an illustration of it in a SmartThings application using the Ecobee Thermostat.
 
+.. _cloud_service_manager_oauth:
+
 Authentication using OAuth
 --------------------------
 
-Any Service Manager authenticated with a third party via OAuth must itself have OAuth enabled. 
+Any Service Manager authenticated with a third party via OAuth must itself have OAuth enabled.
 This is because eventually the third-party service will call back into the SmartApp and hit the ``/oauth/initialize`` and ``/oauth/callback`` endpoints.
 
 End user experience
@@ -23,12 +27,12 @@ End user experience
 As an end user you start by selecting the Service Manager SmartApp for Ecobee Thermostat from the SmartApps screen of the SmartThings mobile app.
 
 Authorization with the third party is the first part of the
-configuration process. 
+configuration process.
 You will be taken to a page that describes how the authorization process works.
 
 .. figure:: ../../img/device-types/cloud-connected/building-cloud-connected-device-types/click-to-login.png
 
-From this screen you will then be directed to the third-party site, i.e., the Ecobee Thermostat site in this case, embedded within the SmartThings mobile application. 
+From this screen you will then be directed to the third-party site, i.e., the Ecobee Thermostat site in this case, embedded within the SmartThings mobile application.
 Here you will enter your Ecobee Thermostat service username and password.
 
 .. figure:: ../../img/device-types/cloud-connected/building-cloud-connected-device-types/ecobee-login.png
@@ -47,9 +51,9 @@ Next, you will be taken back to the initial configuration screen where you selec
 Implementation
 ~~~~~~~~~~~~~~
 
-OAuth is an industry standard for authentication. However, the third-party service may use a different standard. 
-In that case, consult their documentation and implement it. 
-The basic concepts will be similar to that of OAuth. 
+OAuth is an industry standard for authentication. However, the third-party service may use a different standard.
+In that case, consult their documentation and implement it.
+The basic concepts will be similar to that of OAuth.
 The below example will walk through what is necessary for OAuth authentication.
 
 There are two endpoints that all Service Manager SmartApps must define.
@@ -64,12 +68,12 @@ There are two endpoints that all Service Manager SmartApps must define.
 The ``/oauth/initialize`` endpoint will be called during initialization.
 This endpoint will then forward the user to the third-party service so they can log in.
 
-The third-party service will be redirected to the ``/oauth/callback`` endpoint after the authentication has been successful. 
+The third-party service will be redirected to the ``/oauth/callback`` endpoint after the authentication has been successful.
 Usually this is where the call is made to the third-party service to exchange an authorization code for an access token.
 
 The overall idea is this:
 
-- You will create a page on Service Manager SmartApp that will call out to the third-party API to initiate the authentication. 
+- You will create a page on Service Manager SmartApp that will call out to the third-party API to initiate the authentication.
 - The end result is an access token that SmartThings platform will then use to communicate with the third-party API.
 
 In your Service Manager SmartApp preferences you create a page for authorization.
@@ -120,11 +124,11 @@ There are a few things worth noting here:
 Initialize endpoint
 ~~~~~~~~~~~~~~~~~~~
 
-This endpoint is used to initialize the OAuth flow to a third-party service. 
+This endpoint is used to initialize the OAuth flow to a third-party service.
 The ``/oauth/initialize`` endpoint will save all the query parameters passed to it, but requires the following three parameters:
 
-- The SmartApp ID, 
-- The SmartApp's access token, and 
+- The SmartApp ID,
+- The SmartApp's access token, and
 - The installed URL of the SmartApp. The endpoint will then call the mapped ``/oauth/initialize`` endpoint defined in the SmartApp with all the query parameters passed to it.
 
 .. code-block:: html
@@ -146,8 +150,8 @@ apiServerUrl        The URL of the server that the SmartApp is installed on. Thi
 
     def redirectUrl = "https://graph.api.smartthings.com/oauth/initialize?appId=${app.id}&access_token=${state.accessToken}&apiServerUrl=${getApiServerUrl()}"
 
-The ``initialize`` endpoint will forward the mapping defined in SmartApp to the ``/oauth/initialize``. 
-This method will be responsible for redirecting the user to the third-party login page. 
+The ``initialize`` endpoint will forward the mapping defined in SmartApp to the ``/oauth/initialize``.
+This method will be responsible for redirecting the user to the third-party login page.
 Below is an example of how it works:
 
 .. code-block:: groovy
@@ -174,13 +178,13 @@ Below is an example of how it works:
 	    return m.collect { k, v -> "${k}=${URLEncoder.encode(v.toString())}" }.sort().join("&")
     }
 
-The ``oauthInitUrl()`` method sets up a request used to present the user with the third-party login page. 
-Often the third-party service will require information passed along with this request as query parameters. 
+The ``oauthInitUrl()`` method sets up a request used to present the user with the third-party login page.
+Often the third-party service will require information passed along with this request as query parameters.
 The actual parameters sent with the request will vary depending on what the third-party service expects, so consult their API documentation to find specifics.
 
 We are expecting to get an authorization code as a result of this request.
-We will later exchange this authorization code for an access token. 
-We will create the access token request in our callback handler as seen below. 
+We will later exchange this authorization code for an access token.
+We will create the access token request in our callback handler as seen below.
 But for now, let's look at some basic parameters usually associated with authorization code requests.
 
 ================= ===========
@@ -197,9 +201,9 @@ redirect_uri      The URI to be redirected to after the user has successfully au
 Callback endpoint
 ~~~~~~~~~~~~~~~~~
 
-The third-party service will redirect the user to the callback endpoint after the user has been successfully authenticated. 
-For SmartApp development, this should always be the static value: ``https://graph.api.smartthings.com/oauth/callback``. 
-The callback endpoint is typically where the authorization code--that was acquired from the initialization--will be used to request the access token. 
+The third-party service will redirect the user to the callback endpoint after the user has been successfully authenticated.
+For SmartApp development, this should always be the static value: ``https://graph.api.smartthings.com/oauth/callback``.
+The callback endpoint is typically where the authorization code--that was acquired from the initialization--will be used to request the access token.
 Let's look at an example.
 
 .. code-block:: groovy
@@ -275,9 +279,9 @@ Let's look at an example.
         render contentType: 'text/html', data: html
     }
 
-In this callback we first check to make sure that the state returned from the authorization code request matches what we sent as the state. 
-This is how we know that the response is intended for us. 
-If it matches, we then set up the parameters for the access token request. 
+In this callback we first check to make sure that the state returned from the authorization code request matches what we sent as the state.
+This is how we know that the response is intended for us.
+If it matches, we then set up the parameters for the access token request.
 Common parameters are as follows:
 
 ================= ===========
@@ -290,16 +294,16 @@ client_secret     The same client_secret that we used in the previous request, w
 redirect_uri      The same redirect_uri that we used in the previous request. This will usually be verified by the third-party service.
 ================= ===========
 
-We issue an HTTP POST request to get the token. 
+We issue an HTTP POST request to get the token.
 If we receive a success response, we will save the access token that was issued by the third-party service, along with the refresh token, in ``state``.
 
-Once we have acquired the access token, our authentication process is complete. 
+Once we have acquired the access token, our authentication process is complete.
 Usually the next step is to display some message to the end user about the success of the operation.
 
-.. important:: 
+.. important::
 
-    ``revokeAccessToken()`` should be called when the SmartApp's access token is no longer required. 
-    This is true when a user uninstalls the SmartApp. 
+    ``revokeAccessToken()`` should be called when the SmartApp's access token is no longer required.
+    This is true when a user uninstalls the SmartApp.
     It is also a good practice to revoke the access token after successful authentication with the 3rd party, unless the token will be used to access other endpoints in your SmartApp.
 
 Refreshing the OAuth token
@@ -307,9 +311,9 @@ Refreshing the OAuth token
 
 OAuth tokens are available for a finite amount of time, so you will
 often need to account for this, and if needed, refresh your
-``access_token``. 
+``access_token``.
 Above we illustrated how we initiate the request for the access and refresh tokens, and how we saved them in our SmartApp.
-If we make a request to the third-party service API and get an "expired token" response, it is up to us to issue a new request to refresh the access token. 
+If we make a request to the third-party service API and get an "expired token" response, it is up to us to issue a new request to refresh the access token.
 This is where the refresh token comes into play.
 
 If you run an API request and your ``access_token`` is determined invalid, for example:
@@ -325,7 +329,7 @@ If you run an API request and your ``access_token`` is determined invalid, for e
         retryInitialRequest(action)
     }
 
-you can use your ``refresh_token`` to get a new ``access_token``. 
+you can use your ``refresh_token`` to get a new ``access_token``.
 To do this, you just need to post to a specified endpoint and handle the response properly.
 
 .. code-block:: groovy
@@ -352,7 +356,7 @@ To do this, you just need to post to a specified endpoint and handle the respons
     }
 
 There are some outbound connections in which we are using OAuth to
-connect to a third party device cloud (Ecobee, Quirky, Jawbone, etc). 
+connect to a third party device cloud (Ecobee, Quirky, Jawbone, etc).
 In these cases it is the third-party device cloud that issues an OAuth token to SmartThings so that SmartThings can call their APIs.
 
 However, these same third-party device clouds also support webhooks and subscriptions that allow SmartThings to receive notifications when something changes in their cloud.
@@ -367,8 +371,8 @@ Identifying devices in the third-party device cloud
 
 The techniques you will use to identify devices in the third-party
 cloud will vary, because you are interacting with unique third-party
-APIs which all have unique parameters. 
-Typically you will authenticate with the third-party API using OAuth; then call an API specific method. 
+APIs which all have unique parameters.
+Typically you will authenticate with the third-party API using OAuth; then call an API specific method.
 For example, it could be as simple as this:
 
 .. code-block:: groovy
@@ -400,10 +404,10 @@ Within a Service Manager SmartApp, you create child devices for all your respect
 Getting initial device state
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Upon initial discovery of a device, you need to get the state of your device from the third party API. 
-This would be the current status of various attributes of your device. 
-You need to have a method defined in your Service Manager that is responsible for connecting to the API and to check for the updates. 
-You set this method to be called from a poll method in your Device Handler, and in this case, it is called immediately on initialization. 
+Upon initial discovery of a device, you need to get the state of your device from the third party API.
+This would be the current status of various attributes of your device.
+You need to have a method defined in your Service Manager that is responsible for connecting to the API and to check for the updates.
+You set this method to be called from a poll method in your Device Handler, and in this case, it is called immediately on initialization.
 Here is a very simple example which doesn't take into account error checking for the ``http`` request.
 
 .. code-block:: groovy
@@ -432,8 +436,8 @@ Handling adds, changes, deletes
 singleInstance Service Manager
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Adding the tag ``singleInstance: true`` to your Service Manager will ensure only one instance of the Service Manager will be installed. 
-All child devices will be installed under the single parent Service Manager. 
+Adding the tag ``singleInstance: true`` to your Service Manager will ensure only one instance of the Service Manager will be installed.
+All child devices will be installed under the single parent Service Manager.
 This enforces a one-to-many relationship between the parent Service Manager SmartApp and any child devices.
 
 .. code-block:: groovy
@@ -504,7 +508,7 @@ Also, when a Service Manager SmartApp is uninstalled, you need to remove its chi
         }
     }
 
-.. note:: 
+.. note::
 
     The ``addChildDevice``, ``getChildDevices``, and ``deleteChildDevice`` methods are a part of the :ref:`smartapp_ref` API.
 
