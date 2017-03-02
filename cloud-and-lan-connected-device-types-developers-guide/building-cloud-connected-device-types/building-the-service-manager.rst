@@ -372,7 +372,7 @@ Identifying devices in the third-party device cloud
 The techniques you will use to identify devices in the third-party
 cloud will vary, because you are interacting with unique third-party
 APIs which all have unique parameters.
-Typically you will authenticate with the third-party API using OAuth; then call an API specific method.
+Typically you will authenticate with the third-party API using OAuth; then call an API-specific method.
 For example, it could be as simple as this:
 
 .. code-block:: groovy
@@ -404,7 +404,7 @@ Within a Service Manager SmartApp, you create child devices for all your respect
 Getting initial device state
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Upon initial discovery of a device, you need to get the state of your device from the third party API.
+Upon initial discovery of a device, you need to get the state of your device from the third-party API.
 This would be the current status of various attributes of your device.
 You need to have a method defined in your Service Manager that is responsible for connecting to the API and to check for the updates.
 You set this method to be called from a poll method in your Device Handler, and in this case, it is called immediately on initialization.
