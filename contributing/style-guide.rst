@@ -5,19 +5,19 @@ Writing Style Guide
 ===================
 
 When you write for SmartThings platform, your audience should find your documentation readable, interesting and informative.
-To accomplish these goals, we encourage you to stick to our recommended writing style. 
+To accomplish these goals, we encourage you to stick to our recommended writing style.
 
 ----
 
 Titles and headings
 -------------------
 
-Wherever possible, write purpose-driven documentation. 
-This means writing document titles and section headings that state the benefit explicitly. 
-Such titles or headings can be written as either calls to actions or tasks that can be done. 
-This approach makes it easier for the reader to learn how to get her job done. 
+Wherever possible, write purpose-driven documentation.
+This means writing document titles and section headings that state the benefit explicitly.
+Such titles or headings can be written as either calls to actions or tasks that can be done.
+This approach makes it easier for the reader to learn how to get her job done.
 
-**Examples:** 
+**Examples:**
 
 - Preferred: Writing Your First SmartApp (document title)
 - Avoid: SmartApp Fundamentals (document title isn't purpose-driven)
@@ -27,15 +27,15 @@ This approach makes it easier for the reader to learn how to get her job done.
 
 .. note::
 
-    - A **document title** is the main title of a document page. A document has only one document title. Example: "Writing Style Guide" at the beginning of this page. The document title also appears at the top level in the navigation bar, so it must be short, preferably four to five words or less. 
-    - A **section heading** is the title for an individual section within a document page. Example: "Titles and headings" at the top of this section. A document page can have multiple sections, and hence multiple section headings. 
+    - A **document title** is the main title of a document page. A document has only one document title. Example: "Writing Style Guide" at the beginning of this page. The document title also appears at the top level in the navigation bar, so it must be short, preferably four to five words or less.
+    - A **section heading** is the title for an individual section within a document page. Example: "Titles and headings" at the top of this section. A document page can have multiple sections, and hence multiple section headings.
 
 Avoid framing as questions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Avoid using questions in document titles and section headings. 
+Avoid using questions in document titles and section headings.
 
-**Example:** 
+**Example:**
 
 - Avoid: How does the switch turn on?
 - Preferred: How the switch turns on (section heading)
@@ -51,7 +51,7 @@ See :ref:`page_structure`.
 Document titles
 ^^^^^^^^^^^^^^^
 
-Use title case, as in “Document Titles” and not “Document titles.” 
+Use title case, as in “Document Titles” and not “Document titles.”
 
 **Example:**
 
@@ -83,12 +83,12 @@ What to capitalize in title
 Section headings
 ^^^^^^^^^^^^^^^^
 
-Use sentence case, as in “Subscription management,” and not the title case, as in “Subscription Management.” 
+Use sentence case, as in “Subscription management,” and not the title case, as in “Subscription Management.”
 
 .. note::
 
-    - A **sentence case** is where you only capitalize the first letter of the sentence. 
-    - A **title case** is where you capitalize first letter of every word of the sentence. 
+    - A **sentence case** is where you only capitalize the first letter of the sentence.
+    - A **title case** is where you capitalize first letter of every word of the sentence.
 
 ----
 
@@ -384,6 +384,167 @@ Which results in:
 +------------+ span rows. | - contain |
 | body row 4 |            | - blocks. |
 +------------+------------+-----------+
+
+----
+
+API reference documents
+-----------------------
+
+The API reference documentation contains all public API method definitions.
+API reference documentation is located in the ``ref-docs/`` directory.
+
+Organization
+^^^^^^^^^^^^
+
+API reference documents include an introduction and a listing of all APIs in alphabetical order.
+
+.. note::
+
+    The SmartApp and Device Handler API reference documentation lists all required callback methods to be listed first.
+    The remaining APIs are then listed in alphabetical order.
+
+Introduction
+^^^^^^^^^^^^
+
+Each API reference document contains a brief overview of the API, along with a quick example of how to reference the object (if applicable).
+
+Consider the example of the Device API reference documentation:
+
+.. code-block:: rst
+
+    ======
+    Device
+    ======
+
+    The Device object represents a physical device in a SmartApp.
+    When a user installs a SmartApp, they typically will select the devices to be used by the SmartApp.
+    SmartApps can then interact with these Device objects to get device information, or send commands to the Device.
+
+    Device objects cannot be instantiated, but are created by the SmartThings platform and available via the name given in the preferences definition of a SmartApp:
+
+    .. code-block:: groovy
+
+        preferences {
+            section() {
+                // prompt user to select a device that supports the switch capability.
+                // assign the chosen device to a variable named "theswitch"
+                input "theswitch", "capability.switch"
+            }
+        }
+        ...
+        // access Device instance using the input name:
+        def deviceDisplayName = theswitch.displayName
+        ...
+
+Method documentation
+^^^^^^^^^^^^^^^^^^^^
+
+Method documentation adheres to these rules:
+
+- The method name is a first-level heading followed by an open and close parentheses (to denote it is a method, not a property).
+- A brief description of the method follows the first-level heading.
+- The method's signature, parameters, return type, any declared exceptions, and a brief example follows.
+
+The example below illustrates this, and can be used as a template when writing API documentation.
+Each component title (Signature, Parameters, etc.) of the API documentation is bolded, and the content follows on the next line, indented by one tab (or four spaces).
+Details about each component follows.
+
+.. code-block:: rst
+
+    rgbToHex()
+    ----------
+
+    Converts an RGB value to a hexadecimal color string.
+
+    **Signature:**
+        ``static String rgbToHex(red, green, blue) throws IllegalArgumentException``
+
+    **Parameters:**
+        `Integer`_ red - The red value, between 0 and 255
+
+        `Integer`_ green - The green value, between 0 and 255
+
+        `Integer`_ blue - The blue value, between 0 and 255
+
+    **Returns:**
+        `String`_ - The hexadecimal representation of the RGB value
+
+    **Throws:**
+        `IllegalArgumentException`_ - An ``IllegalArgumentException`` is thrown if any of the RGB values are not within the 0 to 255 range.
+
+    **Example:**
+
+    .. code-block:: groovy
+
+        def deepSkyBlueInHex = colorUtil.rgbToHex(0, 191, 255)
+        log.debug "RGB 0,191,255 in Hex is $deepSkyBlueInHex"
+
+Signature
+`````````
+
+The method signature is the same as the method's source definition, formatted as an inline code block.
+
+Parameters
+``````````
+
+Method parameters are documented according to the following rules:
+
+- Each parameter is listed, in order, with a link to the return type.
+- All external links are defined at the bottom of the document.
+- In cases of standard Java return types, a link to the Java 7 JavaDocs for the type is used. If the return type is a SmartThings object, a link to that SmartThings object reference document is used.
+- If the method does not accept parameters, the entire parameters block is omitted.
+- Optional parameters are placed inside square brackets.
+- Parameters that accept a map include a table listing all the supported key/value pairs:
+
+.. code-block:: rst
+
+    **Signature:**
+        ``List<Event> events([max: N])``
+
+    **Parameters:**
+        `Map`_ options *(optional)* - Options for the query. Supported options:
+
+        ======= ========== ===========
+        option  Type       Description
+        ======= ========== ===========
+        ``max`` `Number`_  The maximum number of Events to return. By default, the maximum is 10.
+        ======= ========== ===========
+
+
+Returns
+```````
+
+Method return values are documented according to the following rules:
+
+-  The return statement begins with a link to the return type (external or internal), along with a brief description of the value returned.
+- In the case of ``void`` return types, do not include the "Returns" component.
+
+For example:
+
+.. code-block:: rst
+
+    **Returns:**
+        `String`_ - The hexadecimal representation of the RGB value
+
+
+
+Throws
+``````
+
+Methods that throw an exception as part of their contract include a "Throws" component, with a link to the exception type, and when the exception is thrown:
+
+.. code-block:: rst
+
+    **Throws:**
+        `IllegalArgumentException`_ - An ``IllegalArgumentException`` is thrown if any of the RGB values are not within the 0 to 255 range.
+
+Example
+```````
+
+Most methods include an example of their usage.
+The example code should include the minimum amount of code to highlight the documented method.
+
+Some simple methods may not require an example--use your judgement.
 
 ----
 
