@@ -933,7 +933,7 @@ Get a list of Device :ref:`state_ref` objects for the specified attribute since 
         }
     }
     ...
-    def theStates = theswitch.statesBetween("switch", new Date() -3)
+    def theStates = theswitch.statesSince("switch", new Date() -3)
     log.debug "There are ${theStates.size()} State records in the last 3 days"
     ...
 
