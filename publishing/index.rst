@@ -55,6 +55,10 @@ Tap on the *My Apps* category at the bottom and you will see your SmartApp.
 For public distribution
 -----------------------
 
+.. note::
+
+    SmartThings is not reviewing submissions for public distribution at this time.
+
 To publish your SmartApp or Device Handler for public distribution, you will need to submit it for review and approval by SmartThings.
 Follow these steps:
 
@@ -63,7 +67,7 @@ Follow these steps:
 - Follow the instructions on this page to submit your SmartApp or Device Handler for review by SmartThings.
 
 Review process
---------------
+^^^^^^^^^^^^^^
 
 SmartThings team will review your SmartApp or Device Handler for approval.
 
