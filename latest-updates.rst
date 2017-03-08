@@ -4,6 +4,15 @@
 Latest Updates
 ==============
 
+March 08 2017
+-------------
+
+- Do you have custom LAN device integrations? If so, check out the :ref:`automatic_LAN_device_discovery` documentation to see what (if any) impact this has on your custom code.
+
+`GitHub Release Tag <https://github.com/SmartThingsCommunity/Documentation/releases/tag/08-March-2017>`__
+
+----
+
 March 02 2017
 -------------
 
