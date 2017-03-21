@@ -13,13 +13,12 @@ Overview
 When a user goes to the Things view in the mobile app, they see all their devices listed:
 
 .. image:: ../img/device-types/things-view.png
-   :scale: 25
-
+   :scale: 50
 
 When tapping on one of the devices in the Things view, the user will see the Details view for that device:
 
 .. image:: ../img/device-types/details-view.png
-   :scale: 25
+   :scale: 50
 
 The Details view is where a user can get comprehensive information about the device, as well as actuate the device (if applicable) by interacting with the tile.
 
@@ -52,7 +51,7 @@ Tiles definition and layout is specified using the ``tiles()`` builder in the De
                 state "off", label: '${currentValue}', action: "switch.on",
                       icon: "st.switches.switch.off", backgroundColor: "#ffffff"
                 state "on", label: '${currentValue}', action: "switch.off",
-                      icon: "st.switches.switch.on", backgroundColor: "#79b821"
+                      icon: "st.switches.switch.on", backgroundColor: "#00a0dc"
             }
 
             // value tile (read only)
@@ -137,7 +136,7 @@ Older versions of the SmartThings mobile application that do not support the *6 
 Here you can see how the tiles defined above are laid out using the *6 x Unlimited* grid (using the ``scale: 2`` option):
 
 .. image:: ../img/device-types/grid-layout.png
-   :scale: 25
+   :scale: 50
 
 Tile size
 ^^^^^^^^^
@@ -196,7 +195,7 @@ In the case of the "switch" attribute, we need to define two states, one for "on
 
     standardTile("tileName", "device.switch", width: 2, height: 2) {
         state "off", label: "off", icon: "st.switches.switch.off", backgroundColor: "#ffffff"
-        state "on", label: "on", icon: "st.switches.switch.on", backgroundColor: "#79b821"
+        state "on", label: "on", icon: "st.switches.switch.on", backgroundColor: "#00a0dc"
     }
 
 The above tile definition is pretty self-explanatory.
@@ -213,7 +212,7 @@ For example, to allow a switch to be toggled when pressed, we specify what shoul
 
     standardTile("tileName", "device.switch", width: 2, height: 2) {
         state "off", label: "off", icon: "st.switches.switch.off", backgroundColor: "#ffffff", action: "switch.on"
-        state "on", label: "on", icon: "st.switches.switch.on", backgroundColor: "#79b821", action: "switch.off"
+        state "on", label: "on", icon: "st.switches.switch.on", backgroundColor: "#00a0dc", action: "switch.off"
     }
 
 The value of the ``action`` can be formatted in one of two ways:
@@ -256,8 +255,8 @@ Here's an example that uses a transition state for the "switch" attribute:
 
     standardTile("switch", "device.switch", width: 2, height: 2) {
         state "off", label:'Off', action:"switch.on", icon:"st.switches.switch.off", backgroundColor:"#ffffff", nextState:"turningOn"
-        state "on", label:'On', action:"switch.off", icon:"st.switches.switch.on", backgroundColor:"#79b821", nextState:"turningOff"
-        state "turningOn", label:'Turning on', icon:"st.switches.switch.on", backgroundColor:"#79b821", nextState: "turningOff"
+        state "on", label:'On', action:"switch.off", icon:"st.switches.switch.on", backgroundColor:"#00a0dc", nextState:"turningOff"
+        state "turningOn", label:'Turning on', icon:"st.switches.switch.on", backgroundColor:"#00a0dc", nextState: "turningOff"
         state "turningOff", label:'Turning off', icon:"st.switches.switch.off", backgroundColor:"#ffffff", nextState: "turningOn"
     }
 
@@ -283,7 +282,7 @@ Here's an example of using the state name as the label:
     standardTile("switch", "device.switch") {
         // use the state name as the label ("off" and "on")
         state "off", label:'${name}', action:"switch.on", icon:"st.switches.switch.off", backgroundColor:"#ffffff"
-        state "on", label:'${name}', action:"switch.off", icon:"st.switches.switch.on", backgroundColor:"#79b821"
+        state "on", label:'${name}', action:"switch.off", icon:"st.switches.switch.on", backgroundColor:"#00a0dc"
     }
 
 When using the current attribute value, the attribute value must be set by sending an Event.
@@ -309,6 +308,8 @@ The Device Handler needs to send an Event for the ``"power"`` attribute somewher
 
     This is required because when the platform executes the ``tiles()`` builder, it doesn't know anything about the actual device yet.
     Using single quotes will allow the platform to manually substitute the actual value when the device is rendered on the mobile app.
+
+.. _tiles_background_color:
 
 Background color
 ^^^^^^^^^^^^^^^^
@@ -399,7 +400,7 @@ Here's a standard tile that shows if a switch is on or off.
 
     standardTile("actionFlat", "device.switch", width: 2, height: 2, decoration: "flat") {
         state "off", label: '${currentValue}', action: "switch.on", icon: "st.switches.switch.off", backgroundColor: "#ffffff"
-        state "on", label: '${currentValue}', action: "switch.off", icon: "st.switches.switch.on", backgroundColor: "#79b821"
+        state "on", label: '${currentValue}', action: "switch.off", icon: "st.switches.switch.on", backgroundColor: "#00a0dc"
     }
 
 The above tile definition would render as (when the switch is on):
@@ -413,19 +414,18 @@ Standard Tiles may be styled with a ring (the default), or flat, by using the ``
     // standard tile with actions
     standardTile("actionRings", "device.switch", width: 2, height: 2, canChangeIcon: true) {
         state "off", label: '${currentValue}', action: "switch.on", icon: "st.switches.switch.off", backgroundColor: "#ffffff"
-        state "on", label: '${currentValue}', action: "switch.off", icon: "st.switches.switch.on", backgroundColor: "#79b821"
+        state "on", label: '${currentValue}', action: "switch.off", icon: "st.switches.switch.on", backgroundColor: "#00a0dc"
     }
 
     // standard flat tile without actions
     standardTile("noActionFlat", "device.switch", width: 2, height: 2, canChangeIcon: true) {
         state "off", label: '${currentValue}',icon: "st.switches.switch.off", backgroundColor: "#ffffff"
-        state "on", label: '${currentValue}', icon: "st.switches.switch.on", backgroundColor: "#79b821"
+        state "on", label: '${currentValue}', icon: "st.switches.switch.on", backgroundColor: "#00a0dc"
     }
 
 The above tiles definition renders as below, with the tile on the left being the ring decoration:
 
 .. image:: ../img/device-types/standard-tile-decoration.png
-    :scale: 35
 
 .. tip::
 
@@ -639,9 +639,9 @@ As the name suggests, Multi-Attribute Tiles can be associated with more than one
 
     multiAttributeTile(name:"switch", type: "lighting", width: 6, height: 4, canChangeIcon: true) {
         tileAttribute ("device.switch", key: "PRIMARY_CONTROL") {
-            attributeState "on", label:'${name}', action:"switch.off", icon:"st.lights.philips.hue-single", backgroundColor:"#79b821", nextState:"turningOff"
+            attributeState "on", label:'${name}', action:"switch.off", icon:"st.lights.philips.hue-single", backgroundColor:"#00a0dc", nextState:"turningOff"
             attributeState "off", label:'${name}', action:"switch.on", icon:"st.lights.philips.hue-single", backgroundColor:"#ffffff", nextState:"turningOn"
-            attributeState "turningOn", label:'${name}', action:"switch.off", icon:"st.lights.philips.hue-single", backgroundColor:"#79b821", nextState:"turningOff"
+            attributeState "turningOn", label:'${name}', action:"switch.off", icon:"st.lights.philips.hue-single", backgroundColor:"#00a0dc", nextState:"turningOff"
             attributeState "turningOff", label:'${name}', action:"switch.on", icon:"st.lights.philips.hue-single", backgroundColor:"#ffffff", nextState:"turningOn"
         }
         tileAttribute ("device.power", key: "SECONDARY_CONTROL") {
@@ -676,9 +676,9 @@ Consider the following Multi-Attribute Tile for a bulb that supports the :ref:`s
 
     multiAttributeTile(name:"switch", type: "lighting", width: 6, height: 4, canChangeIcon: true) {
         tileAttribute ("device.switch", key: "PRIMARY_CONTROL") {
-            attributeState "on", label:'${name}', action:"switch.off", icon:"st.lights.philips.hue-single", backgroundColor:"#79b821", nextState:"turningOff"
+            attributeState "on", label:'${name}', action:"switch.off", icon:"st.lights.philips.hue-single", backgroundColor:"#00a0dc", nextState:"turningOff"
             attributeState "off", label:'${name}', action:"switch.on", icon:"st.lights.philips.hue-single", backgroundColor:"#ffffff", nextState:"turningOn"
-            attributeState "turningOn", label:'${name}', action:"switch.off", icon:"st.lights.philips.hue-single", backgroundColor:"#79b821", nextState:"turningOff"
+            attributeState "turningOn", label:'${name}', action:"switch.off", icon:"st.lights.philips.hue-single", backgroundColor:"#00a0dc", nextState:"turningOff"
             attributeState "turningOff", label:'${name}', action:"switch.on", icon:"st.lights.philips.hue-single", backgroundColor:"#ffffff", nextState:"turningOn"
         }
         tileAttribute ("device.power", key: "SECONDARY_CONTROL") {
@@ -692,10 +692,10 @@ Consider the following Multi-Attribute Tile for a bulb that supports the :ref:`s
         }
     }
 
-This tile renders (on Android) as:
+This tile renders as:
 
 .. image:: ../img/device-types/lighting-tile.png
-    :scale: 25
+    :scale: 50
 
 .. note::
 
@@ -758,7 +758,7 @@ The Thermostat Multi-Attribute Tile allows for rich viewing and control of :ref:
 Here's an image of a thermostat tile (when heating):
 
 .. image:: ../img/device-types/thermostat-tile.png
-    :scale: 25
+    :scale: 50
 
 The tiles configuration for the above tile is:
 
@@ -766,19 +766,19 @@ The tiles configuration for the above tile is:
 
     multiAttributeTile(name:"thermostatFull", type:"thermostat", width:6, height:4) {
         tileAttribute("device.temperature", key: "PRIMARY_CONTROL") {
-            attributeState("default", label:'${currentValue}', unit:"dF")
+            attributeState("temp", label:'${currentValue}', unit:"dF", defaultState: true)
         }
         tileAttribute("device.temperature", key: "VALUE_CONTROL") {
             attributeState("VALUE_UP", action: "tempUp")
             attributeState("VALUE_DOWN", action: "tempDown")
         }
         tileAttribute("device.humidity", key: "SECONDARY_CONTROL") {
-            attributeState("default", label:'${currentValue}%', unit:"%")
+            attributeState("humidity", label:'${currentValue}%', unit:"%", defaultState: true)
         }
         tileAttribute("device.thermostatOperatingState", key: "OPERATING_STATE") {
-            attributeState("idle", backgroundColor:"#44b621")
-            attributeState("heating", backgroundColor:"#ffa81e")
-            attributeState("cooling", backgroundColor:"#269bd2")
+            attributeState("idle", backgroundColor:"#00A0DC")
+            attributeState("heating", backgroundColor:"#e86d13")
+            attributeState("cooling", backgroundColor:"#00A0DC")
         }
         tileAttribute("device.thermostatMode", key: "THERMOSTAT_MODE") {
             attributeState("off", label:'${name}')
@@ -787,10 +787,10 @@ The tiles configuration for the above tile is:
             attributeState("auto", label:'${name}')
         }
         tileAttribute("device.heatingSetpoint", key: "HEATING_SETPOINT") {
-            attributeState("default", label:'${currentValue}', unit:"dF")
+            attributeState("heatingSetpoint", label:'${currentValue}', unit:"dF", defaultState: true)
         }
         tileAttribute("device.coolingSetpoint", key: "COOLING_SETPOINT") {
-            attributeState("default", label:'${currentValue}', unit:"dF")
+            attributeState("coolingSetpoint", label:'${currentValue}', unit:"dF", defaultState: true)
         }
     }
 
@@ -807,7 +807,7 @@ Key                   Description
 In addition to the controls above, there are four additional controls that work together to show the status label at the bottom of the tile:
 
 .. image:: ../img/device-types/thermostat-heating-tile-op-state.png
-    :scale: 25
+    :scale: 50
 
 This label provides users with more information on the state of the thermostat.
 Additionally, thermostat tiles also look to the ``OPERATING_STATE`` attribute for its background color, falling back on the colors for ``PRIMARY_CONTROL``.
@@ -928,21 +928,21 @@ Here's an example of a generic tile:
 
     multiAttributeTile(name:"sliderTile", type:"generic", width:6, height:4) {
         tileAttribute("device.switch", key: "PRIMARY_CONTROL") {
-            attributeState "on", label:'${name}', backgroundColor:"#79b821", nextState:"turningOff"
+            attributeState "on", label:'${name}', backgroundColor:"#00A0DC", nextState:"turningOff"
             attributeState "off", label:'${name}', backgroundColor:"#ffffff", nextState:"turningOn"
             attributeState "turningOn", label:'${name}', backgroundColor:"#79b821", nextState:"turningOff"
             attributeState "turningOff", label:'${name}', backgroundColor:"#ffffff", nextState:"turningOn"
         }
         tileAttribute("device.level", key: "SECONDARY_CONTROL") {
-            attributeState "default", icon: 'st.Weather.weather1', action:"randomizeLevel"
+            attributeState "level", icon: 'st.Weather.weather1', action:"randomizeLevel", defaultState: true
         }
         tileAttribute("device.level", key: "SLIDER_CONTROL") {
-            attributeState "default", action:"switch level.setLevel"
+            attributeState "level", action:"switch level.setLevel", defaultState: true
         }
     }
     multiAttributeTile(name:"valueTile", type:"generic", width:6, height:4) {
         tileAttribute("device.level", key: "PRIMARY_CONTROL") {
-            attributeState "default", label:'${currentValue}', backgroundColors:[
+            attributeState "level", label:'${currentValue}', defaultState: true, backgroundColors:[
                 [value: 0, color: "#ff0000"],
                 [value: 20, color: "#ffff00"],
                 [value: 40, color: "#00ff00"],
@@ -952,7 +952,7 @@ Here's an example of a generic tile:
             ]
         }
         tileAttribute("device.switch", key: "SECONDARY_CONTROL") {
-            attributeState "on", label:'${name}', action:"switch.off", icon:"st.switches.switch.on", backgroundColor:"#79b821", nextState:"turningOff"
+            attributeState "on", label:'${name}', action:"switch.off", icon:"st.switches.switch.on", backgroundColor:"#00A0DC", nextState:"turningOff"
             attributeState "off", label:'${name}', action:"switch.on", backgroundColor:"#ffffff", nextState:"turningOn"
             attributeState "turningOn", label:'…', action:"switch.off", icon:"st.switches.switch.on", backgroundColor:"#79b821", nextState:"turningOff"
             attributeState "turningOff", label:'…', action:"switch.on", backgroundColor:"#ffffff", nextState:"turningOn"
@@ -967,7 +967,7 @@ Here's an example of a generic tile:
 The above tiles render as:
 
 .. image:: ../img/device-types/generic-tile.png
-    :scale: 25
+    :scale: 50
 
 .. tip::
 
@@ -999,6 +999,83 @@ Key                    Description
 ``THERMOSTAT_MODE``    Used by the :ref:`therm_multi_attr_tile`.
 ``VALUE_CONTROL``      Renders Up and Down controls for increasing and decreasing an attribute's value by 1.
 =====================  ===========
+
+----
+
+.. _tiles_colors:
+
+Color standards
+---------------
+
+SmartThings has defined a set of common colors for use in device tiles.
+Follow these standards when developing device tiles to ensure consistency within the SmartThings mobile app.
+
+Colors
+^^^^^^
+
+.. role:: raw-html(raw)
+   :format: html
+
+The following table lists the standard colors, their hexadecimal code, and a description of when to use the color:
+
+====== =========== ========================================================== =======
+Color  Hex code    Description                                                Color example
+====== =========== ========================================================== =======
+Blue   ``#00a0dc`` Represents "on"-like device states                         :raw-html:`<div class="colorbox st-tile-blue"></div>`
+White  ``#ffffff`` Represents "off"-like device states                        :raw-html:`<div class="colorbox st-tile-white"></div>`
+Orange ``#e86d13`` Represents device states that require the user's attention :raw-html:`<div class="colorbox st-tile-orange"></div>`
+Gray   ``#cccccc`` Represents "inactive" or "offline" device states           :raw-html:`<div class="colorbox st-tile-gray"></div>`
+====== =========== ========================================================== =======
+
+Transition states (e.g., "Turning on") should use the color of the transitioned-to state (e.g., blue for "Turning on").
+
+In addition to the colors above, tiles that display temperatures follow these standards (see the :ref:`tiles_background_color` documentation to understand how the colors are interpolated between values):
+
+============================== =========== =======
+Temperature value (Fahrenheit) Hex code    Color example
+============================== =========== =======
+31                             ``#153591`` :raw-html:`<div class="colorbox st-tile-31"></div>`
+44                             ``#1e9cbb`` :raw-html:`<div class="colorbox st-tile-44"></div>`
+59                             ``#90d2a7`` :raw-html:`<div class="colorbox st-tile-59"></div>`
+74                             ``#44b621`` :raw-html:`<div class="colorbox st-tile-74"></div>`
+84                             ``#f1d801`` :raw-html:`<div class="colorbox st-tile-84"></div>`
+95                             ``#d04e00`` :raw-html:`<div class="colorbox st-tile-95"></div>`
+96                             ``#bc2323`` :raw-html:`<div class="colorbox st-tile-96"></div>`
+============================== =========== =======
+
+.. tip::
+
+    If your Device Handler needs to accomodate Celsius temperature values, you can convert the values above to Celsius, and expand the background colors out to include the range of both Celsius and Fahrenheit values.
+    You can see an example of this `here <https://github.com/SmartThingsCommunity/SmartThingsPublic/blob/f054cb4de1fb41d15a2725cddcc521b5f659572b/devicetypes/smartthings/ecobee-thermostat.src/ecobee-thermostat.groovy#L45>`__.
+
+Examples
+^^^^^^^^
+
+The following table contains several common device states and their tile color:
+
+========================= ===================
+Attribute state           Color
+========================= ===================
+Switch *on*               Blue--``#00a0dc``
+Switch *off*              White--``#ffffff``
+Motion *active*           Blue--``#00a0dc``
+Motion *inactive*         White--``#ffffff``
+Contact sensor *open*     Orange--``##e86d13``
+Contact sensor *closed*   Blue--``#00a0dc``
+Lock *locked*             Blue--``#00a0dc``
+Lock *unlocked*           White--``#ffffff``
+Presence *present*        Blue--``#00a0dc``
+Presence *away*           Gray--``#cccccc``
+Thermostat *cool*         Blue--``#00a0dc``
+Thermostat *heat*         Orange--``##e86d13``
+Siren *on*                Orange--``##e86d13``
+Siren *off*               White--``#ffffff``
+Water sensor *dry*        White--``#ffffff``
+Water sensor *wet*        Blue--``#00a0dc``
+Smoke detector *clear*    White--``#ffffff``
+Smoke detector *detected* Orange--``#e86d13``
+Smoke detector *tested*   Orange--``#e86d13``
+========================= ===================
 
 ----
 
