@@ -1,7 +1,7 @@
 Parse and Events
 ================
 
-The ``parse`` method is the core method in a typical device handler.
+The ``parse`` method is the core method in a typical Device Handler.
 
 ----
 
@@ -36,8 +36,8 @@ Consider an example of a simplified ``parse()`` method (modified from the Centra
         return result
     }
 
-Our ``parse()`` method inspects the passed-in description, and creates an event with name "switch" and a value of "on" or "off".
-It then returns the created event, where the SmartThings platform will handle firing the event and notifying any SmartApps subscribed to that event.
+Our ``parse()`` method inspects the passed-in description, and creates an Event with name "switch" and a value of "on" or "off".
+It then returns the created Event, where the SmartThings platform will handle firing the Event and notifying any SmartApps subscribed to that Event.
 
 ----
 
@@ -47,7 +47,7 @@ Parse, Events, and Attributes
 Recall that the "switch" capability specifies an attribute of "switch", with possible values "on" and "off".
 *The* ``parse()`` *method is responsible for creating events for the attributes of that device's capabilities.*
 
-That is a critical point to understand about Device Handlers - it is what allows SmartApps to respond to event subscriptions!
+That is a critical point to understand about Device Handlers - it is what allows SmartApps to respond to Event subscriptions!
 
 .. note::
 
@@ -62,33 +62,33 @@ You should provide the ``name`` and ``value`` at a minimum.
 
 .. important::
 
-    The createEvent just creates a data structure (a Map) with information about the event. *It does not actually fire an event.*
+    The createEvent just creates a data structure (a Map) with information about the Event. *It does not actually fire an Event.*
 
-    Only by returning that created map from your ``parse`` method will an event be fired by the SmartThings platform.
+    Only by returning that created map from your ``parse`` method will an Event be fired by the SmartThings platform.
 
 The parameters you can pass to ``createEvent`` are:
 
 *name* (required)
-    String - The name of the event. Typically corresponds to an attribute name of the device-handler's capabilities.
+    String - The name of the Event. Typically corresponds to an attribute name of the device-handler's capabilities.
 *value* (required)
-    The value of the event. The value is stored as a String, but you can pass in numbers or other objects. SmartApps will be responsible for parsing the event's value into back to its desired form (e.g., parsing a number from a string)
+    The value of the Event. The value is stored as a String, but you can pass in numbers or other objects. SmartApps will be responsible for parsing the Event's value into back to its desired form (e.g., parsing a number from a string)
 *descriptionText*
-    String - The description of this event. This appears in the mobile application activity feed for the device. If not specified, this will be created using the event name and value.
+    String - The description of this Event. This appears in the mobile application activity feed for the device. If not specified, this will be created using the Event name and value.
 *displayed*
-    boolean - ``true`` to display this event in the mobile application activity feed. ``false`` to not display this event. Defaults to ``true``.
+    boolean - ``true`` to display this Event in the mobile application activity feed. ``false`` to not display this Event. Defaults to ``true``.
 *linkText*
-    String - Name of the event to show in the mobile application activity feed, if specified.
+    String - Name of the Event to show in the mobile application activity feed, if specified.
 *isStateChange*
-    boolean - ``true`` if this event caused the device's attribute to change state. ``false`` otherwise. If not provided, ``createEvent`` will populate this based on the current state of the device.
+    boolean - ``true`` if this Event caused the device's attribute to change state. ``false`` otherwise. If not provided, ``createEvent`` will populate this based on the current state of the device.
 *unit*
     String - a unit string, if desired. This will be used to create the descriptionText if it (the descriptionText parameter) is not specified.
 
 Multiple Events
 ^^^^^^^^^^^^^^^
 
-You are not limited to returning a single event map from your ``parse`` method.
+You are not limited to returning a single Event map from your ``parse`` method.
 
-You can return a list of event maps to tell the SmartThings platform to generate multiple events:
+You can return a list of Event maps to tell the SmartThings platform to generate multiple events:
 
 .. code-block:: groovy
 
@@ -104,8 +104,8 @@ You can return a list of event maps to tell the SmartThings platform to generate
 Generating Events outside of parse
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you need to generate an event outside of the ``parse()`` method, you can use the ``sendEvent()`` method.
-It simply calls ``createEvent()`` *and* fires the event.
+If you need to generate an Event outside of the ``parse()`` method, you can use the ``sendEvent()`` method.
+It simply calls ``createEvent()`` *and* fires the Event.
 You pass in the same parameters as you do to ``createEvent()``.
 
 ----

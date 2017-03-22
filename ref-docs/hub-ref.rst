@@ -119,7 +119,7 @@ The type of the Hub. Either "PHYSICAL" or "VIRTUAL".
     ``String getType()``
 
 **Returns:**
-    `String`_ - the type of the hub.
+    `String`_ - the type of the Hub.
 
 ----
 

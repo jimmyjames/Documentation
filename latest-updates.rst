@@ -4,6 +4,17 @@
 Latest Updates
 ==============
 
+March 22 2017
+-------------
+
+- Composite Devices are here! Composite Devices allow developers to better model devices through a parent-child relationship between Device Handlers. Check out the :ref:`documentation <composite-devices>` and leverage this new design pattern for your composite devices!
+- SmartThings has a new set of color standards for Device Handler Tiles. The :ref:`tiles_colors` documentation covers all the new color standards.
+- Updates to the :ref:`style_guide` and existing documentation to conform to new guidelines.
+
+`GitHub Release Tag <https://github.com/SmartThingsCommunity/Documentation/releases/tag/22-March-2017>`__
+
+----
+
 March 08 2017
 -------------
 
@@ -210,7 +221,7 @@ October 05 2016
 - Updated the repository's README with pull request guidelines.
 - Added scheduling APIs to the :ref:`device_handler_ref` reference documentation (including all ``runEvery*`` APIs, which are now supported in Device Handlers).
 - Fixed broken cron tutorial link the :ref:`smartapp-scheduling` guide.
-- Added note to the :ref:`first SmartApp tutorial <first-smartapp-tutorial>` and :ref:`editor_and_simulator` that the simulator is inconsistent with the mobile application.
+- Added note to the :ref:`first SmartApp tutorial <first-smartapp-tutorial>` and :ref:`editor_and_simulator` that the Simulator is inconsistent with the mobile application.
 
 ----
 
@@ -352,7 +363,7 @@ July 07 2016
 - Added documentation for :doc:`ref-docs/app-state-ref`
 - Added documentation for :doc:`ref-docs/installed-smart-app-wrapper-ref`
 - Added :ref:`clarification <run_api_smartapp_simulator>` that the callable URL for Web Services SmartApps will vary by installed location
-- Updated :ref:`developer_discussions` with the new developer call schedule
+- Updated developer call schedule
 
 ----
 

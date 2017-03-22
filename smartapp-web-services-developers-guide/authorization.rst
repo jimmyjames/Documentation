@@ -82,8 +82,8 @@ parameter           value
 =================== ===========
 grant_type          This is always "authorization_code" for this flow.
 code                The code you received.
-client_id           The client ID for the SmartApp
-client_secret       The client secret for the SmartApp
+client_id           The client ID for the SmartApp.
+client_secret       The client secret for the SmartApp.
 redirect_uri        The URI of the server that will receive the token. This must match the URI you used to obtain the authorization code.
 =================== ===========
 

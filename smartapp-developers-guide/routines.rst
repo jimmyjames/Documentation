@@ -23,7 +23,7 @@ Routines allow for certain things to happen whenever it executes. SmartThings co
 - Goodbye! - You're leaving the house
 - I'm Back! - You've returned to the house
 
-Each Routine can be configured to do certain things. For example, when "I'm Back!" executes, you can set the mode to "Home", unlock doors, adjust the thermostat, etc.
+Each Routine can be configured to do certain things. For example, when "I'm Back!" executes, you can set the Mode to "Home", unlock doors, adjust the thermostat, etc.
 
 Routines exist for each Location in a SmartThings account.
 

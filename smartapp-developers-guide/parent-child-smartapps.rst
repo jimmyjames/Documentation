@@ -52,7 +52,7 @@ Option    Description
 name      The name of the input. Serves as the identifier for this input element.
 appName   The name of the child SmartApp, as defined in the definition metadata of the child.
 namespace The namespace of the child SmartApp, as defined in the definition metadata of the child.
-title     The title of the button the user can press to install a new instance of this child SmartApp
+title     The title of the button the user can press to install a new instance of this child SmartApp.
 multiple  If ``true``, the user can install multiple child SmartApps. If ``false``, only one may be installed. Defaults to ``false``.
 ========= ===========
 
@@ -118,7 +118,7 @@ Children can communicate with their parent by using the ``parent`` property in t
 Preventing more than one parent instance
 ----------------------------------------
 
-If you want to prevent users from installing more than one parent SmartApp in their location, you can specify ``singleInstance: true`` in the definition:
+If you want to prevent users from installing more than one parent SmartApp in their Location, you can specify ``singleInstance: true`` in the definition:
 
 .. code-block:: groovy
 
@@ -421,8 +421,8 @@ Here's the child SmartApp:
     	lights.off()
     }
 
-To try it out, create the parent and child SmartApp with the code as shown above, and publish the parent SmartApp for yourself (you don't need to publish the child SmartApp, since it will be discovered by the parent and you don't want to install it individually from the marketplace).
-Then, go to the marketplace and install "Simple Lighting" in "My Apps". You can then add multiple automations, with each automation being an instance of the child SmartApp ("Simple Automation").
+To try it out, create the parent and child SmartApp with the code as shown above, and publish the parent SmartApp for yourself (you don't need to publish the child SmartApp, since it will be discovered by the parent and you don't want to install it individually from the Marketplace).
+Then, go to the Marketplace and install "Simple Lighting" in "My Apps". You can then add multiple automations, with each automation being an instance of the child SmartApp ("Simple Automation").
 
 ----
 

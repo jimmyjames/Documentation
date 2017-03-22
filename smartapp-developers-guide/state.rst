@@ -3,7 +3,7 @@
 Storing Data With State
 =======================
 
-SmartApps and Device Handlers execute in response to various events or schedules; they are not continuously running.
+SmartApps and Device Handlers execute in response to various Events or schedules; they are not continuously running.
 Since each execution is executed independently, it has no information regarding previous executions.
 This is often adequate for most SmartApps or Device Handlers, but sometimes, they need to remember information across executions.
 
@@ -148,7 +148,7 @@ Assume that the initial value of ``state.counter`` is ``0``.
 
   state.counter = state.counter + 1 // counter == 1
 
-2. Another execution ("Execution 2") occurs *before "Execution 1" has finished*. It reads ``state.counter`` and increments it by one.
+2. Another execution ("Execution 2") occurs *before "Execution 1" has finished*. It reads ``state.counter`` and increments it by one:
 
 .. code-block:: groovy
 
@@ -170,11 +170,10 @@ Before using Atomic State, you should read about :ref:`how to choose between Sta
 How Atomic State works
 ----------------------
 
-In addition to ``state``, SmartApps also available to them the object ``atomicState``, which operates like ``state`` with two notable differences:
+SmartApps have available to them, in addition to ``state``, also the object ``atomicState``, which operates like ``state`` with two notable differences:
 
 #. Atomic State does not implement ``java.util.Map``.
 #. When items are added or modified to Atomic State, those values are persisted more or less immediately (unlike State, which only persists its data when execution finishes).
-#. Reads from Atomic State are done ....
 
 The following diagram illustrates how Atomic State is initialized and updated when a SmartApp executes:
 
@@ -200,7 +199,7 @@ You may need to use Atomic State if code that updates a value in State may execu
 
 .. important::
 
-    The most important thing to note is to **never use both Atomic State and State in the same SmartApp. This can't be emphasized enough - doing so may result in data inconsistency, data corruption, or even data loss.**
+    **Never use both Atomic State and State in the same SmartApp. This can't be emphasized enough - doing so may result in data inconsistency, data corruption, or even data loss.**
 
 ----
 

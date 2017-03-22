@@ -13,7 +13,7 @@ Locations
 
 *My Locations* will show all Locations registered to your account.
 Choosing a particular Location will allow you to see more in depth information on that Location, including the groups created under that Location.
-You can also see all events, notifications, and SmartApps under a particular Location.
+You can also see all Events, notifications, and SmartApps under a particular Location.
 
 ----
 
@@ -24,7 +24,7 @@ Hubs
    :alt: My Hubs
 
 *My Hubs* will show all Hubs registered to your account.
-Choosing a particular Hub will give a comprehensive look at all of the attributes of your Hub, with the opportunity to observe all events that have taken place, by clicking on *List Events*.
+Choosing a particular Hub will give a comprehensive look at all of the attributes of your Hub, with the opportunity to observe all Events that have taken place, by clicking on *List Events*.
 You can also view all of the devices that are registered to your Hub.
 
 ----
@@ -37,7 +37,7 @@ Devices
 
 *My Devices* will show all devices attached to any of your Hubs.
 Choosing a particular device will give a comprehensive look at all of the
-attributes of your device, with the opportunity to observe all events
+attributes of your device, with the opportunity to observe all Events
 that have taken place, by clicking on *List Events*.
 
 ----
@@ -46,7 +46,7 @@ SmartApps
 ---------
 
 *My SmartApps* will show all your custom (written or edited by you) SmartApps.
-You can view the SmartApp status, category, and locations from this list, as well as edit SmartApp metadata.
+You can view the SmartApp status, category, and Locations from this list, as well as edit SmartApp metadata.
 You can click the SmartApp name to be taken to the editor where you can view and modify the code.
 
 ----

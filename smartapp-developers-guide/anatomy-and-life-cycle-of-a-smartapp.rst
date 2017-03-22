@@ -5,7 +5,7 @@ Anatomy and Life Cycle of a SmartApp
 
 SmartApps are applications that allow users to tap into the capabilities of
 their devices to automate their lives.
-Most SmartApps are installed by the user via the SmartThings mobile client application. In addition, a few pre-installed SmartApps are readily available in the SmartThings system out-of-the-box. 
+Most SmartApps are installed by the user via the SmartThings mobile client application. In addition, a few pre-installed SmartApps are readily available in the SmartThings system out-of-the-box.
 
 ----
 
@@ -20,7 +20,7 @@ Event Handler SmartApps
 
 Event Handler SmartApps are the most common apps developed by our
 community.
-They allow you to subscribe to events from devices and call a
+They allow you to subscribe to Events from devices and call a
 handler method upon their firing.
 This method can then do a variety of
 things, most commonly invoking a command on another device.
@@ -60,7 +60,7 @@ SmartApp structure
 
 SmartApps take the form of a single `Groovy <http://groovy.codehaus.org/>`__ script.
 A typical SmartApp script is composed of four sections: *Definition*, *Preferences*, *Predefined Callbacks*, and *Event Handlers*.
-There is also a *Mappings* section that is required for cloud-connected SmartApps that will be described later.
+There is also a *Mappings* section that is required for Cloud-connected SmartApps that will be described later.
 
 .. image:: ../img/smartapps/demo-app.png
     :class: with-border
@@ -81,13 +81,13 @@ Pre-defined callbacks
 
 The following methods, if present, are automatically called at various times during the lifecycle of a SmartApp:
 
-#. ``installed()`` - Called when a SmartApp is first installed
-#. ``updated()`` - Called when the preferences of an installed smart app are updated
+#. ``installed()`` - Called when a SmartApp is first installed.
+#. ``updated()`` - Called when the preferences of an installed smart app are updated.
 #. ``uninstalled()`` - Called when a SmartApp is uninstalled.
-#. ``childUninstalled()`` - Called for the parent app when a child app is uninstalled (a SmartApp can have child SmartApps)
+#. ``childUninstalled()`` - Called for the parent app when a child app is uninstalled (a SmartApp can have child SmartApps).
 
 The ``installed()`` and ``updated()`` methods are commonly found in all apps.
-Since the selected devices may have changed when an app is updated, both of these methods typically set up the same event subscriptions, so it is common practice to put those calls in an ``initialize()`` method and call it from both the installed and updated methods.
+Since the selected devices may have changed when an app is updated, both of these methods typically set up the same Event subscriptions, so it is common practice to put those calls in an ``initialize()`` method and call it from both the installed and updated methods.
 
 The ``uninstalled()`` method is typically not needed since the system automatically removes subscriptions and schedules when a SmartApp is uninstalled.
 However, they can be necessary in apps that integrate with other systems and need to perform cleanup on those systems.
@@ -95,7 +95,7 @@ However, they can be necessary in apps that integrate with other systems and nee
 Event Handlers
 ^^^^^^^^^^^^^^
 
-The remainder of the SmartApp contains the event handler methods specified in the event subscriptions and any other methods necessary for implementing the SmartApp.
+The remainder of the SmartApp contains the event handler methods specified in the Event subscriptions and any other methods necessary for implementing the SmartApp.
 Event handler methods must have a single argument, which contains the
 :ref:`event_ref` object.
 
@@ -105,18 +105,17 @@ SmartApp execution
 ------------------
 
 SmartApps aren't always running.
-Their various methods are executed when external events occur.
-SmartApps execute when any of the following types of events occur:
+Their various methods are executed when external Events occur.
+SmartApps execute when any of the following types of Events occur:
 
-1. **Pre-defined callback** - Any of the predefined lifecycle events described above occur.
+1. **Pre-defined callback** - Any of the predefined lifecycle Events described above occur.
 2. **Device state change** - An attribute changes on a device, which
-   creates an event, which triggers a subscription, which calls a
+   creates an Event, which triggers a subscription, which calls a
    handler method within your SmartApp.
-3. **Location state change** - A location attribute such as *mode* changes. *Sunrise* and *sunset*
-   are other examples of location events
-4. **User action on the app** - The user taps a SmartApp icon or shortcut in the mobile app UI
+3. **Location state change** - A location attribute such as *Mode* changes. *Sunrise* and *sunset* are other examples of location events.
+4. **User action on the app** - The user taps a SmartApp icon or shortcut in the mobile app UI.
 5. **Scheduled event** - Using a method like runIn(), you call
-   a method within your SmartApp at a particular time .
+   a method within your SmartApp at a particular time.
 6. **Web services call** Using our `web services
    API <../smartapp-web-services-developers-guide/overview.html>`__, you
    create an endpoint accessible over the web that calls a method within
@@ -150,21 +149,21 @@ You can find more information about SmartApp preferences `here <preferences-and-
 Event subscriptions
 -------------------
 
-Subscriptions allow a SmartApp to listen for events from devices, or from a location, or from the SmartApp tile in the mobile UI.
+Subscriptions allow a SmartApp to listen for Events from devices, or from a Location, or from the SmartApp tile in the mobile UI.
 Device subscriptions are the most common and take the form:
 
 .. code-block:: groovy
 
     subscribe(<device>, "<attribute[.value]>", handlerMethod)
 
-For example, to subscribe to all events from a contact sensor you would write:
+For example, to subscribe to all Events from a contact sensor you would write:
 
 .. code-block:: groovy
 
     subscribe(contact1, "contact", contactHandler)
 
 The ``contactHandler()`` method would then be called whenever the sensor opened or closed.
-You can also subscribe to specific event values, so to call a handler only when the contact sensor opens write:
+You can also subscribe to specific Event values, so to call a handler only when the contact sensor opens write:
 
 .. code-block:: groovy
 
@@ -172,7 +171,7 @@ You can also subscribe to specific event values, so to call a handler only when 
 
 The ``subscribe()`` method call accepts either a device or a list of devices, so you don't need to explicitly iterate over each device in a list when you specify ``multiple: true`` in an input preference.
 
-You can learn more about subscribing to device events in the :ref:`events_and_subscriptions` section.
+You can learn more about subscribing to device Events in the :ref:`events_and_subscriptions` section.
 
 ----
 

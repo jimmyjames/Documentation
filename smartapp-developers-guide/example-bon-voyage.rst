@@ -10,12 +10,12 @@ Bon Voyage
 ----------
 
 Our example SmartApp is fairly simple - it will monitor a set of presence
-detectors, and trigger a mode change when everyone has left.
+detectors, and trigger a Mode change when everyone has left.
 
 To accomplish this, our app will need to do the following:
 
-- Gather the necessary input from the user, including which sensors to monitor, what mode to trigger, and other app preferences.
-- Subscribe to the appropriate events, and take action when they are triggered.
+- Gather the necessary input from the user, including which sensors to monitor, what Mode to trigger, and other app preferences.
+- Subscribe to the appropriate Events, and take action when they are triggered.
 
 Let's begin with configuring the preferences.
 
@@ -28,7 +28,7 @@ To configure the Bon Voyage app, we will want to gather the following informatio
 from the user:
 
 - Which sensors to monitor
-- The mode to trigger when everyone is away
+- The Mode to trigger when everyone is away
 - A false alarm threshold
 - Who should be notified, and how
 
@@ -64,7 +64,7 @@ A drop down will be populated with all the devices that have the presenceSensor 
 ``multiple: true`` allows them to add as many sensors as they'd like.
 Their choice(s) are then stored in a variable named ``people``.
 
-The *Change to this mode* section allows the user to specify what mode
+The *Change to this mode* section allows the user to specify what Mode
 should be triggered when everyone is away.
 The input type of ``mode`` is used, so a drop down will be populated with all the modes the user has set up.
 The title property is used to show the title ``"Mode?"`` above
@@ -91,7 +91,7 @@ Monitor and react
 -----------------
 
 Now that we have gathered the input we need from the user, we need to listen
-to the appropriate events, and take action when they are triggered.
+to the appropriate Events, and take action when they are triggered.
 
 We do this through the required ``installed()`` method:
 
@@ -170,8 +170,8 @@ The first thing we need to do is see what event was triggered.
 We do this by inspecting the ``evt`` variable that is passed to our event handler.
 The presence capability can be either ``"present"`` or ``"not present"``.
 
-Next, we check that the current mode isn't already set to the mode we
-want to trigger. If we're already in our desired mode, there's nothing
+Next, we check that the current Mode isn't already set to the Mode we
+want to trigger. If we're already in our desired Mode, there's nothing
 else for us to do!
 
 Now it starts to get fun!
@@ -256,8 +256,8 @@ If the time elapsed since this event exceeds our threshold, we add it to the ``a
 
 For more information about the ``findAll()`` method, or how Groovy utilizes closures, consult the Groovy documentation at http://www.groovy-lang.org/documentation.html
 
-If the number of people away long enough equals the total number of people configured for this app, we send a message (we'll look at that method next), and then call the :ref:`smartapp_set_location_mode` method with the desired mode.
-This is what will cause a mode change.
+If the number of people away long enough equals the total number of people configured for this app, we send a message (we'll look at that method next), and then call the :ref:`smartapp_set_location_mode` method with the desired Mode.
+This is what will cause a Mode change.
 
 The ``send()`` method takes a String parameter, ``msg``, which is the message to send.
 This is where our app sends a notification to any of the contacts the user has specified.

@@ -20,18 +20,18 @@ Here are some general tips and strategies to help you be successful:
 Errors during installation
 --------------------------
 
-When choosing a location and selecting devices to authorize, there are some common errors that may occur.
+When choosing a Location and selecting devices to authorize, there are some common errors that may occur.
 
-"<clientID> is not associated with a SmartApp in location" after selecting location
+"<clientID> is not associated with a SmartApp in Location" after selecting Location
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Problem
-    When attempting to install a Web Services SmartApp via the OAuth flow, SmartThings looks for a SmartApp published to the specific server for that location with that Client ID.
+    When attempting to install a Web Services SmartApp via the OAuth flow, SmartThings looks for a SmartApp published to the specific server for that Location with that Client ID.
     This error results from either the SmartApp not being published to the server that the user is installing into, or from trying to install a Web Services SmartApp into an account that did not publish the SmartApp.
 
 Solution
     If the SmartApp was self-published, make sure you are using the same account to install into (only Web Service SmartApps published by SmartThings may be installed into other user accounts).
-    If it is the same account, and you are trying to install into a different location, ensure the SmartApp is published on that location as well (this will require handling different OAuth Client ID and Secret).
+    If it is the same account, and you are trying to install into a different Location, ensure the SmartApp is published on that Location as well (this will require handling different OAuth Client ID and Secret).
 
     If this is a SmartApp published by SmartThings, contact support@smartthings.com.
 

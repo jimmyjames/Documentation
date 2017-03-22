@@ -72,7 +72,7 @@ From the top menu of the IDE, click on the *My Devices*.
 .. figure:: ../img/device-types/ide-my-devices.png
 
 Click on *+New Device* on the top-right.
-This will take you to *Create Device* page. 
+This will take you to *Create Device* page.
 
 .. figure:: ../img/device-types/create-virtual-device.png
 
@@ -90,16 +90,16 @@ Zigbee Id
 Device Network Id
   Should be a unique ID that identifies your Virtual Device. Make sure this ID doesn't conflict with any other device Ids. Put in "VIRTDIMMERS01".
 
-Type 
-  Pulldown menu lists available Device Handlers. 
-  Note that all your custom Device Handlers are listed at the bottom of the pulldown list. 
+Type
+  Pulldown menu lists available Device Handlers.
+  Note that all your custom Device Handlers are listed at the bottom of the pulldown list.
   Scroll down the list and select the customer Device Handler that you created above.
 
 Version
   Option should be *Published*.
 
 Location
-  Must be your Hub location.
+  Must be your Hub Location.
 
 Hub
   Your Hub name associated with the above Location.
@@ -120,12 +120,12 @@ You will see *virtual-dimmer-switch* device appear instantly in your SmartThings
 Test your Device Handler with Virtual Device
 --------------------------------------------
 
-With the Virtual Dimmer you just created you can test your Device Handler. 
+With the Virtual Dimmer you just created you can test your Device Handler.
 From your SmartThings mobile app, tap on the *OFF* tile of **virtual-dimmer-switch** to turn it *ON*.
 
 .. figure:: ../img/device-types/virtual-dimmer-on.png
 
-Next, tap on the **virtual-dimmer-switch** to open the detail view and test the tiles. 
+Next, tap on the **virtual-dimmer-switch** to open the detail view and test the tiles.
 
 .. figure:: ../img/device-types/virtual-dimmer-detail.png
 
@@ -133,7 +133,7 @@ Next, tap on the **virtual-dimmer-switch** to open the detail view and test the 
 
 .. note::
 
-  While the simulator is useful and necessary for testing how the Device Handler handles incoming messages, we recommended that you test on the mobile app with Virtual Devices wherever possible.
+  While the Simulator is useful and necessary for testing how the Device Handler handles incoming messages, we recommended that you test on the mobile app with Virtual Devices wherever possible.
 
 ----
 

@@ -2,7 +2,7 @@ Division of Labor
 =================
 
 The LAN-connected device paradigm consists of a Service Manager and Device Handlers. The purpose of this guide is
-to introduce you to the core concepts of LAN connected device development, and provide some examples to help you get
+to introduce you to the core concepts of LAN-connected device development, and provide some examples to help you get
 started.
 
 Service Manager responsibilities
@@ -17,7 +17,7 @@ able to make future interactions with the device.
 Device Handler responsibilities
 -------------------------------
 
-The device handler is responsible for creating and receiving device
+The Device Handler is responsible for creating and receiving device
 specific messages, and allowing them to work within the SmartThings
 infrastructure. It takes in a SmartApp-specific command and outputs
 device specific commands. It also allows you to subscribe to responses

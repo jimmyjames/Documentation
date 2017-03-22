@@ -30,17 +30,17 @@ Simple Service Discovery Protocol (SSDP) is the main protocol used to find devic
 allows you to easily connect new network devices to a system. See `UPnP Device Architecture 1.1 <http://upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf>`__
 for full specification details.
 
-To discover new devices, you first need to subscribe to location events with the correct **search target** for the device. The
+To discover new devices, you first need to subscribe to Location Events with the correct **search target** for the device. The
 search target in the below example, **urn:schemas-upnp-org:device:ZonePlayer:1**, is for discovery of a Sonos, but search targets will vary by manufacturer and device.
 For UPnP, this information should be published on documentation for the device, but you may
-alternatively have to contact the manufacturer directly to obtain it. Here is the event subscription:
+alternatively have to contact the manufacturer directly to obtain it. Here is the Event subscription:
 
 .. code-block:: groovy
 
     subscribe(location, "ssdpTerm.urn:schemas-upnp-org:device:ZonePlayer:1", ssdpHandler)
 
 This means that any time an SSDP **search response** with a search target of urn:schemas-upnp-org:device:ZonePlayer:1
-(e.g. Sonos) is received from a hub in this location, it will fire the ssdpHandler method.
+(e.g. Sonos) is received from a Hub in this Location, it will fire the ssdpHandler method.
 
 Next, you need to send an appropriate discovery command for the desired search target:
 
@@ -59,13 +59,13 @@ Next, you need to send an appropriate discovery command for the desired search t
     request, such as the request method, headers, and path. By itself, ``HubAction`` is little more than a wrapper for these request details.
     In this case, it's a thin wrapper around discovery information.
 
-In the above HubAction example, the main message to be sent through the hub is:
+In the above HubAction example, the main message to be sent through the Hub is:
 
 .. code-block:: groovy
 
     lan discovery urn:schemas-upnp-org:device:ZonePlayer:1
 
-This is converted by our device connectivity layer into an M-SEARCH multicast request that is sent to the LAN via the hub, and
+This is converted by our device connectivity layer into an M-SEARCH multicast request that is sent to the LAN via the Hub, and
 should look something like the following:
 
 .. code-block:: bash
@@ -77,7 +77,7 @@ should look something like the following:
     ST: urn:schemas-upnp-org:device:ZonePlayer:1
 
 After the end device receives the multicast M-SEARCH, it is supposed to issue a unicast **search response**, delayed by a random number of seconds between 0 and MX (4 in this case).
-The search response sent from the device back to the hub should look something like this:
+The search response sent from the device back to the Hub should look something like this:
 
 .. code-block:: bash
 
@@ -89,7 +89,7 @@ The search response sent from the device back to the hub should look something l
     ST: urn:schemas-upnp-org:device:ZonePlayer:1
     USN: uuid:RINCON_000E58F0FFFFFF400::urn:schemas-upnp-org:device:ZonePlayer:1
 
-This will get routed back to the cloud where it will be converted into an event that will fire the ssdpHandler method with the following description:
+This will get routed back to the cloud where it will be converted into an Event that will fire the ssdpHandler method with the following description:
 
 .. code-block:: bash
 
@@ -120,10 +120,10 @@ Verification
 
 Once we've recorded the presence of a device on the LAN with the desired SSDP search target, the next step is to verify the
 availability of the device by fetching some more information about it. In UPnP, this is called the **device description**.
-In the search response, there is a LOCATION header which shows the location of the device description on the LAN. SmartThings
-splits this into **networkAddress**, **deviceAddress**, and **ssdpPath** in the event, which at this point should exist in app state.
+In the search response, there is a LOCATION header which shows the Location of the device description on the LAN. SmartThings
+splits this into **networkAddress**, **deviceAddress**, and **ssdpPath** in the Event, which at this point should exist in app state.
 This can be pulled out of state and put into a HubAction. Note that the HubAction has a **callback**, which means that
-when an HTTP response is issued from the device to the hub, it will fire the **deviceDescriptionHandler** method.
+when an HTTP response is issued from the device to the Hub, it will fire the **deviceDescriptionHandler** method.
 
 .. code-block:: groovy
 
@@ -149,7 +149,7 @@ when an HTTP response is issued from the device to the hub, it will fire the **d
 .. note:: HubResponse is a class supplied by the SmartThings platform. Here are some pieces of data that are included:
 
     * **description** - The raw message received by the device connectivity layer
-    * **hubId** - The UUID of the SmartThings hub that received the response
+    * **hubId** - The UUID of the SmartThings Hub that received the response
     * **status** - HTTP status code of the response
     * **headers** - Map of the HTTP headers of the response
     * **body** - String of the HTTP response body

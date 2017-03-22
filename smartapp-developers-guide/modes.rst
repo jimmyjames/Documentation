@@ -17,7 +17,7 @@ Modes can be thought of as behavior filters for the smart home. Users can change
 - When in "Away" mode, motion should send a text message and turn on an alarm.
 
 SmartThings comes with a few pre-configured modes, such as "Home", "Away", and "Night".
-Users can also create their own modes for each location.
+Users can also create their own modes for each Location.
 
 ----
 
@@ -39,7 +39,7 @@ You can get the current mode by using the ``mode`` or ``currentMode`` property o
 Getting all Modes
 -----------------
 
-You can get a list of all the modes for the location the SmartApp is installed into:
+You can get a list of all the modes for the Location the SmartApp is installed into:
 
 .. code-block:: groovy
 
@@ -51,7 +51,7 @@ You can get a list of all the modes for the location the SmartApp is installed i
 Setting the Mode
 ----------------
 
-You can use ``setLocationMode()`` or ``location.setMode()`` to set the mode for the location:
+You can use ``setLocationMode()`` or ``location.setMode()`` to set the mode for the Location:
 
 .. code-block:: groovy
 
@@ -61,7 +61,7 @@ You can use ``setLocationMode()`` or ``location.setMode()`` to set the mode for 
 
     location.setMode("Away")
 
-These methods will raise an error if the mode specified does not exist for the location.
+These methods will raise an error if the mode specified does not exist for the Location.
 
 ----
 
@@ -103,7 +103,7 @@ You can listen for a mode change by subscribing to the ``"mode"`` on the ``locat
         log.debug "mode changed to ${evt.value}"
     }
 
-In the example above ``modeChangeHandler()`` will be called whenever the mode changes for the location this SmartApp is installed into.
+In the example above ``modeChangeHandler()`` will be called whenever the mode changes for the Location this SmartApp is installed into.
 
 ----
 
@@ -159,7 +159,7 @@ First, notice we first check if we are already in the mode specified - if we are
     if (location.mode != newMode)
 
 If we do need to change the mode, we first verify that the mode actually exists.
-This ensures that we don't try and set the mode to one that does not exist for the location.
+This ensures that we don't try and set the mode to one that does not exist for the Location.
 
 .. code-block:: groovy
 

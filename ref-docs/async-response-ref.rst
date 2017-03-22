@@ -40,7 +40,7 @@ Throws an exception if the request failed to get a response (e.g. Connection tim
 getErrorData()
 --------------
 
-In the event of an error response, returns the response body as a string.
+In the Event of an error response, returns the response body as a string.
 Throws an exception if the response is successful and has a 2XX response.
 
 **Signature:**

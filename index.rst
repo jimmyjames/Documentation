@@ -101,6 +101,7 @@ SmartThings Developer Documentation
    smartapp-web-services-developers-guide/index
    device-type-developers-guide/index
    cloud-and-lan-connected-device-types-developers-guide/index
+   composite-devices/index
    arduino/index
    ratelimits/index
    publishing/index

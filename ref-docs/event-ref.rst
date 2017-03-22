@@ -18,17 +18,17 @@ The reference documentation here lists all methods available on an Event object 
 getData()
 ---------
 
-A map of any additional data on the event.
+A map of any additional data on the Event.
 
 **Signature:**
     ``String getData()``
 
 **Returns:**
-    `String`_ - A JSON string representing a map of the additional data (if any) on the event.
+    `String`_ - A JSON string representing a map of the additional data (if any) on the Event.
 
 **Example:**
 
-Consider an event created like this:
+Consider an Event created like this:
 
 .. code-block:: groovy
 
@@ -56,7 +56,7 @@ Acquisition time of this device state record.
     ``Date getDate()``
 
 **Returns:**
-    `Date`_ - the date and time this event record was created.
+    `Date`_ - the date and time this Event record was created.
 
 **Example:**
 
@@ -73,13 +73,13 @@ Acquisition time of this device state record.
 getDateValue()
 --------------
 
-The value of the event as a `Date`_ object, if applicable.
+The value of the Event as a `Date`_ object, if applicable.
 
 **Signature:**
     ``Date getDateValue()``
 
 **Returns:**
-    `Date`_ - If the value of this event is date, a Date will be returned. ``null`` will be returned if the value of the event is not parseable to a Date.
+    `Date`_ - If the value of this Event is date, a Date will be returned. ``null`` will be returned if the value of the Event is not parseable to a Date.
 
 **Example:**
 
@@ -117,13 +117,13 @@ The raw description that generated this Event.
 getDescriptionText()
 --------------------
 
-The description of the event that is to be displayed to the user in the mobile application.
+The description of the Event that is to be displayed to the user in the mobile application.
 
 **Signature:**
     ``String getDescriptionText()``
 
 **Returns:**
-    `String`_ - the description of this event to be displayed to the user in the mobile application.
+    `String`_ - the description of this Event to be displayed to the user in the mobile application.
 
 **Example:**
 
@@ -157,7 +157,7 @@ getDisplayName()
     ``String getDisplayName()``
 
 **Returns:**
-    `String`_ - The user-friendly name of the source of this event. Typically the user-assigned device label.
+    `String`_ - The user-friendly name of the source of this Event. Typically the user-assigned device label.
 
 **Example:**
 
@@ -193,13 +193,13 @@ The unique system identifer of the :ref:`device_ref` associated with this Event.
 getId()
 -------
 
-The unique system identifier for this event.
+The unique system identifier for this Event.
 
 **Signature:**
     ``String getId()``
 
 **Returns:**
-    `String`_ - the unique device identifier for this event.
+    `String`_ - the unique device identifier for this Event.
 
 **Example:**
 
@@ -226,7 +226,7 @@ The value of this Event, if the value can be parsed to a Double.
 
 .. warning::
 
-    ``doubleValue`` will throw an Exception if the value of the event is not parseable to a Double.
+    ``doubleValue`` will throw an Exception if the value of the Event is not parseable to a Double.
 
     You should wrap calls in a try/catch block.
 
@@ -420,7 +420,7 @@ getLinkText()
 
     ``getLinkText()`` is deprecated. Use :ref:`event_ref_get_display_name` instead.
 
-The user-friendly name of the source of this event. Typically the user-assigned device label.
+The user-friendly name of the source of this Event. Typically the user-assigned device label.
 
 ----
 
@@ -494,7 +494,7 @@ The name of this Event.
     ``String getName()``
 
 **Returns:**
-    `String`_ - the name of this event.
+    `String`_ - the name of this Event.
 
 **Example:**
 
@@ -515,7 +515,7 @@ The value of this Event as a Number.
     ``Number getNumberValue()``
 
 **Returns:**
-    `Number`_ - the value of this event as a Number.
+    `Number`_ - the value of this Event as a Number.
 
 .. warning::
 
@@ -550,7 +550,7 @@ The value of this Event as a Number.
     ``Number getNumericValue()``
 
 **Returns:**
-    `Number`_ - the value of this event as a Number.
+    `Number`_ - the value of this Event as a Number.
 
 .. warning::
 
@@ -590,11 +590,11 @@ The source of the Event.
     ================ ===========
     Source           Description
     ================ ===========
-    `"APP"`          Event originated by an app touch event in the mobile application.
+    `"APP"`          Event originated by an app touch Event in the mobile application.
     `"APP_COMMAND"`  Event originated by using the mobile application (for example, using the mobile application to turn a light off)
     `"COMMAND"`      Event originated by a SmartApp or Device Handler calling a command on a device.
     `"DEVICE`"       Event originated by the physical actuation of a device.
-    `"HUB"`          Event originated on the hub.
+    `"HUB"`          Event originated on the Hub.
     `"LOCATION"`     Event originated by a Location state change (for example, sunrise and sunset events)
     `"USER"`
     ================ ===========
@@ -618,7 +618,7 @@ The value of this Event as a String.
     ``String getStringValue()``
 
 **Returns:**
-    `String`_ - the value of this event as a String.
+    `String`_ - the value of this Event as a String.
 
 **Example:**
 
@@ -660,7 +660,7 @@ The value of this Event as a String.
     ``String getValue()``
 
 **Returns:**
-    `String`_ - the value of this event as a String.
+    `String`_ - the value of this Event as a String.
 
 **Example:**
 
@@ -675,7 +675,7 @@ The value of this Event as a String.
 getXyzValue()
 -------------
 
-Value of the event as a 3-entry Map with keys 'x', 'y', and 'z' with BigDecimal values. For example:
+Value of the Event as a 3-entry Map with keys 'x', 'y', and 'z' with BigDecimal values. For example:
 
 .. code-block:: groovy
 

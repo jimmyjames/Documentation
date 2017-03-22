@@ -8,7 +8,7 @@ Device Handlers are the virtual representation of a physical device.
 
 A Device Handler defines a `metadata()`_ method that defines the device's definition, UX information, as well as how it should behave in the IDE simulator.
 
-A Device Handler typically also defines a `parse()`_ method that is responsible for transforming raw messages from the device into events for the SmartThings platform.
+A Device Handler typically also defines a `parse()`_ method that is responsible for transforming raw messages from the device into Events for the SmartThings platform.
 
 Device Handlers must also define methods for any supported commands, either through its supported capabilities, or device-specific commands.
 
@@ -76,11 +76,11 @@ parse()
     This method is expected to be defined by Device Handlers.
 
 
-Called when messages from a device are received from the hub. The parse method is responsible for interpreting those messages and returning :ref:`event_ref` definitions. Event definitions are maps that contain, at a minimum, name and value entries. They may also contain unit, displayText, displayed, isStateChange, and linkText entries if the default, automatically generated values of these event properties are to be overridden. See the `createEvent()`_ documentation for a description of these properties.
+Called when messages from a device are received from the Hub. The parse method is responsible for interpreting those messages and returning :ref:`event_ref` definitions. Event definitions are maps that contain, at a minimum, name and value entries. They may also contain unit, displayText, displayed, isStateChange, and linkText entries if the default, automatically generated values of these Event properties are to be overridden. See the `createEvent()`_ documentation for a description of these properties.
 
 Because the ``parse()`` method is responsible for handling raw device messages, their implementations vary greatly across different Device Handlers.
 
-The ``parse()`` method may return a map defining the :ref:`event_ref` to create and propagate through the SmartThings platform, or a list of events if multiple events should be created. It may also return a HubAction or list of HubAction objects in the case of LAN-connected devices.
+The ``parse()`` method may return a map defining the :ref:`event_ref` to create and propagate through the SmartThings platform, or a list of Events if multiple Events should be created. It may also return a HubAction or list of HubAction objects in the case of LAN-connected devices.
 
 **Signature:**
     ``Map parse(String description)``
@@ -130,6 +130,43 @@ The ``parse()`` method may return a map defining the :ref:`event_ref` to create 
 
 ----
 
+.. _addChildDevice_DH_ref:    
+
+addChildDevice()
+----------------
+
+Adds a child device to a Device Handler. An example use is in a composite device Device Handler.
+
+**Signature:**
+    ``DeviceWrapper addChildDevice(String namespace, String typeName, String deviceNetworkId, hubId, Map properties)``
+
+**Throws:**
+    ``UnknownDeviceTypeException``
+
+**Parameters:**
+    `String`_ ``namespace`` - the namespace for the device. Defaults to ``device.deviceTypeDTO.namespace``.
+
+    `String`_ ``typeName`` - the device type name
+
+    `String`_ ``deviceNetworkId`` - the device network id of the device
+
+    ``hubId`` - *(optional)* The hub id. Defaults to ``null``
+
+    `Map`_ ``properties`` *(optional)* - A map with device properties. Available options are:
+
+    ============== ===========
+    Option         Description
+    ============== ===========
+    isComponent    Allowed values are ``true`` and ``false``. When ``true`` hides the device from the Things view and doesn't let it be separately deleted. (Example: This value is ``true`` for the ZooZ ZEN 20 and ``false`` for Hue bridge.)
+    componentName  A way to refer to this particular child. It should be a Java Bean name (i.e. no spaces). It is used to refer to the device in the parent's detail view. This option is only needed when ``isComponent`` is ``true``.
+    componentLabel The plain-english name (or i18n key) to be used by the UX.
+    ============== ===========
+
+**Returns:**
+    ``DeviceWrapper`` - The device that was created.
+
+----
+
 apiServerUrl()
 --------------
 
@@ -162,7 +199,7 @@ attribute()
 
 Called within the `definition()`_ method to declare that this Device Handler supports an attribute not defined by any of its declared capabilities.
 
-For any supported attribute, it is expected that the Device Handler creates and sends events with the name of the attribute in the `parse()`_ method.
+For any supported attribute, it is expected that the Device Handler creates and sends Events with the name of the attribute in the `parse()`_ method.
 
 **Signature:**
     ``void attribute(String attributeName, String attributeType [, List possibleValues])``
@@ -206,7 +243,7 @@ Called in the `definition()`_ method to define that this device supports the spe
 
 .. important::
 
-    Whatever commands and attributes defined by that capability should be implemented by the Device Handler. For example, the "Switch" capability specifies support for the "switch" attribute and the "on" and "off" commands - any Device Handler supporting the "Switch" capability must define methods for the commands, and support the "switch" attribute by creating the appropriate events (with the name of the attribute, e.g., "switch")
+    Whatever commands and attributes defined by that capability should be implemented by the Device Handler. For example, the "Switch" capability specifies support for the "switch" attribute and the "on" and "off" commands - any Device Handler supporting the "Switch" capability must define methods for the commands, and support the "switch" attribute by creating the appropriate Events (with the name of the attribute, e.g., "switch")
 
 **Signature:**
     ``void capability(String capabilityName)``
@@ -231,7 +268,7 @@ Called in the `definition()`_ method to define that this device supports the spe
     }
 
     def parse(description) {
-        // handle device messages, determine what value of the event is
+        // handle device messages, determine what value of the Event is
         return createEvent(name: "switch", value: someValue)
     }
 
@@ -397,14 +434,14 @@ Creates a Map that represents an :ref:`event_ref` object. Typically used in the 
     ================    =========== ===========
     Property            Type        Description
     ================    =========== ===========
-    name (required)     `String`_   the name of the event. Typically corresponds to an attribute name of a capability.
-    value (required)    `Object`_   the value of the event. The value is stored as a string, but you can pass numbers or other objects.
-    descriptionText     `String`_   the description of this event. This appears in the mobile application activity for the device. If not specified, this will be created using the event name and value.
-    displayed           `Boolean`_  specify ``true`` to display this event in the mobile application activity feed, ``false`` to not display. Defaults to ``true``.
-    linkText            `String`_   name of the event to show in the mobile application activity feed.
-    isStateChange       `Boolean`_  specify ``true`` if this event caused a device attribute to change state. Typically not used, since it will be set automatically.
+    name (required)     `String`_   the name of the Event. Typically corresponds to an attribute name of a capability.
+    value (required)    `Object`_   the value of the Event. The value is stored as a string, but you can pass numbers or other objects.
+    descriptionText     `String`_   the description of this Event. This appears in the mobile application activity for the device. If not specified, this will be created using the Event name and value.
+    displayed           `Boolean`_  specify ``true`` to display this Event in the mobile application activity feed, ``false`` to not display. Defaults to ``true``.
+    linkText            `String`_   name of the Event to show in the mobile application activity feed.
+    isStateChange       `Boolean`_  specify ``true`` if this Event caused a device attribute to change state. Typically not used, since it will be set automatically.
     unit                `String`_   a unit string, if desired. This will be used to create the ``descriptionText`` if it (the ``descriptionText`` option) is not specified.
-    data                `Map`_      A map of additional information to store with the event
+    data                `Map`_      A map of additional information to store with the Event
     ================    =========== ===========
 
 **Example:**
@@ -544,7 +581,7 @@ At some point these will be merged, but for now the properties and methods of th
 fingerprint()
 -------------
 
-Called within the `definition()`_ method to define the information necessary to pair this device to the hub.
+Called within the `definition()`_ method to define the information necessary to pair this device to the Hub.
 
 See the `Fingerprinting Section <../device-type-developers-guide/definition-metadata.html#fingerprinting>`__ of the Device Handler guide for more information.
 
@@ -971,7 +1008,7 @@ reply()
 
 Called in the `simulator()`_ method to model the behavior of a physical device when a virtual instance of the Device Handler is run in the IDE.
 
-The simulator matches command strings generated by the device to those specified in the ``commandString`` argument of a reply method and, if a match is found, calls the device handler's parse method with the corresponding messageDescription.
+The simulator matches command strings generated by the device to those specified in the ``commandString`` argument of a reply method and, if a match is found, calls the Device Handler's parse method with the corresponding messageDescription.
 
 For example, the reply method ``reply "2001FF,2502": "command: 2503, payload: FF"`` models the behavior of a physical Z-Wave switch in responding to an Basic Set command followed by a Switch Binary Get command. The result will be a call to the parse method with a Switch Binary Report command with a value of 255, i.e., the turning on of the switch. Modeling turn off would be done with the reply method ``reply "200100,2502": "command: 2503, payload: 00"``.
 
@@ -1468,32 +1505,32 @@ Creates a scheduled job that calls the ``handlerMethod`` once per day at the tim
 sendEvent()
 -----------
 
-Create and fire an :ref:`event_ref` . Typically a Device Handler will return the map returned from `createEvent()`_ , which will allow the platform to create and fire the event. In cases where you need to fire the event (outside of the `parse()`_ method), ``sendEvent()`` is used.
+Create and fire an :ref:`event_ref` . Typically a Device Handler will return the map returned from `createEvent()`_ , which will allow the platform to create and fire the Event. In cases where you need to fire the Event (outside of the `parse()`_ method), ``sendEvent()`` is used.
 
 **Signature:**
     ``void sendEvent(Map properties)``
 
 **Parameters:**
-    `Map`_ ``properties`` - The properties of the event to create and send.
+    `Map`_ ``properties`` - The properties of the Event to create and send.
 
     Here are the available properties:
 
     ================    ===========
     Property            Description
     ================    ===========
-    name (required)     `String`_ - The name of the event. Typically corresponds to an attribute name of a capability.
-    value (required)    The value of the event. The value is stored as a string, but you can pass numbers or other objects.
-    descriptionText     `String`_ - The description of this event. This appears in the mobile application activity for the device. If not specified, this will be created using the event name and value.
-    displayed           Pass ``true`` to display this event in the mobile application activity feed, ``false`` to not display. Defaults to ``true``.
-    linkText            `String`_ - Name of the event to show in the mobile application activity feed.
-    isStateChange       ``true`` if this event caused a device attribute to change state. Typically not used, since it will be set automatically.
+    name (required)     `String`_ - The name of the Event. Typically corresponds to an attribute name of a capability.
+    value (required)    The value of the Event. The value is stored as a string, but you can pass numbers or other objects.
+    descriptionText     `String`_ - The description of this Event. This appears in the mobile application activity for the device. If not specified, this will be created using the Event name and value.
+    displayed           Pass ``true`` to display this Event in the mobile application activity feed, ``false`` to not display. Defaults to ``true``.
+    linkText            `String`_ - Name of the Event to show in the mobile application activity feed.
+    isStateChange       ``true`` if this Event caused a device attribute to change state. Typically not used, since it will be set automatically.
     unit                `String`_ - a unit string, if desired. This will be used to create the ``descriptionText`` if it (the ``descriptionText`` option) is not specified.
-    data                A map of additional information to store with the event
+    data                A map of additional information to store with the Event
     ================    ===========
 
 .. tip::
 
-    Not all event properties need to be specified. ID properties like ``deviceId`` and ``locationId`` are automatically set, as are properties like ``isStateChange``, ``displayed``, and ``linkText``.
+    Not all Event properties need to be specified. ID properties like ``deviceId`` and ``locationId`` are automatically set, as are properties like ``isStateChange``, ``displayed``, and ``linkText``.
 
 **Returns:**
     void
@@ -1688,7 +1725,7 @@ The status method is called in the `simulator()`_ method, and populates the sele
 **Parameters:**
     `String` ``name`` - any unique string and is used to refer to this status message in the select box.
 
-    `String` ``messageDescription`` - should be a parseable message for this Device Handler. It's passed to the Device Handler's parse method when select box entry is sent in the simulator. For example, ``status "on": "command: 2003, payload: FF"`` will send a Z-Wave Basic Report command to the device handler's parse method when the on option is selected and sent.
+    `String` ``messageDescription`` - should be a parseable message for this Device Handler. It's passed to the Device Handler's parse method when select box entry is sent in the simulator. For example, ``status "on": "command: 2003, payload: FF"`` will send a Z-Wave Basic Report command to the Device Handler's parse method when the on option is selected and sent.
 
 **Returns:**
     void

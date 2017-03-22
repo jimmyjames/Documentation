@@ -8,16 +8,16 @@ Turn on a light when a door opens.
 Turn the lights off at sunrise.
 Send a message if a door opens when you're not home.
 These are all examples of event-handler SmartApps.
-They follow a common pattern - subscribe to some event, and take action when the event happens.
+They follow a common pattern - subscribe to some Event, and take action when the Event happens.
 
-This section will discuss events and how you can subscribe to them in your SmartApp.
+This section will discuss Events and how you can subscribe to them in your SmartApp.
 
 ----
 
-Subscribe to specific device events
+Subscribe to specific device Events
 -----------------------------------
 
-The most common use case for event subscriptions is for device events:
+The most common use case for Event subscriptions is for device Events:
 
 .. code-block:: groovy
     :linenos:
@@ -37,11 +37,11 @@ The most common use case for event subscriptions is for device events:
         log.debug "switch turned on!"
     }
 
-The handler method must accept an event parameter.
+The handler method must accept an Event parameter.
 
 Refer to the :ref:`event_ref` API documentation for more information about the Event object.
 
-You can find the possible events to subscribe to by referring to the Attributes column for a capability in the :ref:`capabilities_taxonomy`.
+You can find the possible Events to subscribe to by referring to the Attributes column for a capability in the :ref:`capabilities_taxonomy`.
 The general form we use is "<attributeName>.<attributeValue>".
 If the attribute does not have any possible values (for example, "battery"), you would just use the attribute name.
 
@@ -50,7 +50,7 @@ Putting these together, we use "switch.on".
 
 ----
 
-Subscribe to all device events
+Subscribe to all device Events
 ------------------------------
 
 You can also subscribe to all states by just specifying the attribute name:
@@ -68,14 +68,14 @@ You can also subscribe to all states by just specifying the attribute name:
     }
 
 
-In this case, the ``switchHandler`` method will be called for both the "on" and "off" events.
+In this case, the ``switchHandler`` method will be called for both the "on" and "off" Events.
 
 ----
 
 Subscribe to multiple devices
 -----------------------------
 
-If your SmartApp allows multiple devices, you can subscribe to events for all the devices:
+If your SmartApp allows multiple devices, you can subscribe to Events for all the devices:
 
 .. code-block:: groovy
 
@@ -98,9 +98,9 @@ If your SmartApp allows multiple devices, you can subscribe to events for all th
 Subscribe to Location events
 ----------------------------
 
-In addition to subscribing to device events, you can also subscribe to events for the user's Location.
+In addition to subscribing to device Events, you can also subscribe to Events for the user's Location.
 
-You can subscribe to the following Location events:
+You can subscribe to the following Location Events:
 
 *mode*
     Triggered when the mode changes.
@@ -137,11 +137,11 @@ Refer to the `Sunset and Sunrise <http://docs.smartthings.com/en/latest/smartapp
 The Event object
 ----------------
 
-Event-handler methods must accept a single parameter, the event itself.
+Event-handler methods must accept a single parameter, the Event itself.
 
 Refer to the :ref:`event_ref` API documentation for more information.
 
-A few of the common ways of using the event:
+A few of the common ways of using the Event:
 
 .. code-block:: groovy
 
@@ -160,7 +160,7 @@ A few of the common ways of using the event:
     }
 
 .. note::
-    The contents of each Event instance will vary depending on the exact event. If you refer to the Event reference documentation, you will see different value methods, like "floatValue" or "dateValue". These may or may not be populated depending on the specific event, and may even throw exceptions if not applicable.
+    The contents of each Event instance will vary depending on the exact Event. If you refer to the Event reference documentation, you will see different value methods, like "floatValue" or "dateValue". These may or may not be populated depending on the specific Event, and may even throw exceptions if not applicable.
 
 See also
 --------

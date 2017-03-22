@@ -165,8 +165,8 @@ This will be used (along with the ``client_id`` and ``client_secret``), to get t
 
 .. important::
 
-    When you self-publish a SmartApp, it is published and available in the location that you published it.
-    Since SmartThings is moving into the global space, the location that you published your SmartApp corresponds to a specific server.
+    When you self-publish a SmartApp, it is published and available in the Location that you published it.
+    Since SmartThings is moving into the global space, the Location that you published your SmartApp corresponds to a specific server.
     This means your self-published SmartApp is only available on that server.
 
 

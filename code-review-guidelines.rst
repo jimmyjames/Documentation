@@ -18,7 +18,7 @@ Code should be readable
 Code is executed by machines, but read by humans.
 Readability can be subjective, but there are some general guidelines that should be followed:
 
-- Use meaningful variable and method names
+- Use meaningful variable and method names.
 - :ref:`review_guidelines_dry`
 - :ref:`review_guidelines_methods`
 - :ref:`review_guidelines_comments`
@@ -64,10 +64,10 @@ When over-used, they clutter the code and provide no value.
 
 There are some guidelines that should be followed:
 
-- In general, when the code is doing something out of the ordinary, a comment is appropriate
-- Device Handler custom commands and attributes should have a comment describing the purpose, parameters, and exception conditions (if applicable)
+- In general, when the code is doing something out of the ordinary, a comment is appropriate.
+- Device Handler custom commands and attributes should have a comment describing the purpose, parameters, and exception conditions (if applicable).
 - Non-trivial methods should be documented with comments describing what it does, its return type, exception conditions, and parameters. `JavaDoc style comments <https://en.wikipedia.org/wiki/Javadoc#Overview_of_Javadoc>`__ can be used, though there is no tooling in place to generate documentation from the source.
-- Comments should add value - commenting every line of readable code simply clutters the code and is unnecessary
+- Comments should add value - commenting every line of readable code simply clutters the code and is unnecessary.
 
 Here's an example of using comments appropriately for documenting a method:
 
@@ -252,9 +252,9 @@ Groovy truth is documented `here <http://groovy-lang.org/semantics.html#Groovy-T
 
 Here are some gotchas to be aware of:
 
-- Empty strings are considered ``false``; non-empty strings are considered ``true``
-- Empty maps and lists are considered ``false``; non-empty maps and lists are considered ``true``
-- Zero is considered ``false``; non-zero numbers are considered ``true``
+- Empty strings are considered ``false``; non-empty strings are considered ``true``.
+- Empty maps and lists are considered ``false``; non-empty maps and lists are considered ``true``.
+- Zero is considered ``false``; non-zero numbers are considered ``true``.
 
 Consider the following example that verifies that a number is between 0 and 100:
 
@@ -291,7 +291,7 @@ Using State
 Do not think of state as a virtually unlimited database for your app.
 
 The amount of data that can be stored in state is :ref:`limited <state_size_limit>`.
-Avoid code that adds items to ``state`` regularly (perhaps in response to events or schedules), but does not remove items.
+Avoid code that adds items to ``state`` regularly (perhaps in response to Events or schedules), but does not remove items.
 
 Understand how ``state`` works
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -353,7 +353,7 @@ Security considerations
 Subscriptions should be clear
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-It is possible to subscribe to events using a string variable, so what the SmartApp is subscribing to might be somewhat opaque.
+It is possible to subscribe to Events using a string variable, so what the SmartApp is subscribing to might be somewhat opaque.
 
 For example:
 
@@ -378,8 +378,8 @@ Subscriptions should be specific
 
 Do not create overly-broad subscriptions.
 
-A SmartApp that is subscribed to every location event will execute excessively, and is rarely necessary.
-Instead, create subscriptions specific to the event you are interested in.
+A SmartApp that is subscribed to every location Event will execute excessively, and is rarely necessary.
+Instead, create subscriptions specific to the Event you are interested in.
 
 If you're creating a service manager for a LAN-connected device, be sure to :ref:`subscribe to the device search target <lan_device_discovery>`.
 
@@ -450,7 +450,7 @@ Do not use ``synchronized()``
 Using ``synchronized`` incurs a performance overhead, and is highly unlikely to have any effect.
 It should not be used.
 
-When a SmartApp or Device Handler executes, it is executing on one of *n* available servers assigned for that location, where *n* is variable depending on location, current load, and other factors.
+When a SmartApp or Device Handler executes, it is executing on one of *n* available servers assigned for that Location, where *n* is variable depending on Location, current load, and other factors.
 Concurrent executions of the SmartApp or Device Handler are not guaranteed, or even likely, to be executing on the same server.
 Because of this, trying to force synchronous behavior by using ``synchronized`` would only work in the rare occurrence that a concurrent execution happens on the same server, yet it always incurs overhead.
 

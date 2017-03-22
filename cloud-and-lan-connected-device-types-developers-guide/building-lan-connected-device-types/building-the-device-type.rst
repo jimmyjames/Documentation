@@ -3,15 +3,15 @@
 Building the Device Type
 ========================
 
-The device handler for a LAN connected device is generally the same as any other device handler. The means in which
-it handles sending and receiving messages from its device is a little bit different. Let's walk through a LAN connected
-device handler example.
+The Device Handler for a LAN-connected device is generally the same as any other Device Handler. The means in which
+it handles sending and receiving messages from its device is a little bit different. Let's walk through a LAN-connected
+Device Handler example.
 
 Making outbound HTTP calls with HubAction
 -----------------------------------------
 
 Depending on the type of device you are using, you will send requests to
-your devices through the hub via REST or UPnP. You can do this using
+your devices through the Hub via REST or UPnP. You can do this using
 the SmartThings provided ``HubAction`` class.
 
 ----
@@ -27,7 +27,7 @@ request, such as the request method, headers, and path. By itself, ``HubAction``
 
 It is when an instance of a ``HubAction`` is returned from a command method that it becomes useful.
 
-When a command method of your device handler returns an instance of a ``HubAction``, the SmartThings platform will use the request information within it to actually perform the request. It will then call the device-handler's ``parse`` method with any response data.
+When a command method of your Device Handler returns an instance of a ``HubAction``, the SmartThings platform will use the request information within it to actually perform the request. It will then call the device-handler's ``parse`` method with any response data.
 
 Herein lies an important point - *if your HubAction instance is not returned from your command method, no request will be made.* It will just be an object allocating system memory. Not very useful.
 
@@ -97,13 +97,13 @@ For more information about the JSON or XML response formats, see the Groovy `Jso
 Getting the addresses
 ---------------------
 
-To use HubAction, you will need the IP address of the device, and sometimes the hub.
+To use HubAction, you will need the IP address of the device, and sometimes the Hub.
 
 How the device IP and port are stored my vary depending on the device type. There's currently not a public API to get this information easily, so until there is, you will need to handle this in your device-type handler. Consider using helper methods like these to get this information:
 
 .. code-block:: groovy
 
-    // gets the address of the hub
+    // gets the address of the Hub
     private getCallBackAddress() {
         return device.hub.getDataValue("localIP") + ":" + device.hub.getDataValue("localSrvPortTCP")
     }
@@ -229,8 +229,8 @@ Here's an example of using ``HubSoapAction``:
 Subscribing to device Events
 ----------------------------
 
-If you'd like to hear back from a LAN connected device upon a particular
-event, you can subscribe using a ``HubAction``. The ``parse`` method will be called when this event is fired on the device.
+If you'd like to hear back from a LAN-connected device upon a particular
+Event, you can subscribe using a ``HubAction``. The ``parse`` method will be called when this Event is fired on the device.
 
 Here's an example using UPnP:
 

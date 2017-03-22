@@ -1,27 +1,27 @@
 Simulator
 =========
 
-Using the IDE simulator, we can model the behavior of the device without actually requiring a physical device.
+Using the IDE Simulator, we can model the behavior of the device without actually requiring a physical device.
 
 ----
 
 Overview
 --------
 
-On the right-hand side of the IDE, after you install a Device Handler, you'll see the simulator.
-The image below is the simulator seen after installing the "Z-Wave Switch" Device Handler (available via the *Browse Device Templates* menu).
+On the right-hand side of the IDE, after you install a Device Handler, you'll see the Simulator.
+The image below is the Simulator seen after installing the "Z-Wave Switch" Device Handler (available via the *Browse Device Templates* menu).
 
 Go ahead, try it out.
 Install the Device Handler in the IDE, and choose a virtual switch.
-Modify some of the simulator metadata as you read through this and see what happens.
+Modify some of the Simulator metadata as you read through this and see what happens.
 
 .. figure:: ../img/device-types/simulator.png
 
 
-The purpose of the simulator metadata is to model the behavior of the physical device.
-Using the simulator, we can test sending messages and commands to our Device Handler.
+The purpose of the Simulator metadata is to model the behavior of the physical device.
+Using the Simulator, we can test sending messages and commands to our Device Handler.
 
-There are two types of simulator declarations to define in a Device Handler - "status" and "reply".
+There are two types of Simulator declarations to define in a Device Handler - "status" and "reply".
 
 ----
 
@@ -40,14 +40,14 @@ In the case of the Z-Wave switch, for example, we have:
 The key ("on" in the example above) is just a name for the action.
 The value ("command: 2003, payload: FF") is the message that the device will send to the Device Handler's ``parse(message)`` method when that action is taken on the physical device.
 
-In the simulator, each status key ("on" or "off" in the example above) will be an available message in the simulator.
+In the Simulator, each status key ("on" or "off" in the example above) will be an available message in the Simulator.
 
 ----
 
 Reply
 -----
 
-The "reply" declarations specify responses that the physical device will send to the Device Handler when it receives a certain message from the hub.
+The "reply" declarations specify responses that the physical device will send to the Device Handler when it receives a certain message from the Hub.
 For a Z-Wave switch, for example, we specify:
 
 .. code-block:: groovy
@@ -85,5 +85,5 @@ But in this case it's in response to commands, not physical actuations.
 Summary
 -------
 
-The purpose of these declarations is to allow a virtual device to function in the IDE simulator, without being attached to a physical device.
-The ``status()`` method allows us to simulate physical actuation, while the ``reply()`` method allows us to simulate sending messages to the device in response to a command from the hub.
+The purpose of these declarations is to allow a virtual device to function in the IDE Simulator, without being attached to a physical device.
+The ``status()`` method allows us to simulate physical actuation, while the ``reply()`` method allows us to simulate sending messages to the device in response to a command from the Hub.

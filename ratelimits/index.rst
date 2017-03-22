@@ -32,9 +32,9 @@ A SmartApp or a Device Handler is limited to no more than 250 executions in 60 s
 Ways to avoid hitting rate limits
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A common cause for exceeding the 250 executions within 60 seconds limit is excessive subscriptions that might result in an infinite loop of events. For example, subscribing to an “on” and “off” event and the “on” command triggers the “off” event and vice versa - leading to a never-ending chain of event handlers being called. It is also possible that a SmartApp that subscribes to a very large number of particularly “chatty” devices may run into this limit. Making sure that your SmartApp subscriptions are not excessive in number will help avoid hitting the rate limit.
+A common cause for exceeding the 250 executions within 60 seconds limit is excessive subscriptions that might result in an infinite loop of events. For example, subscribing to an “on” and “off” Event and the “on” command triggers the “off” Event and vice versa - leading to a never-ending chain of event handlers being called. It is also possible that a SmartApp that subscribes to a very large number of particularly “chatty” devices may run into this limit. Making sure that your SmartApp subscriptions are not excessive in number will help avoid hitting the rate limit.
 
-Similarly, a Device Handler may exceed Rate Limit when it sends many commands to one device by receiving a large number of event subscriptions (if that doesn’t first hit the limit for SmartApps). For example, DLNA players that are extremely chatty, or devices that bind to frequently changing energy/power values may also encounter this limit. Ensure that your Device Handler does not issue too many commands to one single device in a single 60-second time window.
+Similarly, a Device Handler may exceed Rate Limit when it sends many commands to one device by receiving a large number of Event subscriptions (if that doesn’t first hit the limit for SmartApps). For example, DLNA players that are extremely chatty, or devices that bind to frequently changing energy/power values may also encounter this limit. Ensure that your Device Handler does not issue too many commands to one single device in a single 60-second time window.
 
 ----
 

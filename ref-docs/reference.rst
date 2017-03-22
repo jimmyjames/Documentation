@@ -50,7 +50,7 @@ Some methods may have many signatures. For example, the ``schedule`` method avai
 
 Optional parameters will be listed inside brackets (``[]``) in the method signature.
 
-Code examples may not be executable as-is. Since SmartApps and Device Handlers execute in response to various schedules or events, and rely upon having other metdata defined, the examples have been written with brevity in mind. The code samples may need to be defined inside an event handler or otherwise executable code block to fully function.
+Code examples may not be executable as-is. Since SmartApps and Device Handlers execute in response to various schedules or Events, and rely upon having other metdata defined, the examples have been written with brevity in mind. The code samples may need to be defined inside an event handler or otherwise executable code block to fully function.
 
 When appropriate, we have included various tips or warnings. In cases where an API is not adequately documented currently, we have called attention to that. We plan to add the supporting documentation soon!
 

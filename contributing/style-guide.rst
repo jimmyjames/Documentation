@@ -651,6 +651,45 @@ Miscellaneous tips
 
 ----
 
+.. _style_guide_glossary:
+
+SmartThings glossary
+--------------------
+
+=========================================== ===============
+Recommended style                           Not recommended
+=========================================== ===============
+Cloud-connected                             cloud-connected, cloud connected, Cloud connected
+Composite Device                            CompositeDevice, Composite device, composite device
+Contact Book                                contact book
+Contacts                                    contacts
+Device Handler                              Device handler, DeviceHandler, Device Type Handler, device handler, devicehandler
+editor                                      Editor
+Event                                       event
+event handler                               Event Handler, Event handler
+Hub                                         hub
+"Hub version 2" first time, then "Hub v2"   Hub v 2, Hub v.2, Hub V2.
+"Internet of Things" first time, then "IoT" IOT
+internet                                    Internet
+LAN-connected                               lan-connected, lan connected, LAN connected
+Location                                    location
+Marketplace                                 Market place, Market Place, MarketPlace
+Mode                                        mode
+My Home                                     MyHome, myHome, My home
+Routines                                    routines, Hello Home actions
+Samsung SmartThings Hub                     SamsungSmartThings Hub, Samsung SmartThings hub
+Simulator                                   simulator
+smart home                                  SmartHome, Smart Home, smarthome
+Smart Home Monitor                          SMH, smarthome monitor, SmartHome monitor
+SmartApp                                    Smart app, Smart App, Smartapp, smartapp, smart app
+SmartThings                                 Smart Things, Smartthings, Smart things
+Welcome Code                                Welcome code, WelcomeCode, Claim code, ClaimCode
+Z-Wave                                      ZWave, Z-wave
+ZigBee                                      Zigbee, Zig Bee
+=========================================== ===============
+
+
+
 Further reading
 ---------------
 

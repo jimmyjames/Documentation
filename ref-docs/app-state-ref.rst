@@ -33,7 +33,7 @@ The value of this Event, if the value can be parsed to a Date.
 
 .. warning::
 
-    ``getDateValue()`` will throw an Exception if the value of the event is not parseable to a Date.
+    ``getDateValue()`` will throw an Exception if the value of the Event is not parseable to a Date.
 
     You should wrap calls in a try/catch block.
 
@@ -58,13 +58,13 @@ The value of this Event, if the value can be parsed to a Date.
 getId()
 -------
 
-The unique system identifier for this event.
+The unique system identifier for this Event.
 
 **Signature:**
     ``String getId()``
 
 **Returns:**
-    `String`_ - the unique device identifier for this event.
+    `String`_ - the unique device identifier for this Event.
 
 **Example:**
 
@@ -80,13 +80,13 @@ The unique system identifier for this event.
 getDescriptionText()
 --------------------
 
-The description of the event that is to be displayed to the user in the mobile application.
+The description of the Event that is to be displayed to the user in the mobile application.
 
 **Signature:**
     ``String getDescriptionText()``
 
 **Returns:**
-    `String`_ - the description of this event to be displayed to the user in the mobile application.
+    `String`_ - the description of this Event to be displayed to the user in the mobile application.
 
 **Example:**
 
@@ -112,7 +112,7 @@ The value of this Event, if the value can be parsed to a Double.
 
 .. warning::
 
-    ``getDoubleValue()`` will throw an Exception if the value of the event is not parseable to a Double.
+    ``getDoubleValue()`` will throw an Exception if the value of the Event is not parseable to a Double.
 
     You should wrap calls in a try/catch block.
 
@@ -263,13 +263,13 @@ Value of the Event as a parsed JSON data structure.
 getLastUpdated()
 ----------------
 
-The last time this event was updated as a Date.
+The last time this Event was updated as a Date.
 
 **Signature:**
     ``Date getLastUpdated()``
 
 **Returns:**
-    `Date`_ - The last time this event was updated as a Date.
+    `Date`_ - The last time this Event was updated as a Date.
 
 **Example:**
 
@@ -327,7 +327,7 @@ The name of this Event.
     ``String getName()``
 
 **Returns:**
-    `String`_ - the name of this event.
+    `String`_ - the name of this Event.
 
 **Example:**
 
@@ -349,7 +349,7 @@ The value of this Event as a Number.
     ``Number getNumberValue()``
 
 **Returns:**
-    `Number`_ - the value of this event as a BigDecimal.
+    `Number`_ - the value of this Event as a BigDecimal.
 
 .. warning::
 
@@ -385,7 +385,7 @@ The value of this Event as a Number.
     ``Number getNumericValue()``
 
 **Returns:**
-    `Number`_ - the value of this event as a BigDecimal.
+    `Number`_ - the value of this Event as a BigDecimal.
 
 .. warning::
 
@@ -443,7 +443,7 @@ The value of this Event as a String.
     ``String getValue()``
 
 **Returns:**
-    `String`_ - the value of this event as a String.
+    `String`_ - the value of this Event as a String.
 
 **Example:**
 
@@ -459,7 +459,7 @@ The value of this Event as a String.
 getXyzValue()
 -------------
 
-Value of the event as a 3-entry Map with keys 'x', 'y', and 'z' with BigDecimal values. For example:
+Value of the Event as a 3-entry Map with keys 'x', 'y', and 'z' with BigDecimal values. For example:
 
 .. code-block:: groovy
 

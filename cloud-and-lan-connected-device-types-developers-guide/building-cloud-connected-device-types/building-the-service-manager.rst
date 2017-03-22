@@ -5,9 +5,9 @@ Building the Service Manager
 
 The Service Manager's responsibilities are:
 
-- To authenticate with the third-party cloud service
-- Device discovery
-- Add/Change/Delete device actions
+- To authenticate with the third-party cloud service.
+- Device discovery.
+- Add/Change/Delete device actions.
 - Handle sending any messages that require the authentication obtained.
 
 Below we will get into the details of what is outlined above.

@@ -5,9 +5,9 @@ Up and Running
 
 SmartThings offers a rich toolset to develop, test, and publish custom code.
 
-Don't have a SmartThings Hub or any devices yet? Carry on! You can still create an account and even develop without any hardware, by using our online IDE and simulator.
+Don't have a SmartThings Hub or any devices yet? Carry on! You can still create an account and even develop without any hardware, by using our online IDE and Simulator.
 
-Of course, you'll want to have the hardware sooner than later, but you can start developing with SmartThings with nothing more than the free SmartThings mobile app, a web browser, and an Internet connection.
+Of course, you'll want to have the hardware sooner than later, but you can start developing with SmartThings with nothing more than the free SmartThings mobile app, a web browser, and an internet connection.
 
 ----
 

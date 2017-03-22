@@ -13,8 +13,8 @@ Examples of devices already certified to work with SmartThings can be viewed `he
 The device certification process consists of the following steps:
 
 1. **Create** a virtual representation of your device using a :ref:`device_type_dev_guide`
-2. **Test** the device handler by publishing it to your account and pairing your device with your hub
-3. Once you’ve successfully tested your device handler, **submit** it for publication
+2. **Test** the Device Handler by publishing it to your account and pairing your device with your Hub
+3. Once you’ve successfully tested your Device Handler, **submit** it for publication
 4. The SmartThings certification team will contact you about how to **ship** your device to us and complete the certification process
 
 |

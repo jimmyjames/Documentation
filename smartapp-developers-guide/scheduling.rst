@@ -21,7 +21,7 @@ Broadly speaking, there are a few different ways we might want to schedule somet
 We'll look at each scenario in detail, and at the methods SmartThings makes available to address these requirements.
 
 .. note::
-    When using the scheduler APIs, the schedule will be created using the time zone of the SmartApp's location.
+    When using the scheduler APIs, the schedule will be created using the time zone of the SmartApp's Location.
 
 ----
 
@@ -262,7 +262,7 @@ Day of Week  1-7 or SUN-SAT   Yes      , - * ? / L
 Year         empty, 1970-2099 No       , - * /
 ============ ================ ======== =================
 
-**Allowed wildcards**
+**Allowed wildcards are:**
 
     - ``,`` (comma) is used to specify additional values. For example, SAT,SUN,MON in the Day of Week field means “the days Saturday, Sunday, and Monday.”
     - ``-`` (hyphen) is used to specify ranges. For example, ``5-7`` in the Hours field means “the hours 5, 6 and 7”.

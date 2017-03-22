@@ -37,17 +37,17 @@ At some point in the future, we may create new methods that reflect the terminol
 Certain automations can now execute locally on the Samsung SmartThings Hub.
 The SmartThings internal team specifies which automations are eligible for local execution. This process requires evaluation and testing of the SmartApp and devices, as well as ensuring that the necessary code artifacts are delivered to the Hub.
 
-Any locally executing SmartApps or Device Handlers still send events to the SmartThings cloud. This is necessary so that the mobile application can accurately reflect the current state of the devices, as well as perform any cloud-required services (e.g., sending notifications). In the event of an Internet outage, the events will be queued and sent to the SmartThings cloud when Internet is restored.
+Any locally executing SmartApps or Device Handlers still send events to the SmartThings cloud. This is necessary so that the mobile application can accurately reflect the current state of the devices, as well as perform any cloud-required services (e.g., sending notifications). In the event of an internet outage, the events will be queued and sent to the SmartThings cloud when internet is restored.
 
-It is not possible for developers to specify that certain Device Types or SmartApps execute in any particular location (cloud or on the hub).  SmartApps or Device Types that have not been reviewed, tested, and delivered to the hub by the SmartThings team will execute in the SmartThings cloud.
+It is not possible for developers to specify that certain Device Types or SmartApps execute in any particular location (cloud or on the Hub).  SmartApps or Device Types that have not been reviewed, tested, and delivered to the Hub by the SmartThings team will execute in the SmartThings cloud.
 
 ----
 
-**What happens when the Internet to the Hub goes out?**
+**What happens when the internet to the Hub goes out?**
 
-Provided there is still power to the hub (wired or battery), any SmartApps that are able to execute locally will still run without an Internet connection. The mobile app will report the hub is offline, and because there are no events being sent to the SmartThings cloud, notifications will not work.
+Provided there is still power to the Hub (wired or battery), any SmartApps that are able to execute locally will still run without an internet connection. The mobile app will report the Hub is offline, and because there are no events being sent to the SmartThings cloud, notifications will not work.
 
-The radios in the hub will still function without Internet. Events to the cloud will be queued, and sent when the Internet is restored.
+The radios in the Hub will still function without internet. Events to the cloud will be queued, and sent when the internet is restored.
 
 ----
 

@@ -30,7 +30,7 @@ As such, we've designed an architecture and user experience around external API 
 Concepts
 --------
 
-There are a couple of important concepts that need to be understood with respect to how SmartApps APIs work.
+There are a couple of important concepts that need to be understood with respect to how SmartApps APIs work:
 
 - All SmartApps APIs are authenticated using OAuth2.
 - When we talk about SmartApps APIs, we are referring to APIs that are exposed by SmartApps themselves.

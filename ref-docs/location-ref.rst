@@ -3,7 +3,7 @@
 Location
 ========
 
-A Location represents a user's geo-location, such as "Home" or "office". Locations do not have to have a SmartThings hub, but generally do.
+A Location represents a user's geo-location, such as "Home" or "office". Locations do not have to have a SmartThings Hub, but generally do.
 
 All SmartApps and Device Handlers are injected with a ``location`` property that is the Location into which the SmartApp is installed.
 
@@ -14,13 +14,13 @@ All SmartApps and Device Handlers are injected with a ``location`` property that
 getContactBookEnabled()
 -----------------------
 
-``true`` if this location has contact book enabled (has contacts), ``false`` otherwise.
+``true`` if this Location has Contact Book enabled (has Contacts), ``false`` otherwise.
 
 **Signature:**
     ``Boolean getContactBookEnabled()``
 
 **Returns:**
-    ``true`` if this location has contact book enabled (has contacts), ``false`` otherwise.
+    ``true`` if this Location has Contact Book enabled (has Contacts), ``false`` otherwise.
 
 ----
 
@@ -65,7 +65,7 @@ The unique internal system identifier for the Location.
 getHubs()
 ---------
 
-The list of Hubs for this location. Currently only Hub can be installed into a Location, thought this API returns a List to allow for future expandability.
+The list of Hubs for this Location. Currently only Hub can be installed into a Location, thought this API returns a List to allow for future expandability.
 
 **Signature:**
     ``List<Hub> getHubs()``
@@ -84,7 +84,7 @@ The list of Hubs for this location. Currently only Hub can be installed into a L
 getLatitude()
 -------------
 
-Geographical latitude of the location. Southern latitudes are negative. Requires that location services are enabled in the mobile app.
+Geographical latitude of the Location. Southern latitudes are negative. Requires that location services are enabled in the mobile app.
 
 **Signature:**
     ``BigDecimal getLatitude()``
@@ -103,7 +103,7 @@ Geographical latitude of the location. Southern latitudes are negative. Requires
 getLongitude()
 --------------
 
-Geographical longitude of the location. Western longitudes are negative. Requires that location services are enabled in the mobile app.
+Geographical longitude of the Location. Western longitudes are negative. Requires that location services are enabled in the mobile app.
 
 **Signature:**
     ``BigDecimal getLongitude()``
@@ -153,7 +153,7 @@ List of Modes for the Location.
 
 .. code-block:: groovy
 
-    log.debug "Modes for this location: ${location.modes}"
+    log.debug "Modes for this Location: ${location.modes}"
 
 ----
 
@@ -172,7 +172,7 @@ The name of the Location, as assigned by the user.
 
 .. code-block:: groovy
 
-    log.debug "The name of this location is: ${location.name}"
+    log.debug "The name of this Location is: ${location.name}"
 
 ----
 
@@ -181,7 +181,7 @@ The name of the Location, as assigned by the user.
 setMode()
 ---------
 
-Set the mode for this location.
+Set the mode for this Location.
 
 **Signature:**
     ``void setMode(String mode)``
@@ -192,7 +192,7 @@ Set the mode for this location.
 
 .. warning::
 
-    ``setMode()`` will raise an error if the specified mode does not exist for the location. You should verify the mode exists as in the example below.
+    ``setMode()`` will raise an error if the specified mode does not exist for the Location. You should verify the mode exists as in the example below.
 
 **Example:**
 
@@ -208,20 +208,20 @@ Set the mode for this location.
 getTemperatureScale()
 ---------------------
 
-The temperature scale ("F" for fahrenheit, "C" for celsius) for this location.
+The temperature scale ("F" for fahrenheit, "C" for celsius) for this Location.
 
 **Signature:**
     ``String getTemperatureScale()``
 
 **Returns:**
-    `String`_ - the temperature scale set for this location. Either "F" for fahrenheit or "C" for celsius.
+    `String`_ - the temperature scale set for this Location. Either "F" for fahrenheit or "C" for celsius.
 
 **Example:**
 
 .. code-block:: groovy
 
     def tempScale = location.temperatureScale
-    log.debug "Temperature scale for this location is $tempScale"
+    log.debug "Temperature scale for this Location is $tempScale"
 
 ----
 
@@ -240,7 +240,7 @@ The time zone for the Location. Requires that location services are enabled in t
 
 .. code-block:: groovy
 
-    log.debug "The time zone for this location is: ${location.timeZone}"
+    log.debug "The time zone for this Location is: ${location.timeZone}"
 
 ----
 
@@ -259,7 +259,7 @@ The ZIP code for the Location, if in the USA. Requires that location services be
 
 .. code-block:: groovy
 
-    log.debug "The zip code for this location: ${location.zipCode}"
+    log.debug "The zip code for this Location: ${location.zipCode}"
 
 
 .. _BigDecimal: http://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.html

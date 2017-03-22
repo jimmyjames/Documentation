@@ -11,7 +11,7 @@ SmartThings provides custom Z-Wave command objects that represent the standard c
 Parsing Events
 --------------
 
-When events from Z-Wave devices are passed into your Device hHandler's parse method, they are in an encoded string format.
+When Events from Z-Wave devices are passed into your Device hHandler's parse method, they are in an encoded string format.
 The first thing your parse method should do is call ``zwave.parse`` on the description string to convert it to a Z-Wave command object.
 The object's class is one of the subclasses of ``physicalgraph.zwave.Command`` that can be found in the `Z-Wave Command
 Reference <https://graph.api.smartthings.com/ide/doc/zwave-utils.html>`__.
@@ -67,7 +67,7 @@ commands you intend to handle:
         return createEvent(descriptionText: "${device.displayName}: ${cmd}")
     }
 
-Remember that when you use ``createEvent()`` to build an event, the resulting map must be returned from ``parse()`` for the event to be sent.
+Remember that when you use ``createEvent()`` to build an Event, the resulting map must be returned from ``parse()`` for the Event to be sent.
 For information about ``createEvent``, see the `Creating Events <parse.html#creating-events>`__ section.
 
 As the `Z-Wave Command Reference <https://graph.api.smartthings.com/ide/doc/zwave-utils.html>`__ shows, many Z-Wave command classes have multiple versions.
@@ -119,15 +119,15 @@ This example returns the output of ``delayBetween``, and thus will send a BasicS
 
 ----
 
-Sending commands in response to events
+Sending commands in response to Events
 --------------------------------------
 
 In some situations, instead of sending a command in response to a request by the user, you want to automatically send a command to the device on receipt of a Z-Wave command.
 
 If you return a list from the parse method, each item of the list will be evaluated separately.
-Items that are maps will be processed as events as usual and sent to subscribed SmartApps and mobile clients.
-Returned items that are HubAction items, however, will be sent via the hub to the device, in much the same way as formatted commands returned from command methods.
-The easiest way to send a command to a device in response to an event is the ``response()`` helper, which takes a Z-Wave command or encoded string and supplies a HubAction:
+Items that are maps will be processed as Events as usual and sent to subscribed SmartApps and mobile clients.
+Returned items that are HubAction items, however, will be sent via the Hub to the device, in much the same way as formatted commands returned from command methods.
+The easiest way to send a command to a device in response to an Event is the ``response()`` helper, which takes a Z-Wave command or encoded string and supplies a HubAction:
 
 .. code-block:: groovy
 
@@ -141,6 +141,6 @@ The easiest way to send a command to a device in response to an event is the ``r
         [event, response(cmds)] // return a list containing the event and the result of response()
     }
 
-The above example uses the ``response()`` helper to send Z-Wave commands and delay commands to the device whenever a WakeUpNotification event is received.
-The reception of this event that indicates that the sleepy device is temporarily listening for commands.
-In addition to creating a hidden event, the handler will send a BatteryGet request, wait 1.2 seconds for a response, and then issue a WakeUpNoMoreInformation command to tell the device it can go back to sleep to save battery.
+The above example uses the ``response()`` helper to send Z-Wave commands and delay commands to the device whenever a WakeUpNotification Event is received.
+The reception of this Event that indicates that the sleepy device is temporarily listening for commands.
+In addition to creating a hidden Event, the handler will send a BatteryGet request, wait 1.2 seconds for a response, and then issue a WakeUpNoMoreInformation command to tell the device it can go back to sleep to save battery.

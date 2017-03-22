@@ -112,7 +112,7 @@ we can see are messages like this:
 
 .. figure:: ../img/ide/log_example1.png
 
-It is easy to see that the *debug* message came from the ``updated()`` method
+It is easy to see that the *debug* message came from the ``updated()`` method.
 
 .. code-block:: groovy
 

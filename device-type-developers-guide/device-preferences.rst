@@ -105,7 +105,7 @@ Just as with SmartApp preferences, the name of the preferences input is a refere
 
 .. note::
 
-    Preference values are only available to the Device Handler when it is executing in response to events or commands.
+    Preference values are only available to the Device Handler when it is executing in response to Events or commands.
     It is not possible to use preference values in other ``metadata`` definitions, including ``tiles()``.
 
 ----
@@ -147,7 +147,7 @@ Example
         log.debug "time: $time"
         log.debug "options: $options"
     }
-    
+
 ----
 
 Additional notes

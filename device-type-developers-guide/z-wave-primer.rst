@@ -100,7 +100,7 @@ Association
 
 The `Association <https://graph.api.smartthings.com/ide/doc/zwave-utils.html#associationV2>`__ command class is used to tell a Z-Wave device that it should send updates to another device.
 It provides the ability to add associated devices to different numbered groups that can have different meanings.
-This functionality is used in a few different ways, often detailed in the device's manual or technical documentation.
+This functionality is used in a few different ways, often detailed in the device's manual or technical documentation:
 
 -  Some sensors will send reports of the events they detect only to
    devices that have been added to a specific association group.
@@ -114,7 +114,7 @@ This functionality is used in a few different ways, often detailed in the device
 -  Most door locks will send status updates to associated devices when
    they are locked or unlocked manually.
 
-The SmartThings hub automatically adds itself to association group 1 when a device that supports association joins the network.
+The SmartThings Hub automatically adds itself to association group 1 when a device that supports association joins the network.
 If this is inappropriate for your Device Handler, your Device Handler can use `AssociationRemove <https://graph.api.smartthings.com/ide/doc/zwave-utils.html#associationV2/associationRemove>`__ to undo it.
 To associate to a group higher than 1, the Device Handler can send `AssociationSet <https://graph.api.smartthings.com/ide/doc/zwave-utils.html#associationV2/associationSet>`__.
-The hub's node ID is provided to Device Handler code in the variable ``zwaveHubNodeId``.
+The Hub's node ID is provided to Device Handler code in the variable ``zwaveHubNodeId``.

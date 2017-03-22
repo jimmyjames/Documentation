@@ -114,9 +114,9 @@ Configure reporting instructs a device to notify us when an attribute changes an
     }
 
 In this example (using the "CentraLite Switch" Device Handler), the bind command is sent to the device using its Network ID which can be determined using ``0x${device.deviceNetworkId}``.
-Then using source and destination endpoints for the device and hub (1 1), we bind to the On/Off Clusters (6) to get events from the device.
-The last part of the message contains the hub's ZigBee id which is set as the location for the device to send callback messages to.
-Note that not at all devices support binding for events.
+Then using source and destination endpoints for the device and Hub (1 1), we bind to the On/Off Clusters (6) to get Events from the device.
+The last part of the message contains the Hub's ZigBee id which is set as the Location for the device to send callback messages to.
+Note that not at all devices support binding for Events.
 
 +-------------------------------+-----------------------------+
 | Component                     | Description                 |
@@ -150,7 +150,7 @@ Best practices
 --------------
 
 - The use of 'raw ...' commands is deprecated. Instead use the documented methods on the ZigBee library. If you need to do something that requires the use of a 'raw' command let us know and we will look at adding it to the ZigBee library.
-- Do not use ``sendEvent()`` in command methods. Sending events should be handled in the ``parse`` method.
+- Do not use ``sendEvent()`` in command methods. Sending Events should be handled in the ``parse`` method.
 
 ----
 

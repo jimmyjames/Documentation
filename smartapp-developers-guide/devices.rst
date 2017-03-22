@@ -153,7 +153,7 @@ These can be used interchangeably; they all do the same thing.
 Querying event history
 ----------------------
 
-To get a list of events in reverse chronological order (newest first), use the ``events()`` method:
+To get a list of Events in reverse chronological order (newest first), use the ``events()`` method:
 
 .. code-block:: groovy
 
@@ -163,7 +163,7 @@ To get a list of events in reverse chronological order (newest first), use the `
     // use the max option to get more results
     myDevice.events(max: 30)
 
-To get a list of events in reverse chronological order (newest first) since a given date, use the ``eventsSince`` method:
+To get a list of Events in reverse chronological order (newest first) since a given date, use the ``eventsSince`` method:
 
 .. code-block:: groovy
 
@@ -173,7 +173,7 @@ To get a list of events in reverse chronological order (newest first) since a gi
     // get the most recent 20 events since yesterday
     myDevice.eventsSince(new Date() - 1, [max: 20])
 
-To get a list of events between two dates, use the ``eventsBetween`` method:
+To get a list of Events between two dates, use the ``eventsBetween`` method:
 
 .. code-block:: groovy
 

@@ -21,7 +21,7 @@ SmartThings architecture.
    :alt: Smart Things Architecture
 
 
-In the example shown above, the job of the device handler (that is implementing the "switch" capability) is to parse incoming, protocol-specific status messages from the device and turn them into normalized "events".
+In the example shown above, the job of the Device Handler (that is implementing the "switch" capability) is to parse incoming, protocol-specific status messages from the device and turn them into normalized "events".
 It is also responsible for accepting normalized commands (such as "on" and "off") and turning those into the protocol-specific commands that can be sent to the device to affect the desired action.
 
 For example, for a Z-Wave compatible on-off switch, the incoming status messages used by the device to report an "on" or "off" state are as shown below:
@@ -35,10 +35,10 @@ off				command: 2003, payload: 00
 
 Whereas the device status reported to the SmartThings platform for the device is literally just a simple "on" or "off".
 
-Similarly, when a SmartApp or the mobile app invoked an "on" or "off" command for a switch device, the command that is sent to the device handler is just that simple: "on" or "off".
+Similarly, when a SmartApp or the mobile app invoked an "on" or "off" command for a switch device, the command that is sent to the Device Handler is just that simple: "on" or "off".
 The Device Handler must turn that simple command into a protocol-specific message that can be sent down to the device to affect the desired action.
 
-The table below shows the actual Z-Wave commands that are sent to a Z-Wave switch by the device handler.
+The table below shows the actual Z-Wave commands that are sent to a Z-Wave switch by the Device Handler.
 
 ==============	=================================
 Device Command	Protocol-Specific Command Message
@@ -92,7 +92,7 @@ The above example illustrates how a SmartApp requests a device that supports the
 The :ref:`capabilities_taxonomy` outlines all the supported capabilities.
 
 Device Handlers typically support more than one capability.
-A device handler for a Hue bulb would support the "Switch" capability as well as the "Color Control" capability.
+A Device Handler for a Hue bulb would support the "Switch" capability as well as the "Color Control" capability.
 This allows SmartApps to be written in a very flexible manner.
 
 Commands and attributes deserve their own discussion - let's dive in.
@@ -104,7 +104,7 @@ Commands are the actions that your device can do.
 For example, a switch can turn on or off, a lock can lock or unlock, and a valve can open or close.
 In the example above, we issue the "on" and "off" command on the switch by invoking the ``on()`` or ``off()`` methods.
 
-Commands are implemented as methods on the device handler.
+Commands are implemented as methods on the Device Handler.
 When a device supports a capability, it is responsible for implementing all the supported command methods.
 
 Attributes
@@ -115,7 +115,7 @@ For example, the switch capability defines the attribute "switch", with possible
 
 In the example above, we get the value of the "switch" attribute by using the "current<attributeName>" property (``currentSwitch``).
 
-Attribute values are set by creating events where the attribute name is the name of the event, and the attribute value is the value of the event.
+Attribute values are set by creating Events where the attribute name is the name of the Event, and the attribute value is the value of the Event.
 This is discussed more in the `Parse and Events documentation <parse.html#parse-events-and-attributes>`__
 
 Like commands, when a device supports a capability, it is responsible for ensuring that all the capability's attributes are implemented.
@@ -130,7 +130,7 @@ These capabilities are "marker" or "tagging" capabilities (if you're familiar wi
 The "Actuator" capability defines that a device has commands.
 The "Sensor" capability defines that a device has attributes.
 
-If you are writing a device handler, it is a best practice to support the "Actuator" capability if your device has commands, and the "Sensor" capability if it has attributes.
+If you are writing a Device Handler, it is a best practice to support the "Actuator" capability if your device has commands, and the "Sensor" capability if it has attributes.
 This is why you'll see most Device Handlers supporting one of, or both, of these capabilities.
 
 The reason for this is convention and forward-looking abilities - it can allow the SmartThings platform to interact with a variety of devices if they *do* something ("Actuator"), or if they report something ("Sensor").
@@ -142,7 +142,7 @@ Protocols
 
 SmartThings currently supports both the `Z-Wave <http://en.wikipedia.org/wiki/Z-Wave>`__ and `ZigBee <http://en.wikipedia.org/wiki/ZigBee>`__ wireless protocols.
 
-Since the device handler is responsible for communicating between the device and the SmartThings platform, it is usually necessary to understand and communicate in whatever protocol the device supports.
+Since the Device Handler is responsible for communicating between the device and the SmartThings platform, it is usually necessary to understand and communicate in whatever protocol the device supports.
 This guide will discuss both Z-Wave and ZigBee protocols at a high level.
 
 ----
@@ -150,8 +150,8 @@ This guide will discuss both Z-Wave and ZigBee protocols at a high level.
 Execution location
 ------------------
 
-With the original SmartThings hub, all Device handlers execute in the SmartThings cloud.
-With the new Samsung SmartThings hub, certain Device handlers may run locally on the hub or in the SmartThings cloud.
+With the original SmartThings Hub, all Device handlers execute in the SmartThings cloud.
+With the new Samsung SmartThings Hub, certain Device handlers may run locally on the Hub or in the SmartThings cloud.
 Execution location varies depending on a variety of factors, and is managed by the SmartThings internal team.
 
 As a SmartThings developer, you should write your Device Handlers to satisfy their specific use cases, regardless of where the handler executes.

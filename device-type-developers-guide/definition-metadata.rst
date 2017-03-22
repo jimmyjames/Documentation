@@ -30,7 +30,7 @@ The definition method takes a map of parameters, and a closure.
 The supported parameters are:
 
 *name*
-    The name of the Device Handler
+    The name of the Device Handler.
 *namespace*
     The namespace for this Device Handler. This should be your github user name. This is used when looking up Device Handlers by name to ensure the correct one is found, even if someone else has used the same name.
 *author*
@@ -64,10 +64,10 @@ If you need to define a custom attribute for your Device Handler, call the ``att
 **attribute(String attributeName, String attributeType, List possibleValues = null)**
 
 *attributeName*
-    Name of the attribute
+    Name of the attribute.
 
 *attributeType*
-    Type of the attribute. Available types are "string", "number", and "enum"
+    Type of the attribute. Available types are "string", "number", and "enum".
 
 *possibleValues*
     Optional. The possible values for this attribute. Only valid with the "enum" attributeType.
@@ -121,12 +121,12 @@ To define a custom command for your Device Handler, call the ``command()`` metho
 Fingerprinting
 --------------
 
-When a ZigBee or Z-Wave device is added to the SmartThings hub, we need a way to determine which device type to assign it.
+When a ZigBee or Z-Wave device is added to the SmartThings Hub, we need a way to determine which device type to assign it.
 This process is known as a "join" process, or "fingerprinting".
 
 Device Handlers define "fingerprints" to specify which devices or what kinds of devices they support.
 Then, when a device is added, its join information is compared to all fingerprints in the default handlers and your
-self-published handlers to determine which type of device it is..
+self-published handlers to determine which type of device it is.
 
 The fingerprinting process differs between ZigBee and Z-Wave devices.
 
@@ -135,7 +135,7 @@ The fingerprinting process differs between ZigBee and Z-Wave devices.
 ZigBee fingerprinting
 ^^^^^^^^^^^^^^^^^^^^^
 
-For ZigBee devices, the main profileIds you will need to use are
+For ZigBee devices, the main profileIds you will need to use are:
 
 -  HA: Home Automation (0104)
 -  SEP: Smart Energy Profile

@@ -24,10 +24,10 @@ Report battery level every 10 minutes to 6 hours if it changes value by 1
 
 The 4 Main types of ZigBee Messages
 
--  zigbee.command - A ZigBee command for a given cluster
--  zigbee.readAttribute - A ZigBee Read Attribute requesting the value of an attribute from a cluster
--  zigbee.writeAttribute - A ZigBee Write Attribute writing a value to the attribute of a cluster
--  zigbee.configureReporting - A ZigBee Configure Report that configures a cluster attribute to report changes of a given amount within a certain time period
+-  zigbee.command - A ZigBee command for a given cluster.
+-  zigbee.readAttribute - A ZigBee Read Attribute requesting the value of an attribute from a cluster.
+-  zigbee.writeAttribute - A ZigBee Write Attribute writing a value to the attribute of a cluster.
+-  zigbee.configureReporting - A ZigBee Configure Report that configures a cluster attribute to report changes of a given amount within a certain time period.
 
 ----
 
@@ -143,8 +143,8 @@ Device discovery
 
 After a ZigBee device joins the network it must be queried in order to select
 the correct Device Handler. After a device joins (or rejoins) the network
-the hub will collect the simple descriptor, manufacturer, model and application
-version for each endpoint without any interaction with the cloud. The hub will
+the Hub will collect the simple descriptor, manufacturer, model and application
+version for each endpoint without any interaction with the cloud. The Hub will
 automatically resend any messages that the device does not respond to in a
 timely manner. Once all the information has been obtained it is sent to the
 cloud in the `zbjoin` message. This message is visible in Hub Events.

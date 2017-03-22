@@ -3,24 +3,24 @@ Sunset and Sunrise
 ==================
 
 SmartApps often need to take some action at or around the local sunrise or sunset time.
-The SmartThings cloud provides access to this type of rich data, and even generates events for the location (if the geofence is set).
+The SmartThings cloud provides access to this type of rich data, and even generates Events for the Location (if the geofence is set).
 We can also get access to sunrise and sunset times using a ZIP code.
 
 ----
 
-Sunrise and sunset events
+Sunrise and sunset Events
 -------------------------
 
-Using the sunrise and sunset events is the preferred (and simpler) way to take some action at (or around) sunrise or sunset.
-It is required that the location has set up a geofence.
+Using the sunrise and sunset Events is the preferred (and simpler) way to take some action at (or around) sunrise or sunset.
+It is required that the Location has set up a geofence.
 
 Taking action at sunrise or sunset
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you wish to have certain actions take place at sunrise or sunset, you can use the *sunrise* and *sunset* events.
-These events will be fired at (gasp!) sunrise and sunset times for the user's location.
+If you wish to have certain actions take place at sunrise or sunset, you can use the *sunrise* and *sunset* Events.
+These Events will be fired at (gasp!) sunrise and sunset times for the user's Location.
 
-You can subscribe to the events by passing in the location (automatically injected into every SmartApp), the event ("sunrise" or "sunset"), and your handler method:
+You can subscribe to the Events by passing in the Location (automatically injected into every SmartApp), the event ("sunrise" or "sunset"), and your handler method:
 
 .. code-block:: groovy
 
@@ -42,13 +42,13 @@ You can subscribe to the events by passing in the location (automatically inject
 Taking action before or after
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you want to take some action a certain amount of time before or after sunset or sunrise, you can use the "sunriseTime" and "sunsetTime" events.
-These events are fired every day around the time of sunset or sunrise, and their value is the *next* sunrise or sunset.
+If you want to take some action a certain amount of time before or after sunset or sunrise, you can use the "sunriseTime" and "sunsetTime" Events.
+These Events are fired every day around the time of sunset or sunrise, and their value is the *next* sunrise or sunset.
 You can use this information to calculate an offset so that some action happens a certain amount of time before or after sunrise or sunset.
 
-To use, you can subscribe to the events by passing the location, the event ("sunriseTime" or "sunsetTime"), and the handler method.
+To use, you can subscribe to the Events by passing the Location, the event ("sunriseTime" or "sunsetTime"), and the handler method.
 
-Consider the following example that turns on lights a specified number of minutes before sunset for the user's location:
+Consider the following example that turns on lights a specified number of minutes before sunset for the user's Location:
 
 .. code-block:: groovy
 
@@ -98,14 +98,14 @@ Consider the following example that turns on lights a specified number of minute
         switches.on()
     }
 
-Because the ``sunriseTime`` and ``sunsetTime`` events are fired every day for the *next* sunrise/sunset event, we use ``runOnce()`` to schedule one execution.
-Sunrise and sunset times change, so the next time the events are fired, we will create another scheduled execution using the ``runOnce()`` method for that time.
+Because the ``sunriseTime`` and ``sunsetTime`` Events are fired every day for the *next* sunrise/sunset event, we use ``runOnce()`` to schedule one execution.
+Sunrise and sunset times change, so the next time the Events are fired, we will create another scheduled execution using the ``runOnce()`` method for that time.
 
-We want it to run today too, so we use the sunsetTime value of the user's location to schedule the lights to turn on today.
+We want it to run today too, so we use the sunsetTime value of the user's Location to schedule the lights to turn on today.
 
 .. note::
 
-    If a user changes their location's geofence, it could change the sunrise and sunset times. You can listen for position change events and reschedule accordingly: ``subscribe(location, "position", locationPositionChangeHandler)``
+    If a user changes their Location's geofence, it could change the sunrise and sunset times. You can listen for position change Events and reschedule accordingly: ``subscribe(location, "position", locationPositionChangeHandler)``
 
 ----
 
@@ -113,7 +113,7 @@ Looking up sunrise or sunset directly
 -------------------------------------
 
 SmartApps can use the provided :ref:`smartapp_get_sunrise_and_sunset` method to get the sunrise and sunset time.
-You can pass in a ZIP code, which can be useful if the user has not set a geofence for their location.
+You can pass in a ZIP code, which can be useful if the user has not set a geofence for their Location.
 
 The return value is a map in the following form:
 
@@ -129,7 +129,7 @@ The return value is a map in the following form:
         log.debug "sunrise with no parameters: ${noParams.sunrise}"
         log.debug "sunset with no parameters: ${noParams.sunset}"
         log.debug "sunrise and sunset in 90210: $beverlyHills"
-        log.debug "thirty minutes before sunset at current location: ${thirtyMinsBeforeSunset.sunset}"
+        log.debug "thirty minutes before sunset at current Location: ${thirtyMinsBeforeSunset.sunset}"
 
     }
 
@@ -138,7 +138,7 @@ The return value is a map in the following form:
 Polling for sunrise or sunset
 -----------------------------
 
-You may have seen some SmartApp code that runs a task sometime after midnight (usually in a method called "astroCheck") and calls a third party weather API to get the sunrise/sunset times. This is strongly discouraged now; it is much more efficient to use location events as they do not rely on third party services.
+You may have seen some SmartApp code that runs a task sometime after midnight (usually in a method called "astroCheck") and calls a third party weather API to get the sunrise/sunset times. This is strongly discouraged now; it is much more efficient to use Location Events as they do not rely on third party services.
 
 ----
 

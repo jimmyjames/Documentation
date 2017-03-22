@@ -22,7 +22,7 @@ At the end of this tutorial, you will know:
 - How to subscribe to changes in a device's state.
 - How to control devices.
 - How to schedule a SmartApp to execute in the future.
-- How to use the simulator to test your SmartApp.
+- How to use the Simulator to test your SmartApp.
 - How to publish your SmartApp and install it on your mobile phone.
 - :strike:`How to achieve world domination, without even trying.`
 
@@ -46,8 +46,8 @@ Next, navigate to *My Locations* page to see the Locations you created.
 .. image:: ../img/getting-started/first-smartapp/my-locations.png
    :width: 70%
 
-Normally you will see just one Location where you installed your Hub. 
-Click on the Location name appearing in the far left column (i.e., the *Name* column). You may need to log in again with your SmartThings userid and password. 
+Normally you will see just one Location where you installed your Hub.
+Click on the Location name appearing in the far left column (i.e., the *Name* column). You may need to log in again with your SmartThings userid and password.
 
 .. warning::
 
@@ -115,7 +115,7 @@ In the next section we will dive into using the editor to begin writing your fir
 Editor
 ------
 
-Once you've created your SmartApp, you'll be taken to the editor and simulator.
+Once you've created your SmartApp, you'll be taken to the editor and Simulator.
 Before we look at the code, it's worth becoming familiar with some of the basic features.
 
 Above the code window, there are five buttons:
@@ -136,7 +136,7 @@ App Settings
     This takes you back to the form that you created this SmartApp from, where you can view the values entered when you created the SmartApp, as well as edit certain properties about the SmartApp.
 
 Simulator
-    This button toggles the display of the online simulator. We'll discuss the simulator in further detail next.
+    This button toggles the display of the online Simulator. We'll discuss the Simulator in further detail next.
 
 .. tip::
 
@@ -148,13 +148,13 @@ Simulator
 Simulator
 ---------
 
-On the right side of the IDE is the simulator.
+On the right side of the IDE is the Simulator.
 This is where you can install your SmartApp to test it, either using physical devices, or simulated devices.
 We will walk you through installing the SmartApp using this later in the tutorial.
 
 .. image:: ../img/getting-started/first-smartapp/simulator-1.png
 
-If you don't have a location yet, the simulator will show a message instructing you to create one. Follow the steps there to create a location.
+If you don't have a Location yet, the Simulator will show a message instructing you to create one. Follow the steps there to create a Location.
 
 ----
 
@@ -163,7 +163,7 @@ SmartApp basics
 
 The first thing to know is that there are a few different types of SmartApps.
 
-Some SmartApps, called *Service Manager SmartApps*, manage the connection of a cloud-connected or LAN-connected device.
+Some SmartApps, called *Service Manager SmartApps*, manage the connection of a Cloud-connected or LAN-connected device.
 
 *Solution Module SmartApps* provide a dashboard-like user interface in the SmartThings mobile application [1]_.
 
@@ -174,10 +174,10 @@ This tutorial will walk you through building a simple Event-Handler SmartApp, bu
 
 Regardless of what type of SmartApp you are writing, there are a few core principles that apply to all SmartApps:
 
-- SmartApps are not continuously running. They are executed in response to various events or schedules.
-- SmartApps are installed into a user's Location, and a user may install multiple instances of a SmartApp into the same location.
+- SmartApps are not continuously running. They are executed in response to various Events or schedules.
+- SmartApps are installed into a user's Location, and a user may install multiple instances of a SmartApp into the same Location.
 - With the exception of Solution Module SmartApps, SmartApps do not have any user interface, except for the preferences page that allows the user to configure the SmartApp (more on this in a bit).
-- The code that defines a SmartApp does not run on the user's mobile phone. SmartApps may execute in the SmartThings cloud, or on the hub. The mobile application uses some information from the SmartApp to drive the experience in the app.
+- The code that defines a SmartApp does not run on the user's mobile phone. SmartApps may execute in the SmartThings cloud, or on the Hub. The mobile application uses some information from the SmartApp to drive the experience in the app.
 
 In your editor, you can see that there is some code already written for you.
 This defines the basic structure and skeleton for your SmartApp.
@@ -302,7 +302,7 @@ This specifies that the user must select a device in order to install the SmartA
     SmartApps cannot control devices which the user did not select, and this is by design.
 
 To summarize, when the user selects and installs the SmartApp from within SmartThings mobile app, they will be prompted to select a device that supports the switch capability.
-The SmartThings mobile app will provide them with a list of devices for this user's location that support the switch capability.
+The SmartThings mobile app will provide them with a list of devices for this user's Location that support the switch capability.
 The device chosen will then be identified within the SmartApp as ``theswitch``.
 
 We covered a lot of information for such a small amount of code because it's important that you understand the importance of ``preferences`` and capabilities.
@@ -319,7 +319,7 @@ Events and callback methods
 Our SmartApp needs to turn a switch on when motion is detected.
 To turn the switch on, we first need to know when motion is detected.
 
-SmartApps can subscribe to various events so that when that event happens, the SmartApp will be notified.
+SmartApps can subscribe to various Events so that when that Event happens, the SmartApp will be notified.
 For our SmartApp we do this by using the :ref:`smartapp_subscribe` method.
 
 In your editor, below the ``preferences``, you'll see some methods already defined:
@@ -355,7 +355,7 @@ At this point, the ``updated()`` method is called.
 In our ``updated()`` method, notice that the first thing we do (aside from some logging, which is discussed shortly), is to call a method called :ref:`smartapp_unsubscribe`.
 This method is provided by the SmartThings platform, and simply removes any existing subscriptions this SmartApp has created.
 This is important, since the user has just changed their preferences for this SmartApp.
-If we didn't do this, we might still be subscribed to events for devices that the user has removed from the SmartApp.
+If we didn't do this, we might still be subscribed to Events for devices that the user has removed from the SmartApp.
 
 Also, note that both ``installed()`` and ``updated()`` call a method named ``initialize()``.
 Since both ``installed()`` and ``updated()`` typically both create subscriptions or schedules, we can reduce code duplication by using a helper method.
@@ -368,7 +368,7 @@ Finally, note that we reference a variable named ``settings`` in our log stateme
 Remember the preference inputs we defined? Every preference input gets stored in a read-only map called ``settings``.
 We can get the values of the various inputs by indexing into the ``settings`` map with the name of the input (e.g., ``settings.theswitch``).
 
-Now that you understand the purpose and importance of the ``installed()`` and ``updated()`` methods, we need to subscribe to any events that we are interested in.
+Now that you understand the purpose and importance of the ``installed()`` and ``updated()`` methods, we need to subscribe to any Events that we are interested in.
 In our case, we need to know when the motion sensor reports that it detected motion.
 
 In the editor, update the ``initialize()`` method with this:
@@ -379,7 +379,7 @@ In the editor, update the ``initialize()`` method with this:
         subscribe(themotion, "motion.active", motionDetectedHandler)
     }
 
-The ``subscribe()`` method accepts three parameters: The thing we want to subscribe to (``themotion``), the specific attribute and its state we care about (``"motion.active"``), and the name of the method (``motionDetectedHandler``) that should be called when this event happens.
+The ``subscribe()`` method accepts three parameters: The thing we want to subscribe to (``themotion``), the specific attribute and its state we care about (``"motion.active"``), and the name of the method (``motionDetectedHandler``) that should be called when this Event happens.
 
 How do you know what attribute and what state we can subscribe to?
 We refer to the :ref:`capabilities_taxonomy` to find out the available attributes the capability supports.
@@ -406,7 +406,7 @@ We'll fill in the real meat of the method later.
     }
 
 
-Every event handler method must accept a single parameter, which is an :ref:`event_ref` object that contains information about the event, such as the event's value, time it occurred, and other information.
+Every event handler method must accept a single parameter, which is an :ref:`event_ref` object that contains information about the Event, such as the Event's value, time it occurred, and other information.
 
 Since we subscribed to the ``"active"`` state of the motion sensor, we know that our event handler method will only be called when the motion sensor changes from inactive to active.
 
@@ -446,10 +446,10 @@ Click *Simulator* and you will see a Location section on the right-hand side:
 .. image:: ../img/getting-started/first-smartapp/ide-location.png
    :width: 35%
 
-SmartApps are installed to a location in your SmartThings account.
-By clicking the *Set Location* button, you are telling the simulator that you want to install this SmartApp into the chosen location.
+SmartApps are installed to a Location in your SmartThings account.
+By clicking the *Set Location* button, you are telling the Simulator that you want to install this SmartApp into the chosen Location.
 
-After you have selected the location, you will see the *Preferences* section appear:
+After you have selected the Location, you will see the *Preferences* section appear:
 
 .. image:: ../img/getting-started/first-smartapp/ide-devices.png
    :width: 35%
@@ -460,9 +460,9 @@ These two inputs directly correspond to what we have in the ``preferences`` sect
 SmartThings will provide a "Virtual Device" when it can.
 When you do not have a physical device to choose from this is a very useful option.
 By default the virtual devices will be selected.
-Click the *Install* button, and the SmartApp will be installed into the location you selected above.
+Click the *Install* button, and the SmartApp will be installed into the Location you selected above.
 
-Now we see the simulator section appear:
+Now we see the Simulator section appear:
 
 .. image:: ../img/getting-started/first-smartapp/ide-simulator-unactuated.png
    :width: 35%
@@ -480,8 +480,8 @@ You should see the switch should go on:
 
 .. warning::
 
-   The behavior of the simulator is known to have inconsistencies.
-   If you are unable to see the correct device status, or unable to actuate the device, you may just be experiencing issues with the simulator.
+   The behavior of the Simulator is known to have inconsistencies.
+   If you are unable to see the correct device status, or unable to actuate the device, you may just be experiencing issues with the Simulator.
 
    In that case, just skip ahead to the next section to install the SmartApp via the SmartThings mobile app.
 
@@ -492,7 +492,7 @@ You should see the switch should go on:
 Publishing and installing
 -------------------------
 
-We can now see our first SmartApp in action in the simulator.
+We can now see our first SmartApp in action in the Simulator.
 The next question is how can we use this SmartApp on our mobile devices in the SmartThings app?
 To accomplish this, we need to publish the SmartApp.
 
@@ -508,7 +508,7 @@ This means that the SmartApp will only be published for your account and not be 
     If you have a SmartApp that you do want to publish publicly, you can do that via the "My Publication Requests" link at the top of the page.
     For more information on this, see :ref:`publishing-for-distribution`.
 
-Now you should be able to see your SmartApp in the mobile app if you browse to the *My Apps* category of the marketplace:
+Now you should be able to see your SmartApp in the mobile app if you browse to the *My Apps* category of the Marketplace:
 
 ==================================================================   =====================================================================
 .. image:: ../img/getting-started/first-smartapp/mobile-myapps.png   .. image:: ../img/getting-started/first-smartapp/mobile-myfirstsmartapp.png
@@ -528,12 +528,12 @@ If you have devices that support the requested capability, you'll see an option 
 You'll also see that some other inputs were added for us.
 For single page preferences, every SmartApp receives an input to allow the user to assign a name of their choosing for this installation.
 The name that they choose will then be displayed as the name of the SmartApp.
-Also by default, the user can select to only execute this SmartApp when the location is in certain :ref:`modes`.
+Also by default, the user can select to only execute this SmartApp when the Location is in certain :ref:`modes`.
 It also includes the ability for the user to uninstall this SmartApp.
 
 .. note::
 
-    A SmartApp may be installed into a location multiple times.
+    A SmartApp may be installed into a Location multiple times.
     For example, a person may have multiple rooms for which they want a light to come on when motion is detected.
 
     Even though the code is the same, each installation is unique, and must also be removed by the user individually.
@@ -555,7 +555,7 @@ Recall that our subscription looks like this:
 
     subscribe(themotion, "motion.active", motionDetectedHandler)
 
-We will also subscribe the ``"motion.inactive"`` event in a similar way.
+We will also subscribe the ``"motion.inactive"`` Event in a similar way.
 Add this subscription to the ``initialize()`` method:
 
 .. code-block:: groovy
@@ -568,7 +568,7 @@ Add this subscription to the ``initialize()`` method:
     This would then call the specified handler method when there is any reported change to the ``"motion"`` attribute.
     For attributes that don't have a discrete set of possible values (for example, temperature readings), this is how we subscribe to changes for that attribute.
 
-    We can then get the value of the event in the event handler by looking at the ``value`` of the passed-in Event.
+    We can then get the value of the Event in the event handler by looking at the ``value`` of the passed-in Event.
     If we were to do this in our SmartApp, it would look like this:
 
     .. code-block:: groovy
@@ -596,7 +596,7 @@ We need to define the ``motionStoppedHandler`` event handler method - add this m
         theswitch.off()
     }
 
-Save your SmartApp in the IDE, publish it again for yourself, and then install it again in the simulator.
+Save your SmartApp in the IDE, publish it again for yourself, and then install it again in the Simulator.
 Now when you change the motion to "inactive", the switch will turn off.
 
 ----
@@ -813,7 +813,7 @@ The Device Handler will have methods defined in it that support that device.
 So in our case, the Device Handler for the specific switch being used will have both ``on()`` and ``off()`` methods defined.
 The actual implementation of these methods vary depending upon the underlying device protocols, but are typically low-level protocol-specific commands to send to the device (like Z-Wave or ZigBee).
 
-So, when ``switch.on()`` is executed from your SmartApp, the SmartThings platform will look up the Device Handler associated with the device and call its ``on()`` method, which will in turn send the protocol and device-specific command through the hub to the device.
+So, when ``switch.on()`` is executed from your SmartApp, the SmartThings platform will look up the Device Handler associated with the device and call its ``on()`` method, which will in turn send the protocol and device-specific command through the Hub to the device.
 Device Handlers are discussed in the :ref:`device_type_dev_guide` guide.
 
 ----
@@ -825,8 +825,8 @@ In this tutorial, you learned how to write a SmartApp. To do this, we:
 
 - Created a new SmartApp using the web-based IDE.
 - Defined the ``preferences`` that specifies what input we need from the user.
-- Subscribed to device events and controlled a device. We used the :ref:`capabilities_taxonomy` to determine what attributes and commands a capability supports.
-- Used the web-based simulator to test our SmartApp with virtual devices.
+- Subscribed to device Events and controlled a device. We used the :ref:`capabilities_taxonomy` to determine what attributes and commands a capability supports.
+- Used the web-based Simulator to test our SmartApp with virtual devices.
 - Published the SmartApp for yourself and installed it on your mobile phone.
 - Extended our SmartApp by allowing a user to enter the number of minutes to wait before turning the switch off, and implemented this using the ``runIn()`` method.
 

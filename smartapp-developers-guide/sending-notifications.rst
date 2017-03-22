@@ -5,7 +5,7 @@ Sending Notifications
 =====================
 
 SmartApps can send notifications, either as a push notification in the mobile app, or as SMS messages to designated recipients.
-This allows SmartApps to notify people when important events happen in their home.
+This allows SmartApps to notify people when important Events happen in their home.
 
 ----
 
@@ -17,7 +17,7 @@ Send notifications with Contact Book
 .. note::
 
     The Contact Book feature is not currently enabled for users.
-    However, using the Contact Book APIs (with the fall-back to non-contact book features), will future-proof your SmartApp for when contact book is enabled.
+    However, using the Contact Book APIs (with the fall-back to non-Contact Book features), will future-proof your SmartApp for when Contact Book is enabled.
 
     See the :ref:`disabled_contact_book` section for more information.
 
@@ -103,7 +103,7 @@ You can check the ``contactBookEnabled`` property on ``location`` to find out if
 
 .. code-block:: groovy
 
-    // check that contact book is enabled and recipients selected
+    // check that Contact Book is enabled and recipients selected
     if (location.contactBookEnabled && recipients) {
         sendNotificationToContacts("your message here", recipients)
     } else if (phone) { // check that the user did select a phone number
@@ -160,10 +160,10 @@ If the user has no contacts, they can enter in a number to receive an SMS notifi
 
         def message = "The ${door.displayName} is open!"
         if (location.contactBookEnabled && recipients) {
-            log.debug "contact book enabled!"
+            log.debug "Contact Book enabled!"
             sendNotificationToContacts(message, recipients)
         } else {
-            log.debug "contact book not enabled"
+            log.debug "Contact Book not enabled"
             if (phone) {
                 sendSms(phone, message)
             }
@@ -316,7 +316,7 @@ Examples
 
 Several examples exist in the SmartApp templates that send notifications. Here are a few you can look at to learn more:
 
-- `Notify Me When <https://github.com/SmartThingsCommunity/SmartThingsPublic/blob/master/smartapps/smartthings/notify-me-when.src/notify-me-when.groovy>`__ sends push or text messages in response to a variety of events.
+- `Notify Me When <https://github.com/SmartThingsCommunity/SmartThingsPublic/blob/master/smartapps/smartthings/notify-me-when.src/notify-me-when.groovy>`__ sends push or text messages in response to a variety of Events.
 - `Presence Change Push <https://github.com/SmartThingsCommunity/SmartThingsPublic/blob/master/smartapps/smartthings/presence-change-push.src/presence-change-push.groovy>`__ and `Presence Change Text <https://github.com/SmartThingsCommunity/SmartThingsPublic/blob/master/smartapps/smartthings/presence-change-text.src/presence-change-text.groovy>`__ send notifications when people arrive or depart.
 
 ----

@@ -8,7 +8,7 @@ GitHub Integration
     Before proceeding to enable GitHub integration in the IDE, be aware that:
 
     1. GitHub IDE integration is not supported outside the US.
-    2. GitHub IDE integration may negatively impact the performance of the IDE. 
+    2. GitHub IDE integration may negatively impact the performance of the IDE.
 
 As an open platform, we recognize that giving our community developers access to the repository housing our SmartApps and Device Handlers is extremely important.
 While you can browse the code in the IDE, not having access to the repository itself is limiting.
@@ -140,7 +140,7 @@ Repository structure
 
 The repository is organized by type (SmartApps or Device Handlers) and namespace.
 
-Each SmartApp and Device Handler should be in its own directory, named the same as the SmartApp or device handler, and appended with ``".src"``.
+Each SmartApp and Device Handler should be in its own directory, named the same as the SmartApp or Device Handler, and appended with ``".src"``.
 
 For SmartApps:
 
@@ -151,7 +151,7 @@ For Device Handlers:
 ``devicetypes/<namespace>/<device-type-name>.src/<device handler file>.groovy``
 
 The namespace is typically your GitHub user name.
-When you create a SmartApp or device handler in the IDE, you provide a namespace, which is then populated in the definition method.
+When you create a SmartApp or Device Handler in the IDE, you provide a namespace, which is then populated in the definition method.
 This namespace will be used in the directory structure as shown above.
 
 .. important::
@@ -195,7 +195,7 @@ Black
     Both the IDE version and repository version have been updated, and are in need of a conflict resolution. To resolve this, you should click the Update from Repo button and follow the steps there (more information about the Update from Repo action can be found below).
 
 :brown:`Brown`
-    Indicates that the SmartApp or device handler is unattached to the repository version. Typically this happens when a new SmartApp or device handler is created from a template, and the name or namespace hasn't been changed. If you update from the repo without changing the name or namespace, the IDE version will be replaced with the repo version. Typically in this case you would change the name and namespace to be unique for your code.
+    Indicates that the SmartApp or Device Handler is unattached to the repository version. Typically this happens when a new SmartApp or Device Handler is created from a template, and the name or namespace hasn't been changed. If you update from the repo without changing the name or namespace, the IDE version will be replaced with the repo version. Typically in this case you would change the name and namespace to be unique for your code.
 
 GitHub actions buttons
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -309,7 +309,7 @@ The files you chose to update are now updated in the IDE.
 Commit changes in the IDE
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To commit changes to a SmartApp or device handler, whether it is a new file or already exists in the repository, Click on the *Commit Changes* button on the *My SmartApps* or *My device handlers* and select the repository you want to commit to.
+To commit changes to a SmartApp or Device Handler, whether it is a new file or already exists in the repository, Click on the *Commit Changes* button on the *My SmartApps* or *My device handlers* and select the repository you want to commit to.
 
 In the resulting wizard, check the box next to the file you want to commit, add a commit message, and press the *Commit Changes* button.
 

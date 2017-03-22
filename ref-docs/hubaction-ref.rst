@@ -5,7 +5,7 @@ HubAction
 =========
 
 The HubAction class is used to encapsulate a detailed request string while communicating with the devices in your network.
-For example, this request string can be used for search and discovery of devices in your network. 
+For example, this request string can be used for search and discovery of devices in your network.
 HubAction can also be used in a SmartApp or in a Device Handler to communicate with the device.
 
 **Signature:**
@@ -56,7 +56,7 @@ Send a device discovery command string to look for Samsung SmartCam device in yo
     sendHubCommand(new physicalgraph.device.HubAction("lan discovery urn:schemas-upnp-org:device:WANDevice:1", physicalgraph.device.Protocol.LAN))
 
 .. note::
-	
+
 	Typically, the device discovery is done mainly via SSDP protocol.
 	After the device is discovered, either REST or UPnP calls can be made for verification and communication with the device.
 
@@ -64,7 +64,7 @@ Send a device discovery command string to look for Samsung SmartCam device in yo
 
 	Also note that, in the above example, while ``"urn:schemas-upnp-org:device:WANDevice:1"`` portion of the request string represents the notation defined by UPnP standard for device types, the terms ``"lan"`` and ``"discovery"`` are SmartThings-specific terms.
 
-After the device is discovered, additional device information, such as device IP, MAC, port id, is available. 
+After the device is discovered, additional device information, such as device IP, MAC, port id, is available.
 Now it is possible to interact with the device using this additional information.
 Send a ``HubAction`` to the device as shown below, where myMAC is the MAC address string of the SmartCam device and ``calledBackHandler`` is the name of the method that is to be called when the device responds to this HubAction request object.
 
@@ -95,7 +95,7 @@ Send a ``HubAction`` to the device as shown below, where myMAC is the MAC addres
     ``HubAction`` object.
 
 .. note::
-	
-	A device handler's ``parse()`` method can also return a ``HubAction`` object, in adddition to the above-described usage by explicitly  calling ``sendHubCommand``.
-	
+
+	A Device Handler's ``parse()`` method can also return a ``HubAction`` object, in adddition to the above-described usage by explicitly  calling ``sendHubCommand``.
+
 	See :ref:`building_devicetype` for more information.
