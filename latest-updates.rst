@@ -4,6 +4,15 @@
 Latest Updates
 ==============
 
+April 20 2017
+-------------
+
+- :ref:`Image capturing and viewing documentation <working_with_camera_photos>` is here! Learn how to store, retrieve, and display images from a LAN- or Cloud-connected camera device.
+- Updated :ref:`Rate Limiting documenation <rate_limits>` with new child SmartApp and Device Handler limits, as well as clarify existing rate limits.
+
+`GitHub Release Tag <https://github.com/SmartThingsCommunity/Documentation/releases/tag/20-April-2017>`__
+----
+
 March 22 2017
 -------------
 
