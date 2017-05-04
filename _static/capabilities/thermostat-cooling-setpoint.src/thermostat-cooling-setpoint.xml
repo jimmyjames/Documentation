@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <capability name='Thermostat Cooling Setpoint' public='true'>
 	<attribute name='coolingSetpoint' type='NUMBER' />
+	<attribute name='coolingSetpointMin' type='NUMBER' optional="true" />
+	<attribute name='coolingSetpointMax' type='NUMBER' optional="true" />
 	<command name='setCoolingSetpoint'>
 		<argument name='setpoint' type='NUMBER' />
 	</command>

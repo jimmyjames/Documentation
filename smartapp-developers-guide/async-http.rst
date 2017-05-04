@@ -57,7 +57,7 @@ The code to make an asynchronous HTTP request is fairly straightforward.
 We call ``asynchttp_v1.get()`` with the name of the method we want to be called with the response, a map of data that is used to build the request, and an optional map of data to pass on to the response handler.
 The details of the request builder parameters are documented in the :ref:`async_http_configure_request` section.
 
-We then need to define our response handler method, which accepts the response of the request, as well as the optional data map we passed to the ``get()`` method.
+We can then define an optional response handler method, which accepts the response of the request, as well as the optional data map we passed to the ``get()`` method. If none is provided the request will be made in a 'fire-and-forget' mode where the response will be discarded immediately after execution.
 The details of handling the response are documented in the :ref:`async_http_response_handling` section.
 
 ----
@@ -302,7 +302,7 @@ And here's the request made by the above example:
 Handling the response
 ---------------------
 
-Once SmartThings executes the request we specified and receives a response from the third party, the request handler method we specified will be called (in a new execution of the SmartApp or Device Handler).
+Once SmartThings executes the request we specified and receives a response from the third party, the request handler method (if specified) will be called (in a new execution of the SmartApp or Device Handler).
 It will be called with an instance of :ref:`AsyncResponse <async_http_response_ref>`, which allows us to get information about the response.
 
 The response handler method must also accept a map of data that may have been specified in the request.

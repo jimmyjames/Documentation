@@ -363,6 +363,65 @@ Called within the `tiles()`_ method to define a tile often used in conjunction w
 
 ----
 
+.. _childDeviceTile_DH_ref:
+
+childDeviceTile()
+-----------------
+
+Called within the `tiles()`_ method in a parent Device Handler of a composite device to define the display of a child device tile.
+The mobile user interface of a composite parent device is built typically by combining tiles from multiple child devices.
+
+**Signature:**
+    ``void childDeviceTile(String tileName, String componentName [, Map options, Closure closure])``
+
+**Returns:**
+    void
+
+**Parameters:**
+    `String`_ ``tileName`` - the name of the tile. This is used to identify the tile when specifying the tile layout.
+
+    `String`_ ``componentName`` - the name of the component child device. This name is the same as the ``componentName`` in the ``addChildDevice()`` in the composite parent Device Handler.
+
+    `Map`_ ``options`` *(optional)* - Various options for this tile. Valid options are found in the table below:
+
+    ======================== =========== ===========
+    option                   type        description
+    ======================== =========== ===========
+    width                    `Integer`_  controls how wide the tile is. Default is 1.
+    height                   `Integer`_  controls how tall this tile is. Default is 1.
+    childTileName            `String`_   name of the tile in the child Device Handler.
+    ======================== =========== ===========
+
+    `Closure`_ ``closure`` *(optional)* - A closure that calls any `state()`_ methods to define how the tile should appear for various attribute values.
+
+**Example:**
+
+.. code-block:: groovy
+    
+    metadata {
+        definition (name: "Simulated Refrigerator", namespace: "smartthings/testing", author: "SmartThings") {
+            capability "Contact Sensor"
+        }
+        tiles {
+         childDeviceTile("mainDoor", "mainDoor", height: 2, width: 2, childTileName: "mainDoor")
+        }
+    ...
+
+    }
+    def installed() {
+        state.counter = state.counter ? state.counter + 1 : 1
+        if (state.counter == 1) {
+            // A tile with the name "mainDoor" exists in the tiles() method of the child Device Handler "Simulated Refrigerator Door"
+            addChildDevice(
+                "Simulated Refrigerator Door",
+                "${device.deviceNetworkId}.2",
+                null,
+                [completedSetup: true, label: "${device.label} (Main Door)", componentName: "mainDoor", componentLabel: "Main Door"])
+        }
+    }
+
+----
+
 command()
 ---------
 

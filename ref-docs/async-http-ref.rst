@@ -30,11 +30,11 @@ delete()
 Make a DELETE request which will not block execution and therefore can run longer than the execution timeout.
 
 **Signature:**
-    ``void delete(String callbackMethod, Map params, Map data = null)``
+    ``void delete(String callbackMethod = null, Map params, Map data = null)``
 
 **Parameters:**
 
-    `String`_ callbackMethod - the name of the method to call with the response.
+    `String`_ callbackMethod - the name of the method to call with the response. If null the response will be discarded after the request is made.
 
     `Map`_ params - parameters for the request. Supported keys below:
 
@@ -79,11 +79,11 @@ get()
 Make a GET request which will not block execution and therefore can run longer than the execution timeout.
 
 **Signature:**
-    ``void get(String callbackMethod, Map params, Map data = null)``
+    ``void get(String callbackMethod = null, Map params, Map data = null)``
 
 **Parameters:**
 
-    `String`_ callbackMethod - the name of the method to call with the response.
+    `String`_ callbackMethod - the name of the method to call with the response. If null the response will be discarded after the request is made.
 
     `Map`_ params - parameters for the request. Supported keys below:
 
@@ -128,11 +128,11 @@ head()
 Make a HEAD request which will not block execution and therefore can run longer than the execution timeout.
 
 **Signature:**
-    ``void head(String callbackMethod, Map params, Map data = null)``
+    ``void head(String callbackMethod = null, Map params, Map data = null)``
 
 **Parameters:**
 
-    `String`_ callbackMethod - the name of the method to call with the response.
+    `String`_ callbackMethod - the name of the method to call with the response. If null the reponse will be discarded after the request is made.
 
     `Map`_ params - parameters for the request. Supported keys below:
 
@@ -176,11 +176,11 @@ patch()
 Make a PATCH request which will not block execution and therefore can run longer than the execution timeout.
 
 **Signature:**
-    ``void patch(String callbackMethod, Map params, Map data = null)``
+    ``void patch(String callbackMethod = null, Map params, Map data = null)``
 
 **Parameters:**
 
-    `String`_ callbackMethod - the name of the method to call with the response.
+    `String`_ callbackMethod - the name of the method to call with the response. If null the response will be discarded after the request is made.
 
     `Map`_ params - parameters for the request. Supported keys below:
 
@@ -225,11 +225,11 @@ post()
 Make a POST request which will not block execution and therefore can run longer than the execution timeout.
 
 **Signature:**
-    ``void post(String callbackMethod, Map params, Map data = null)``
+    ``void post(String callbackMethod = null, Map params, Map data = null)``
 
 **Parameters:**
 
-    `String`_ callbackMethod - the name of the method to call with the response.
+    `String`_ callbackMethod - the name of the method to call with the response. If null the response will be discarded after the request is made.
 
     `Map`_ params - parameters for the request. Supported keys below:
 
@@ -274,11 +274,11 @@ put()
 Make a PUT request which will not block execution and therefore can run longer than the execution timeout.
 
 **Signature:**
-    ``void put(String callbackMethod, Map params, Map data = null)``
+    ``void put(String callbackMethod = null, Map params, Map data = null)``
 
 **Parameters:**
 
-    `String`_ callbackMethod - the name of the method to call with the response.
+    `String`_ callbackMethod - the name of the method to call with the response. If null the response will be discarded after the request is made.
 
     `Map`_ params - parameters for the request. Supported keys below:
 
