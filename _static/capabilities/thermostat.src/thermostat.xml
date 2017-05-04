@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <capability name='Thermostat' public='true'>
     <attribute name='coolingSetpoint' type='NUMBER' />
+    <attribute name='coolingSetpointMin' type='NUMBER' optional="true" />
+    <attribute name='coolingSetpointMax' type='NUMBER' optional="true" />
     <attribute name='heatingSetpoint' type='NUMBER' />
+    <attribute name='heatingSetpointMin' type='NUMBER' optional="true" />
+    <attribute name='heatingSetpointMax' type='NUMBER' optional="true" />
     <attribute name='schedule' type='JSON_OBJECT' />
     <attribute name='temperature' type='NUMBER' />
     <attribute name='thermostatFanMode' type='ENUM'>
@@ -26,6 +30,8 @@
         <value name='vent economizer' />
     </attribute>
     <attribute name='thermostatSetpoint' type='NUMBER' />
+    <attribute name='thermostatSetpointMin' type='NUMBER' optional="true" />
+    <attribute name='thermostatSetpointMax' type='NUMBER' optional="true" />
     <command name='auto' />
     <command name='cool' />
     <command name='emergencyHeat' />

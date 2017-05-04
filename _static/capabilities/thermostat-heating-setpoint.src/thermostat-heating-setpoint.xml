@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <capability name='Thermostat Heating Setpoint' public='true'>
 	<attribute name='heatingSetpoint' type='NUMBER' />
+	<attribute name='heatingSetpointMin' type='NUMBER' optional="true" />
+	<attribute name='heatingSetpointMax' type='NUMBER' optional="true" />
 	<command name='setHeatingSetpoint'>
 		<argument name='setpoint' type='NUMBER' />
 	</command>

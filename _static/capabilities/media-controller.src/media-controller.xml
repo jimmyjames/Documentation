@@ -2,9 +2,7 @@
 <capability name='Media Controller' public='true'>
 	<attribute name='activities' type='JSON_OBJECT' />
 	<attribute name='currentActivity' type='STRING' />
-	<command name='getAllActivities' />
-	<command name='getCurrentActivity' />
 	<command name='startActivity'>
-		<argument name='name' type='STRING' />
+		<argument name='activityId' type='STRING' />
 	</command>
 </capability>

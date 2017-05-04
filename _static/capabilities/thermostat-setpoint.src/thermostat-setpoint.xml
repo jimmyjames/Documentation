@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <capability name='Thermostat Setpoint' public='true'>
 	<attribute name='thermostatSetpoint' type='NUMBER' />
+	<attribute name='thermostatSetpointMin' type='NUMBER' optional="true" />
+	<attribute name='thermostatSetpointMax' type='NUMBER' optional="true" />
 </capability>
