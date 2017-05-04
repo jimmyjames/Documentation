@@ -4,6 +4,25 @@
 Latest Updates
 ==============
 
+----
+
+May 04 2017
+-----------
+
+- Asynchronous HTTP requests now support optional response handler methods. For cases when you just need to make a request, but don't care about the response, just pass ``null`` for the response handler. Docs updated :ref:`here <async_http_api_ref>`.
+- Creating a Composite Device Handler? Check out the new :ref:`composite_device_tiles` documentation!
+- Some changes and additions to several Capabilities:
+    - ``getAllActivities()`` and ``getCurrentActivity()`` Commands removed from :ref:`mediaController` Capability.
+    - ``startActivity()`` Command updated to accept the ID of the activity, instead of the name.
+    - Optional ``coolingSetpointMin`` and ``coolingSetpointMax`` attributes added to the :ref:`thermostatCoolingSetpoint` Capability.
+    - Optional ``heatingSetpointMin`` and ``heatingSetpointMax`` attributes added to the :ref:`thermostatHeatingSetpoint` Capability.
+    - Optional ``thermostatSetpointMin`` and ``thermostatSetpointMax`` attributes added to the :ref:`thermostatSetpoint` Capability.
+    - Optional ``coolingSetpointMin``, ``coolingSetpointMax``, ``heatingSetpointMin``, ``heatingSetpointMax``, ``thermostatSetpointMin``, and ``thermostatSetpointMax`` attributes added to the :ref:`thermostat` Capability.
+
+`GitHub Release Tag <https://github.com/SmartThingsCommunity/Documentation/releases/tag/04-May-2017>`__
+
+----
+
 April 20 2017
 -------------
 
