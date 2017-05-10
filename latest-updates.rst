@@ -30,6 +30,7 @@ April 20 2017
 - Updated :ref:`Rate Limiting documenation <rate_limits>` with new child SmartApp and Device Handler limits, as well as clarify existing rate limits.
 
 `GitHub Release Tag <https://github.com/SmartThingsCommunity/Documentation/releases/tag/20-April-2017>`__
+
 ----
 
 March 22 2017
