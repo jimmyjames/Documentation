@@ -44,6 +44,36 @@ Capabilities Reference
 
     ----
 
+    Required and optional command arguments
+    ---------------------------------------
+
+    Some Capabilities specify commands with only some arguments required.
+    The intent of these commands is that the caller can call these methods with or without the non-required arguments.
+
+    .. important::
+
+        The concept of required and optional command method arguments is relatively new, and many Device Handlers do not follow the guidelines prescribed here.
+        While these Device Handlers will be updated incrementally to support this pattern, SmartApps may need to assume that a given Device Handler does not handle optional command arguments in accordance with the specification.
+
+    For example, consider the ``setLevel()`` command of the :ref:`switchLevel` Capability.
+    The ``setLevel()`` command specifies the ``level`` argument as required, but not the ``rate`` argument.
+    The caller should be able to call the ``setLevel()`` command on any device that supports the Switch Level Capability with or without the ``rate`` argument--both ``setLevel(40)`` and ``setLevel(40, 10)`` should be valid command invocations on the device.
+
+    However, the caller cannot assume that any non-required command arguments have any effect.
+    Returning to the ``setLevel()`` command on the Switch Level Capability example, this means that while ``setLevel(40, 10)`` should not raise an error, it cannot be guaranteed that the Device will actually do anything with the ``level`` argument (some devices do not even support dimming at a certain rate).
+
+    Device Handlers implementing commands with non-required arguments either need to define the second argument as optional, or define separate methods with different signatures.
+    Here's an example using the optional argument approach:
+
+    .. code-block:: groovy
+
+        def setLevel(level, rate = 0) {
+            // If this device supports dimming rate, use the rate argument.
+            // If this device does not support the dimming rate, disregard that argument.
+        }
+
+    ----
+
     Capabilities at a glance
     ------------------------
 
@@ -178,7 +208,7 @@ Capabilities Reference
           {{ "Arguments:"|indent(2, true) }}
           {% if command['argument'] is a_list %}
             {% for arg in command['argument'] %}
-              ``{{ arg['@name'] }}`` {% if arg['@required'] and arg['@required'] == "false" %}{% else %}*\*Required*{% endif %} - {{ arg['@type'] }}
+              ``{{ arg['@name'] }}`` {% if arg['@required'] and arg['@required'] == "false" %}{% else %}*(Required)*{% endif %} - {{ arg['@type'] }}
               {%- if properties[referenceName][referenceName+".cmd."+command['@name']+"."+arg['@name']+".description"] %}
                 {{ properties[referenceName][referenceName+".cmd."+command['@name']+"."+arg['@name']+".description"]|indent(2, true) }}
               {%- endif %}
@@ -211,7 +241,7 @@ Capabilities Reference
               {%- endif %}
             {% endfor %}
           {%- else %}
-            ``{{ command['argument']['@name'] }}`` {% if command['argument']['@required'] and command['argument']['@required'] == "false" %}{% else %}*\*Required*{% endif %} - {{ command['argument']['@type'] }}
+            ``{{ command['argument']['@name'] }}`` {% if command['argument']['@required'] and command['argument']['@required'] == "false" %}{% else %}*(Required)*{% endif %} - {{ command['argument']['@type'] }}
             {%- if properties[referenceName][referenceName+".cmd."+command['@name']+"."+command['argument']['@name']+".description"] %}
               {{ properties[referenceName][referenceName+".cmd."+command['@name']+"."+command['argument']['@name']+".description"]|indent(2, true) }}
             {% else %}
@@ -263,7 +293,7 @@ Capabilities Reference
     	{{ "Arguments:"|indent(2, true) }}
     	{% if capability['command']['argument'] is a_list %}
     	  {% for arg in capability['command']['argument'] %}
-    		``{{ arg['@name'] }}`` {% if arg['@required'] and arg['@required'] == "false" %}{% else %}*\*Required*{% endif %} - {{ arg['@type'] }}
+    		``{{ arg['@name'] }}`` {% if arg['@required'] and arg['@required'] == "false" %}{% else %}*(Required)*{% endif %} - {{ arg['@type'] }}
     		{%- if properties[referenceName][referenceName+".cmd."+capability['command']['@name']+"."+arg['@name']+".description"] %}
     		  {{ properties[referenceName][referenceName+".cmd."+capability['command']['@name']+"."+arg['@name']+".description"]|indent(2, true) }}
     		{% endif %}
@@ -279,7 +309,7 @@ Capabilities Reference
     		{%- endif %}
     	  {% endfor %}
         {%- else %}
-      	  ``{{ capability['command']['argument']['@name'] }}`` {% if capability['command']['argument']['@required'] and capability['command']['argument']['@required'] == "false" %}{% else %}*\*Required*{% endif %} - {{ capability['command']['argument']['@type'] }}
+      	  ``{{ capability['command']['argument']['@name'] }}`` {% if capability['command']['argument']['@required'] and capability['command']['argument']['@required'] == "false" %}{% else %}*(Required)*{% endif %} - {{ capability['command']['argument']['@type'] }}
       	  {%- if properties[referenceName][referenceName+".cmd."+capability['command']['@name']+"."+capability['command']['argument']['@name']+".description"] %}
       		{{ properties[referenceName][referenceName+".cmd."+capability['command']['@name']+"."+capability['command']['argument']['@name']+".description"]|indent(2, true) }}
       	  {% endif %}
