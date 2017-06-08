@@ -4,6 +4,15 @@
 Latest Updates
 ==============
 
+June 08 2017
+------------
+
+- :ref:`HubAction reference documentation <hubaction_ref>` updated to clarify that ``HOST`` parameter is part of the headers map.
+
+`GitHub Release Tag <https://github.com/SmartThingsCommunity/Documentation/releases/tag/08-June-2017>`__
+
+----
+
 May 04 2017
 -----------
 
