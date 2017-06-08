@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <capability name='Battery' public='true'>
-	<attribute name='battery' type='NUMBER' />
+	<attribute name='battery' type='NUMBER' unit='%' />
 </capability>
