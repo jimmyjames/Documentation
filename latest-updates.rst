@@ -4,6 +4,41 @@
 Latest Updates
 ==============
 
+July 07 2017
+------------
+
+Changes to the :ref:`thermostatCoolingSetpoint` Capability:
+
+- ``coolingSetpointMin`` and ``coolingSetpoingMax`` attributes replaced with ``coolingSetpointRange``.
+
+Changes to the :ref:`thermostatFanMode` Capability:
+
+- ``supportedThermostatFanModes`` attribute added.
+
+Changes to the :ref:`thermostatHeatingSetpoint` Capability:
+
+- ``heatingSetpointMin`` and ``heatingSetpointMax`` attributes replaced with ``heatingSetpointRange``.
+
+Changes to the :ref:`thermostatMode` Capability:
+
+- ``supportedThermostatModes`` attribute added.
+
+Changes to the :ref:`thermostatSetpoint` Capability:
+
+- ``thermostatSetpointMin`` and ``thermostatSetpointMax`` attributes replaced with ``thermostatSetpointRange``.
+
+Changes to the :ref:`thermostat` Capability:
+
+- ``coolingSetpointMin`` and ``coolingSetpointMax`` attributes replaced with ``coolingSetpointRange``.
+- ``heatingSetpointMin`` and ``heatingSetpointMax`` attributes replaced with ``heatingSetpointRange``.
+- ``thermostatSetpointMin`` and ``thermostatSetpointMax`` attributes replaced with ``thermostatSetpointRange``.
+- ``supportedThermostatFanModes`` attribute added.
+- ``supportedThermostatModes`` attribute added.
+
+`GitHub Release Tag <https://github.com/SmartThingsCommunity/Documentation/releases/tag/07-July-2017>`__
+
+----
+
 June 08 2017
 ------------
 
