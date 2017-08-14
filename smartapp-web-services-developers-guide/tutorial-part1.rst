@@ -222,7 +222,7 @@ This should return a JSON response like the following::
   [{"name":"Kitchen 2","value":"off"},{"name":"Living room window","value":"off"}]
 
 To turn the switch on or off, call the /switches endpoint using a PUT request.
-Again, you'll need to substitute your unique endpoing and API key:
+Again, you'll need to substitute your unique endpoint and API key:
 
 .. code-block:: bash
 
