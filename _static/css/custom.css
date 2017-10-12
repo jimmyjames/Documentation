@@ -14,6 +14,19 @@ body {
     font-family: "Swiss 721 Light" !important;
 }
 
+.header-banner {
+  display: none;
+    /*height: 50px;
+    width: 100%;
+    background-color: #ffff99;*/
+}
+
+.header-banner > .header-text {
+  /*text-align: center;
+  vertical-align: middle;
+  line-height: 50px;*/
+}
+
 h1, h2, .rst-content p.caption, h3, h4, h5, h6, legend, input[type="text"] {
     font-family: "Swiss 721 Light" !important;
 }
