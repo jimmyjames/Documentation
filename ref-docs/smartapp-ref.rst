@@ -1325,7 +1325,7 @@ Executes a specified ``handlerMethod`` after ``delaySeconds`` have elapsed.
 **Parameters:**
     ``delayInSeconds`` - The number of seconds to execute the ``handlerMethod`` after.
 
-    ``handlerMethod`` - The method to call after ``delayInSeconds`` has passed. Can be a string or a reference to the method.
+    ``handlerMethod`` - The method to call after ``delayInSeconds`` has passed. Can be a string or a reference to the method. Make sure that the method being referenced is not scoped to private and/or the method name being used does not include parens (e.g. ``handlerMethod()``)
 
     ``options`` *(optional)* - A map of parameters, with the following keys supported:
 
@@ -1372,7 +1372,7 @@ Using this method will pick a random start time in the next minute, and run ever
     This is preferred over using ``schedule(cronExpression, handlerMethod)`` for a regular schedule like this because with a cron expression all installations of a SmartApp will execute at the same time. With this method, the executions will be spread out over the 1 minute period.
 
 **Parameters:**
-    ``handlerMethod`` - The method to call every minute. Can be the name of the method as a string, or a reference to the method.
+    ``handlerMethod`` - The method to call every minute. Can be the name of the method as a string, or a reference to the method. Make sure that the method being referenced is not scoped to private and/or the method name being used does not include parens (e.g. ``handlerMethod()``)
 
     ``options`` *(optional)* - A map of parameters, with the following keys supported:
 
@@ -1418,7 +1418,7 @@ Using this method will pick a random start time in the next five minutes, and ru
     This is preferred over using ``schedule(cronExpression, handlerMethod)`` for a regular schedule like this because with a cron expression all installations of a SmartApp will execute at the same time. With this method, the executions will be spread out over the 5 minute period.
 
 **Parameters:**
-    ``handlerMethod`` - The method to call every five minutes. Can be the name of the method as a string, or a reference to the method.
+    ``handlerMethod`` - The method to call every five minutes. Can be the name of the method as a string, or a reference to the method. Make sure that the method being referenced is not scoped to private and/or the method name being used does not include parens (e.g. ``handlerMethod()``)
 
     ``options`` *(optional)* - A map of parameters, with the following keys supported:
 
@@ -1463,7 +1463,7 @@ Creates a recurring schedule that executes the specified ``handlerMethod`` every
     This is preferred over using ``schedule(cronExpression, handlerMethod)`` for a regular schedule like this because with a cron expression all installations of a SmartApp will execute at the same time. With this method, the executions will be spread out over the ten minute period.
 
 **Parameters:**
-    ``handlerMethod`` - The method to call every ten minutes. Can be the name of the method as a string, or a reference to the method.
+    ``handlerMethod`` - The method to call every ten minutes. Can be the name of the method as a string, or a reference to the method. Make sure that the method being referenced is not scoped to private and/or the method name being used does not include parens (e.g. ``handlerMethod()``)
 
     ``options`` *(optional)* - A map of parameters, with the following keys supported:
 
@@ -1508,7 +1508,7 @@ Creates a recurring schedule that executes the specified ``handlerMethod`` every
     This is preferred over using ``schedule(cronExpression, handlerMethod)`` for a regular schedule like this because with a cron expression all installations of a SmartApp will execute at the same time. With this method, the executions will be spread out over the fifteen minute period.
 
 **Parameters:**
-    ``handlerMethod`` - The method to call every fifteen minutes. Can be the name of the method as a string, or a reference to the method.
+    ``handlerMethod`` - The method to call every fifteen minutes. Can be the name of the method as a string, or a reference to the method. Make sure that the method being referenced is not scoped to private and/or the method name being used does not include parens (e.g. ``handlerMethod()``)
 
     ``options`` *(optional)* - A map of parameters, with the following keys supported:
 
@@ -1553,7 +1553,7 @@ Creates a recurring schedule that executes the specified ``handlerMethod`` every
     This is preferred over using ``schedule(cronExpression, handlerMethod)`` for a regular schedule like this because with a cron expression all installations of a SmartApp will execute at the same time. With this method, the executions will be spread out over the thirty minute period.
 
 **Parameters:**
-    ``handlerMethod`` - The method to call every thirty minutes. Can be the name of the method as a string, or a reference to the method.
+    ``handlerMethod`` - The method to call every thirty minutes. Can be the name of the method as a string, or a reference to the method. Make sure that the method being referenced is not scoped to private and/or the method name being used does not include parens (e.g. ``handlerMethod()``)
 
     ``options`` *(optional)* - A map of parameters, with the following keys supported:
 
@@ -1598,7 +1598,7 @@ Creates a recurring schedule that executes the specified ``handlerMethod`` every
     This is preferred over using ``schedule(cronExpression, handlerMethod)`` for a regular schedule like this because with a cron expression all installations of a SmartApp will execute at the same time. With this method, the executions will be spread out over the one hour period.
 
 **Parameters:**
-    ``handlerMethod``- The method to call every hour. Can be the name of the method as a string, or a reference to the method.
+    ``handlerMethod``- The method to call every hour. Can be the name of the method as a string, or a reference to the method. Make sure that the method being referenced is not scoped to private and/or the method name being used does not include parens (e.g. ``handlerMethod()``)
 
     ``options`` *(optional)* - A map of parameters, with the following keys supported:
 
@@ -1643,7 +1643,7 @@ Creates a recurring schedule that executes the specified ``handlerMethod`` every
     This is preferred over using ``schedule(cronExpression, handlerMethod)`` for a regular schedule like this because with a cron expression all installations of a SmartApp will execute at the same time. With this method, the executions will be spread out over the three hour period.
 
 **Parameters:**
-    ``handlerMethod`` - The method to call every three hours. Can be the name of the method as a string, or a reference to the method.
+    ``handlerMethod`` - The method to call every three hours. Can be the name of the method as a string, or a reference to the method. Make sure that the method being referenced is not scoped to private and/or the method name being used does not include parens (e.g. ``handlerMethod()``)
 
     ``options`` *(optional)* - A map of parameters, with the following keys supported:
 
@@ -1686,7 +1686,7 @@ Executes the ``handlerMethod`` once at the specified date and time.
 **Parameters:**
     ``dateTime`` - When to execute the ``handlerMethod``. Can be either a `Date`_ object or an ISO-8601 date string. For example, ``new Date() + 1`` would run at the current time tomorrow, and ``"2017-07-04T12:00:00.000Z"`` would run at noon GMT on July 4th, 2017.
 
-    ``handlerMethod`` - The method to execute at the specified ``dateTime``. This can be a reference to the method, or the method name as a string.
+    ``handlerMethod`` - The method to execute at the specified ``dateTime``. This can be a reference to the method, or the method name as a string. Make sure that the method being referenced is not scoped to private and/or the method name being used does not include parens (e.g. ``handlerMethod()``)
 
     ``options`` *(optional)* - A map of parameters, with the following keys supported:
 
@@ -1731,7 +1731,7 @@ Creates a scheduled job that calls the ``handlerMethod`` once per day at the tim
 
     `String`_ ``cronExpression`` - A cron expression that specifies the schedule to execute on.
 
-    ``handlerMethod`` - The method to call. This can be a reference to the method itself, or the method name as a string.
+    ``handlerMethod`` - The method to call. This can be a reference to the method itself, or the method name as a string. Make sure that the method being referenced is not scoped to private and/or the method name being used does not include parens (e.g. ``handlerMethod()``)
 
     ``options`` *(optional)* - A map of parameters, with the following keys supported:
 
