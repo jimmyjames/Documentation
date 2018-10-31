@@ -5,8 +5,8 @@
 
 .. _docs_home_page:
 
-SmartThings Developer Documentation
-===================================
+SmartThings Classic Developer Documentation
+===========================================
 
 .. raw:: html
 

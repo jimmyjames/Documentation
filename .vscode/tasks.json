@@ -1,0 +1,26 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build static site",
+            "type": "shell",
+            "command": "make clean html",
+            "problemMatcher": []
+        },
+        {
+            "label": "launch site",
+            "command": "Chrome",
+            "osx": {
+                "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            "args": [
+                [
+                    "_build/html/index.html"
+                ]
+            ],
+            "problemMatcher": []
+        }
+    ]
+}

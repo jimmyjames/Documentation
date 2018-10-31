@@ -92,7 +92,7 @@ extensions = [
 ]
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+# templates_path = ['_templates']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -104,8 +104,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'SmartThings Developer Documentation'
-copyright = u'2017, SmartThings'
+project = u'SmartThings Classic Developer Documentation'
+copyright = u'2018, SmartThings'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -160,8 +160,13 @@ pygments_style = 'monokai'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'default'
+# html_theme = 'default'
 #html_style = '/default.css'
+
+html_theme = 'st_sphinx_rtd_theme'
+
+# Add any paths that contain custom themes here, relative to this directory.
+html_theme_path = ['_theme']
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -170,12 +175,9 @@ html_theme_options = {
     'sticky_navigation': True
 }
 
-# Add any paths that contain custom themes here, relative to this directory.
-#html_theme_path = []
-
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = 'SmartThings Developer Documentation'
+html_title = 'SmartThings Classic Developer Documentation'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
@@ -189,10 +191,10 @@ html_title = 'SmartThings Developer Documentation'
 # pixels large.
 html_favicon = 'favicon.ico'
 
-# Add øany paths that contain custom static files (such as style sheets) here,
+# Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = []
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
@@ -269,7 +271,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'SmartThingsDocumentation.tex', u'SmartThings Developer Documentation',
+  ('index', 'SmartThingsDocumentation.tex', u'SmartThings Classic Developer Documentation',
    u'SmartThings', 'manual'),
 ]
 
@@ -319,6 +321,7 @@ texinfo_documents = [
 ]
 
 def setup(app):
+  app.add_stylesheet("css/sphinx_override.css")
   app.add_stylesheet("css/custom.css")
   app.add_javascript("javascript/clipboard.min.js")
   app.add_javascript("javascript/copycode.js")
@@ -340,10 +343,10 @@ def setup(app):
 # on_rtd is whether we are on readthedocs.org, this line of code grabbed from docs.readthedocs.org
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
-if not on_rtd:  # only import and set the theme if we're building docs locally
-    import sphinx_rtd_theme
-    html_theme = 'sphinx_rtd_theme'
-    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+# if not on_rtd:  # only import and set the theme if we're building docs locally
+#     import sphinx_rtd_theme
+#     html_theme = 'sphinx_rtd_theme'
+#     html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # Run rst files through the Jinja templating system. Currently only supports
 # HTML output formats.

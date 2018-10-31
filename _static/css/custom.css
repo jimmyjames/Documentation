@@ -1,146 +1,177 @@
 @font-face {
-	font-family: 'Swiss 721 Light';
-    src: url('../fonts/swiss-721-light-webfont.eot');
-    src: url('../fonts/swiss-721-light-webfont.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/swiss-721-light-webfont.woff') format('woff'),
-    url('../fonts/swiss-721-light-webfont.ttf') format('truetype'),
-    url('../fonts/swiss-721-light-webfont.svg#swis721_lt_btlight') format('svg');
-	font-weight: normal;
-	font-style: normal;
+  font-family: "Swiss 721 Light";
+  src: url("../fonts/swiss-721-light-webfont.eot");
+  src: url("../fonts/swiss-721-light-webfont.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/swiss-721-light-webfont.woff") format("woff"), url("../fonts/swiss-721-light-webfont.ttf") format("truetype"),
+    url("../fonts/swiss-721-light-webfont.svg#swis721_lt_btlight") format("svg");
+  font-weight: normal;
+  font-style: normal;
 }
 
 /* consistent font with SmartThings website */
 body {
-    font-family: "Swiss 721 Light" !important;
+  font-family: "Swiss 721 Light" !important;
 }
 
 .header-banner {
   display: none;
-    /*height: 50px;
-    width: 100%;
-    background-color: #ffff99;*/
 }
 
-.header-banner > .header-text {
-  /*text-align: center;
-  vertical-align: middle;
-  line-height: 50px;*/
+h1,
+h2,
+.rst-content p.caption,
+h3,
+h4,
+h5,
+h6,
+legend,
+input[type="text"] {
+  font-family: "Swiss 721 Light" !important;
 }
 
-h1, h2, .rst-content p.caption, h3, h4, h5, h6, legend, input[type="text"] {
-    font-family: "Swiss 721 Light" !important;
-}
-
-.wy-side-nav-search, .wy-nav-top {
-    /* background-color: #06abab !important; */
-    background: #06abab;
-    background: -webkit-gradient(left top, right top, color-stop(0%, #06abab), color-stop(51%, #1197b5), color-stop(71%, #1197b5), color-stop(100%, #068ab6));
-    background: -webkit-linear-gradient(left, #06abab 0%, #1197b5 51%, #1197b5 71%, #068ab6 100%);
-    background: linear-gradient(to right, #06abab 0%, #1197b5 51%, #1197b5 71%, #068ab6 100%);
+.wy-side-nav-search,
+.wy-nav-top {
+  /* background-color: #06abab !important; */
+  background: #06abab;
+  background: -webkit-gradient(
+    left top,
+    right top,
+    color-stop(0%, #06abab),
+    color-stop(51%, #1197b5),
+    color-stop(71%, #1197b5),
+    color-stop(100%, #068ab6)
+  );
+  background: -webkit-linear-gradient(left, #06abab 0%, #1197b5 51%, #1197b5 71%, #068ab6 100%);
+  background: linear-gradient(to right, #06abab 0%, #1197b5 51%, #1197b5 71%, #068ab6 100%);
 }
 
 .wy-nav-side {
-    background: #3f3e43 !important;
+  background: #3f3e43 !important;
+  top: 105px;
+  min-height: 0;
+  padding-bottom: 0;
+}
+
+.wy-side-scroll {
+  padding-bottom: 1em;
 }
 
 .wy-menu-vertical p.caption {
-    font-size: 90% !important;
-    color: #ece8e9 !important;
-    padding: 0 0.75em; !important;
+  font-size: 90% !important;
+  color: #ece8e9 !important;
+  /* padding: 0 0.75em !important; */
 }
 
-.codeblock, pre.literal-block, .rst-content .literal-block, .rst-content pre.literal-block, div[class^='highlight'] {
-    border-radius: 3px !important;
-    position: relative;
-    background: #3f3e43;
-    /* make sure copy tooltip can be seen */
-    overflow: visible;
+.codeblock,
+pre.literal-block,
+.rst-content .literal-block,
+.rst-content pre.literal-block,
+div[class^="highlight"] {
+  border-radius: 3px !important;
+  position: relative;
+  background: #3f3e43;
+  /* make sure copy tooltip can be seen */
+  overflow: visible;
 }
 /* override table width restrictions */
-.wy-table-responsive table td, .wy-table-responsive table th {
-    /* !important prevents the common CSS stylesheets from
+.wy-table-responsive table td,
+.wy-table-responsive table th {
+  /* !important prevents the common CSS stylesheets from
        overriding this as on RTD they are loaded after this stylesheet */
-    white-space: normal !important;
-    vertical-align: top !important;
+  white-space: normal !important;
+  vertical-align: top !important;
 }
 
 .wy-table-responsive {
-    overflow: visible !important;
+  overflow: visible !important;
 }
 
-/* A little hacky... sets the width large enough to fit the capabilities
-   taxonomy table.*/
 .wy-nav-content {
-    max-width: 950px !important;
+    padding-bottom: 120px;
+}
+
+.redirectNotice {
+  background: #ffff99;
+  display: flex;
+  border-bottom: solid 1px #ffcc44;
+  max-height: 60px;
+  height: 60px;
+  padding: 1vw;
+  text-align: center;
+}
+
+.redirectNotice a {
+  color: #00a0dc;
+  text-decoration: none;
 }
 
 .red {
-    color: #ff0000;
+  color: #ff0000;
 }
 
 .green {
-    color: #009900;
+  color: #009900;
 }
 
 .magenta {
-    color: #990099;
+  color: #990099;
 }
 
 .blue {
-    color: #0000ff;
+  color: #0000ff;
 }
 
 .brown {
-    color: #8b4513;
+  color: #8b4513;
 }
 
 .colorbox {
-    float: left;
-    width: 40px;
-    height: 40px;
-    margin: 5px;
-    border: 1px solid rgba(0, 0, 0, .2);
+  float: left;
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .st-tile-blue {
-    background: #13b4ff;
+  background: #13b4ff;
 }
 .st-tile-orange {
-    background: #e86d13;
+  background: #e86d13;
 }
 .st-tile-gray {
-    background: #cccccc;
+  background: #cccccc;
 }
 .st-tile-white {
-    background: #ffffff;
+  background: #ffffff;
 }
 
 .st-tile-31 {
-    background: #153591;
+  background: #153591;
 }
 
 .st-tile-44 {
-    background: #1e9cbb;
+  background: #1e9cbb;
 }
 
 .st-tile-59 {
-    background: #90d2a7;
+  background: #90d2a7;
 }
 
 .st-tile-74 {
-    background: #44b621;
+  background: #44b621;
 }
 
 .st-tile-84 {
-    background: #f1d801;
+  background: #f1d801;
 }
 
 .st-tile-95 {
-    background: #d04e00;
+  background: #d04e00;
 }
 
 .st-tile-96 {
-    background: #bc2323;
+  background: #bc2323;
 }
 
 .strike {
@@ -148,47 +179,48 @@ h1, h2, .rst-content p.caption, h3, h4, h5, h6, legend, input[type="text"] {
 }
 
 div.column {
-    background-color: #eee;
-    /*border: 1px solid #ccc;*/
+  background-color: #eee;
+  /*border: 1px solid #ccc;*/
 }
 
 .new-feature {
-    padding: 12px;
-    line-height: 24px;
-    margin-bottom: 24px;
-    background: #eaf4fa;
+  padding: 12px;
+  line-height: 24px;
+  margin-bottom: 24px;
+  background: #eaf4fa;
 }
 
 .beta-feature {
-    padding: 12px;
-    line-height: 24px;
-    margin-bottom: 24px;
-    background: #eaf4fa;
+  padding: 12px;
+  line-height: 24px;
+  margin-bottom: 24px;
+  background: #eaf4fa;
 }
 
 .beta-feature .admonition-title {
-    background: #ff4d4d;
+  background: #ff4d4d;
 }
 
 .highlight .copy-to-clipboard {
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    background-color: #4d5257;
-    color: #ccc;
-    border-radius: 2px;
-    width: 80px;
-    height: 30px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-align: center;
-    vertical-align: middle;
-    padding-top: 6px;
-    font-size: 14px;
-    opacity: 0.5;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  background-color: #4d5257;
+  color: #ccc;
+  border-radius: 2px;
+  width: 80px;
+  height: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 6px;
+  font-size: 14px;
+  opacity: 0.5;
 }
 
-.copy-active, .copy-to-clipboard:hover {
+.copy-active,
+.copy-to-clipboard:hover {
   opacity: 1 !important;
 }
 
@@ -197,100 +229,99 @@ div.column {
 }
 
 /* overrides for dark monokai theme */
-div[class^='highlight'] pre {
-    font-size: 13px;
+div[class^="highlight"] pre {
+  font-size: 13px;
 }
 .highlight-http pre,
 .highlight-json pre,
 .highlight-bash pre,
 .highlight-python pre,
 .highlight-rst pre {
-    color: #fff !important;
+  color: #fff !important;
 }
 .highlight .c1,
 .highlight .cm {
-    /*color: #e3e3e3 !important; */
+  /*color: #e3e3e3 !important; */
 }
 .linenodiv pre {
-    color: #fff !important;
+  color: #fff !important;
 }
 
 /* homepage */
 .container {
-    margin-right: auto;
-    margin-left: auto;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .home-card-container {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
 @media only screen and (min-width: 64.0625em) {
-    .home-card-col {
-       width: 50%;
-       position: relative;
-       padding-left: .9375rem;
-       padding-right: .9375rem;
-       float: left;
-    }
+  .home-card-col {
+    width: 50%;
+    position: relative;
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+    float: left;
+  }
 }
 
 .home-card-col a {
-    color: #3f3e43;
-    display: block;
-    border-radius: 5px;
-    height: 183px;
-    margin: 0 0 2em;
-    padding: .75em 1em .75em 5em;
-    position: relative;
-    border: 2px solid #e8e8e8;
-    background: #f8f8f8;
-    transition: all .2s ease-in-out;
+  color: #3f3e43;
+  display: block;
+  border-radius: 5px;
+  height: 183px;
+  margin: 0 0 2em;
+  padding: 0.75em 1em 0.75em 5em;
+  position: relative;
+  border: 2px solid #e8e8e8;
+  background: #f8f8f8;
+  transition: all 0.2s ease-in-out;
 }
 
 .home-card-col a:hover {
-    box-shadow: 5px 4px 5px #3f3e43;
-    background: #ffffff;
+  box-shadow: 5px 4px 5px #3f3e43;
+  background: #ffffff;
 }
 
 .home-card-col a:after {
-    top: 33%;
-    left: 15px;
-    color: #3f3e43;
-    font-family: FontAwesome;
-    font-style: normal;
-    font-weight: normal;
-    text-decoration: inherit;
-    position: absolute;
-    font-size: 50px;
+  top: 33%;
+  left: 15px;
+  color: #3f3e43;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  position: absolute;
+  font-size: 50px;
 }
 
 .getting-started a:after {
-    content: "\f018";
-
+  content: "\f018";
 }
 
 .groovy-basics a:after {
-    content: "\f121";
+  content: "\f121";
 }
 
 .reference-docs a:after {
-    content: "\f03a";
-    font-family: FontAwesome;
-    font-style: normal;
-    font-weight: normal;
-    text-decoration: inherit;
-    position: absolute;
-    font-size: 50px;
+  content: "\f03a";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  position: absolute;
+  font-size: 50px;
 }
 
 .guide a:after {
-    content: "\f02d";
-    font-family: FontAwesome;
-    font-style: normal;
-    font-weight: normal;
-    text-decoration: inherit;
-    position: absolute;
-    font-size: 50px;
+  content: "\f02d";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  position: absolute;
+  font-size: 50px;
 }
 /* end homepage */
