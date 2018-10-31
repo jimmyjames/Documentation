@@ -7252,8 +7252,7 @@ footer span.commit .rst-content tt,
   display: none;
 }
 
-.smartthingsNav ul,
-.smartthingsNav:active ul {
+.smartthingsNav ul {
   display: none;
   opacity: 0;
   max-height: 300px;
