@@ -163,7 +163,7 @@ pygments_style = 'monokai'
 # html_theme = 'default'
 #html_style = '/default.css'
 
-html_theme = 'st_sphinx_rtd_theme'
+html_theme = 'sphinx_rtd_theme'
 
 # Add any paths that contain custom themes here, relative to this directory.
 html_theme_path = ['_theme']
