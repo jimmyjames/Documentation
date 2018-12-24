@@ -717,8 +717,798 @@ Gets a map containing the local sunrise and sunset times.
 
 ----
 
-getWeatherFeature()
+.. _smartapp_get_twc_conditions:
+
+getTwcConditions()
+------------------
+
+.. note::
+
+    If you are considering the development of an application that makes extensive use of weather data, you should consider gaining direct access to APIs from a weather data provider.
+
+Get the current weather conditions.
+
+**Signature:**
+    ``def getTwcConditions(String locationString = null)``
+
+**Parameters:**
+    `String`_ ``locationString`` - Optional. Must be a 5 digit US zip code or a latitude, longitude string (e.g., "38.25,-76.45"). If \not specified, the method will use the latitude and longitude of the Location as set in the SmartThings mobile app.
+
+**Example Response:**
+
+.. code-block:: javascript
+
+    {
+        cloudCeiling: null,
+        cloudCoverPhrase: "Clear",
+        dayOfWeek: "Wednesday",
+        dayOrNight: "D",
+        expirationTimeUtc: 1545249077,
+        iconCode: 32,
+        iconCodeExtend: 3200,
+        obsQualifierCode: null,
+        obsQualifierSeverity: null,
+        precip1Hour: 0,
+        precip6Hour: 0,
+        precip24Hour: 0,
+        pressureAltimeter: 1018.29,
+        pressureChange: -2.71,
+        pressureMeanSeaLevel: 1018.5,
+        pressureTendencyCode: 2,
+        pressureTendencyTrend: "Falling",
+        relativeHumidity: 55,
+        snow1Hour: 0,
+        snow6Hour: 0,
+        snow24Hour: 0,
+        sunriseTimeLocal: "2018-12-19T07:28:58-0500",
+        sunriseTimeUtc: 1545222538,
+        sunsetTimeLocal: "2018-12-19T17:10:52-0500",
+        sunsetTimeUtc: 1545257452,
+        temperature: 10,
+        temperatureChange24Hour: -2,
+        temperatureDewPoint: 2,
+        temperatureFeelsLike: 9,
+        temperatureHeatIndex: 10,
+        temperatureMax24Hour: 12,
+        temperatureMaxSince7Am: 10,
+        temperatureMin24Hour: -3,
+        temperatureWindChill: 9,
+        uvDescription: "Low",
+        uvIndex: 1,
+        validTimeLocal: "2018-12-19T14:41:17-0500",
+        validTimeUtc: 1545248477,
+        visibility: 16.09,
+        windDirection: 180,
+        windDirectionCardinal: "S",
+        windGust: null,
+        windSpeed: 6,
+        wxPhraseLong: "Sunny",
+        wxPhraseMedium: "Sunny",
+        wxPhraseShort: "Sunny"
+    }
+
+----
+
+.. _smartapp_get_twc_forecast:
+
+getTwcForecast()
+----------------
+
+.. note::
+
+    If you are considering the development of an application that makes extensive use of weather data, you should consider gaining direct access to APIs from a weather data provider.
+
+Get the daily weather forecast at the specified location.
+
+**Signature:**
+    ``def getTwcForecast(String locationString=null)``
+
+**Parameters:**
+    `String`_ ``locationString`` - Optional. Must be a 5 digit US zip code or a latitude, longitude string (e.g., "38.25,-76.45"). If \not specified, the method will use the latitude and longitude of the Location as set in the SmartThings mobile app.
+
+**Example Response:**
+
+.. code-block:: javascript
+
+    {
+        dayOfWeek:[
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+        ],
+        expirationTimeUtc:[
+            1545251268,
+            1545251268,
+            1545251268,
+            1545251268
+        ],
+        moonPhase:[
+            "Waxing Gibbous",
+            "Waxing Gibbous",
+            "Waxing Gibbous",
+            "Full Moon"
+        ],
+        moonPhaseCode:[
+            "WXG",
+            "WXG",
+            "WXG",
+            "F"
+        ],
+        moonPhaseDay:[
+            11,
+            12,
+            13,
+            15
+        ],
+        moonriseTimeLocal:[
+            "2018-12-19T15:04:06-0500",
+            "2018-12-20T15:44:43-0500",
+            "2018-12-21T16:32:25-0500",
+            "2018-12-22T17:26:58-0500"
+        ],
+        moonriseTimeUtc:[
+            1545249846,
+            1545338683,
+            1545427945,
+            1545517618
+        ],
+        moonsetTimeLocal:[
+            "2018-12-19T03:50:48-0500",
+            "2018-12-20T04:56:24-0500",
+            "2018-12-21T06:03:51-0500",
+            "2018-12-22T07:11:16-0500"
+        ],
+        moonsetTimeUtc:[
+            1545209448,
+            1545299784,
+            1545390231,
+            1545480676
+        ],
+        narrative:[
+            "A few clouds. Highs in the low 50s and lows in the upper 30s.",
+            "Cloudy, periods of rain. Highs in the upper 40s with temperatures nearly steady overnight.",
+            "Cloudy with rain. Highs in the mid 50s and lows in the upper 30s.",
+            "Mostly sunny. Highs in the upper 40s and lows in the low 30s."
+        ],
+        qpf:[
+            0,
+            1.44,
+            0.49,
+            0
+        ],
+        qpfSnow:[
+            0,
+            0,
+            0,
+            0
+        ],
+        sunriseTimeLocal:[
+            "2018-12-19T07:28:58-0500",
+            "2018-12-20T07:29:31-0500",
+            "2018-12-21T07:30:02-0500",
+            "2018-12-22T07:30:32-0500"
+        ],
+        sunriseTimeUtc:[
+            1545222538,
+            1545308971,
+            1545395402,
+            1545481832
+        ],
+        sunsetTimeLocal:[
+            "2018-12-19T17:10:52-0500",
+            "2018-12-20T17:11:19-0500",
+            "2018-12-21T17:11:47-0500",
+            "2018-12-22T17:12:18-0500"
+        ],
+        sunsetTimeUtc:[
+            1545257452,
+            1545343879,
+            1545430307,
+            1545516738
+        ],
+        temperatureMax:[
+            51,
+            49,
+            54,
+            49
+        ],
+        temperatureMin:[
+            38,
+            47,
+            37,
+            31
+        ],
+        validTimeLocal:[
+            "2018-12-19T07:00:00-0500",
+            "2018-12-20T07:00:00-0500",
+            "2018-12-21T07:00:00-0500",
+            "2018-12-22T07:00:00-0500"
+        ],
+        validTimeUtc:[
+            1545220800,
+            1545307200,
+            1545393600,
+            1545480000
+        ],
+        daypart:[
+            {
+                cloudCover:[
+                    16,
+                    79,
+                    100,
+                    100,
+                    99,
+                    85,
+                    32,
+                    14
+                ],
+                dayOrNight:[
+                    "D",
+                    "N",
+                    "D",
+                    "N",
+                    "D",
+                    "N",
+                    "D",
+                    "N"
+                ],
+                daypartName:[
+                    "Today",
+                    "Tonight",
+                    "Tomorrow",
+                    "Tomorrow night",
+                    "Friday",
+                    "Friday night",
+                    "Saturday",
+                    "Saturday night"
+                ],
+                iconCode:[
+                    34,
+                    27,
+                    12,
+                    12,
+                    12,
+                    26,
+                    34,
+                    33
+                ],
+                iconCodeExtend:[
+                    3400,
+                    2700,
+                    1200,
+                    1200,
+                    1200,
+                    2600,
+                    3400,
+                    3300
+                ],
+                narrative:[
+                    "Lots of sunshine. High 51F. Winds light and variable.",
+                    "Partly cloudy early followed by cloudy skies overnight. Low 38F. Winds light and variable.",
+                    "Rain likely. High 49F. Winds NE at 5 to 10 mph. Chance of rain 100%. Rainfall near an inch.",
+                    "Rain likely. Low 47F. Winds light and variable. Chance of rain 90%. Rainfall near a half an inch.",
+                    "Periods of rain. Thunder possible. High 54F. Winds SSW at 5 to 10 mph. Chance of rain 100%.",
+                    "Cloudy. Low 37F. Winds WNW at 5 to 10 mph.",
+                    "A few clouds early, otherwise mostly sunny. High 49F. Winds WNW at 5 to 10 mph.",
+                    "Clear to partly cloudy. Low 31F. Winds light and variable."
+                ],
+                precipChance:[
+                    0,
+                    20,
+                    100,
+                    90,
+                    100,
+                    20,
+                    0,
+                    0
+                ],
+                precipType:[
+                    "rain",
+                    "precip",
+                    "rain",
+                    "rain",
+                    "rain",
+                    "precip",
+                    "rain",
+                    "precip"
+                ],
+                qpf:[
+                    0,
+                    0,
+                    0.93,
+                    0.51,
+                    0.48,
+                    0,
+                    0,
+                    0
+                ],
+                qpfSnow:[
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                qualifierCode:[
+                    null,
+                    null,
+                    null,
+                    null,
+                    "Q8003",
+                    null,
+                    null,
+                    null
+                ],
+                qualifierPhrase:[
+                    null,
+                    null,
+                    null,
+                    null,
+                    "Thunder possible.",
+                    null,
+                    null,
+                    null
+                ],
+                relativeHumidity:[
+                    63,
+                    85,
+                    93,
+                    96,
+                    92,
+                    76,
+                    55,
+                    72
+                ],
+                snowRange:[
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ],
+                temperature:[
+                    51,
+                    38,
+                    49,
+                    47,
+                    54,
+                    37,
+                    49,
+                    31
+                ],
+                temperatureHeatIndex:[
+                    50,
+                    43,
+                    48,
+                    50,
+                    54,
+                    46,
+                    48,
+                    39
+                ],
+                temperatureWindChill:[
+                    44,
+                    39,
+                    41,
+                    46,
+                    43,
+                    34,
+                    33,
+                    32
+                ],
+                thunderCategory:[
+                    "No thunder",
+                    "No thunder",
+                    "No thunder",
+                    "No thunder",
+                    "Thunder possible",
+                    "No thunder",
+                    "No thunder",
+                    "No thunder"
+                ],
+                thunderIndex:[
+                    0,
+                    0,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0,
+                    0
+                ],
+                uvDescription:[
+                    "Low",
+                    "Low",
+                    "Low",
+                    "Low",
+                    "Low",
+                    "Low",
+                    "Low",
+                    "Low"
+                ],
+                uvIndex:[
+                    1,
+                    0,
+                    1,
+                    0,
+                    1,
+                    0,
+                    2,
+                    0
+                ],
+                windDirection:[
+                    173,
+                    44,
+                    51,
+                    125,
+                    208,
+                    292,
+                    282,
+                    274
+                ],
+                windDirectionCardinal:[
+                    "S",
+                    "NE",
+                    "NE",
+                    "SE",
+                    "SSW",
+                    "WNW",
+                    "WNW",
+                    "W"
+                ],
+                windPhrase:[
+                    "Winds light and variable.",
+                    "Winds light and variable.",
+                    "Winds NE at 5 to 10 mph.",
+                    "Winds light and variable.",
+                    "Winds SSW at 5 to 10 mph.",
+                    "Winds WNW at 5 to 10 mph.",
+                    "Winds WNW at 5 to 10 mph.",
+                    "Winds light and variable."
+                ],
+                windSpeed:[
+                    3,
+                    1,
+                    6,
+                    5,
+                    9,
+                    9,
+                    9,
+                    3
+                ],
+                wxPhraseLong:[
+                    "Mostly Sunny",
+                    "Mostly Cloudy",
+                    "Rain",
+                    "Rain",
+                    "Rain",
+                    "Cloudy",
+                    "Mostly Sunny",
+                    "Mostly Clear"
+                ],
+                wxPhraseShort:[
+                    "M Sunny",
+                    "M Cloudy",
+                    "Rain",
+                    "Rain",
+                    "Rain",
+                    "Cloudy",
+                    "M Sunny",
+                    "M Clear"
+                ]
+            }
+        ]
+    }
+
+----
+
+.. _smartapp_get_twc_location:
+
+getTwcLocation()
+----------------
+
+.. note::
+
+    If you are considering the development of an application that makes extensive use of weather data, you should consider gaining direct access to APIs from a weather data provider.
+
+Get location data, such as time zone and zip code at the specified location.
+
+**Signature:**
+    ``def getTwcLocation(String locationString = null)``
+
+**Parameters:**
+    `String`_ ``locationString`` - Optional. Must be a 5 digit US zip code or a latitude, longitude string (e.g., "38.25,-76.45"). If \not specified, the method will use the latitude and longitude of the Location as set in the SmartThings mobile app.
+
+**Example Response:**
+
+.. code-block:: javascript
+
+    {
+        location:{
+            latitude:36.23,
+            longitude:-80.7,
+            city:"Boonville",
+            locale:{
+                locale1:null,
+                locale2:"Boonville",
+                locale3:null,
+                locale4:null
+            },
+            neighborhood:null,
+            adminDistrict:"North Carolina",
+            adminDistrictCode:"NC",
+            postalCode:"27011",
+            postalKey:"27011:US",
+            country:"United States",
+            countryCode:"US",
+            ianaTimeZone:"America/New_York",
+            displayName:"Boonville",
+            dstEnd:"2019-11-03T01:00:00-0500",
+            dstStart:"2019-03-10T03:00:00-0400",
+            dmaCd:"518",
+            placeId:"5a75bd28971b1f181dde5085446a99e4abf9adbf1754365bb5dc9ac53d6779a4",
+            disputedArea:false,
+            countyId:"NCC197",
+            locId:null,
+            pwsId:null,
+            type:"postal",
+            zoneId:"NCZ020"
+        }
+    }
+
+----
+
+.. _smartapp_get_twc_alerts:
+
+getTwcAlerts()
+--------------
+
+.. note::
+
+    If you are considering the development of an application that makes extensive use of weather data, you should consider gaining direct access to APIs from a weather data provider.
+
+Get the current severe weather alerts at the specified location.
+
+**Signature:**
+    ``def getTwcAlerts(String geoLocation=null)``
+
+**Parameters:**
+    `String`_ ``geoLocation`` - Optional. A latitude and longitude string (e.g., "38.25,-76.45"). Zip codes are not supported by `getTwcAlerts()`.
+
+**Example Response:**
+
+.. code-block:: javascript
+
+    {
+        metadata:{
+            next:null
+        },
+        alerts:[
+            {
+                detailKey:"c991e7f1-7519-3501-9481-dce00c81bb9e",
+                messageTypeCode:2,
+                messageType:"Update",
+                productIdentifier:"FLS",
+                phenomena:"FL",
+                significance:"W",
+                eventTrackingNumber:"0087",
+                officeCode:"KLCH",
+                officeName:"Lake Charles",
+                officeAdminDistrict:"Louisiana",
+                officeAdminDistrictCode:"LA",
+                officeCountryCode:"US",
+                eventDescription:"River Flood Warning",
+                severityCode:3,
+                severity:"Moderate",
+                categories:[
+                    {
+                        category:"Met",
+                        categoryCode:2
+                    }
+                ],
+                responseTypes:[
+                    {
+                        responseType:"Avoid",
+                        responseTypeCode:5
+                    }
+                ],
+                urgency:"Unknown",
+                urgencyCode:5,
+                certainty:"Unknown",
+                certaintyCode:5,
+                effectiveTimeLocal:null,
+                effectiveTimeLocalTimeZone:null,
+                expireTimeLocal:"2018-12-20T00:50:00-06:00",
+                expireTimeLocalTimeZone:"CST",
+                expireTimeUTC:1545288600,
+                onsetTimeLocal:null,
+                onsetTimeLocalTimeZone:null,
+                flood:{
+                    floodLocationId:"DWYT2",
+                    floodLocationName:"Sabine River near Deweyville",
+                    floodSeverityCode:"1",
+                    floodSeverity:"Minor",
+                    floodImmediateCauseCode:"ER",
+                    floodImmediateCause:"Excessive Rainfall",
+                    floodRecordStatusCode:"NO",
+                    floodRecordStatus:"A record flood is not expected",
+                    floodStartTimeLocal:"2018-11-04T05:07:00-06:00",
+                    floodStartTimeLocalTimeZone:"CST",
+                    floodCrestTimeLocal:"2018-12-13T09:00:00-06:00",
+                    floodCrestTimeLocalTimeZone:"CST",
+                    floodEndTimeLocal:null,
+                    floodEndTimeLocalTimeZone:null
+                },
+                areaTypeCode:"C",
+                latitude:30.23,
+                longitude:-93.33,
+                areaId:"LAC019",
+                areaName:"Calcasieu Parish",
+                ianaTimeZone:"America/Chicago",
+                adminDistrictCode:"LA",
+                adminDistrict:"Louisiana",
+                countryCode:"US",
+                countryName:"UNITED STATES OF AMERICA",
+                headlineText:"River Flood Warning is in effect",
+                source:"National Weather Service",
+                disclaimer:null,
+                issueTimeLocal:"2018-12-19T10:51:00-06:00",
+                issueTimeLocalTimeZone:"CST",
+                identifier:"e36df9092f95582ad3b5021bbc480481",
+                processTimeUTC:1545238316
+            }
+        ]
+    }
+
+----
+
+.. _smartapp_get_twc_alert_detail:
+
+getTwcAlertDetail()
 -------------------
+
+.. note::
+
+    If you are considering the development of an application that makes extensive use of weather data, you should consider gaining direct access to APIs from a weather data provider.
+    
+Get detailed description and text of the specified weather alert.
+
+**Signature:**
+    ``def getTwcAlertDetail(String alertId)``
+
+**Parameters:**
+    `String`_ ``alertId`` - The `alertId` from the response from `getTwcAlerts()`.
+
+**Example Response:**
+
+.. code-block:: javascript
+
+    {
+        alertDetail:{
+            detailKey:"c991e7f1-7519-3501-9481-dce00c81bb9e",
+            messageTypeCode:2,
+            messageType:"Update",
+            productIdentifier:"FLS",
+            phenomena:"FL",
+            significance:"W",
+            eventTrackingNumber:"0087",
+            officeCode:"KLCH",
+            officeName:"Lake Charles",
+            officeAdminDistrict:"Louisiana",
+            officeAdminDistrictCode:"LA",
+            officeCountryCode:"US",
+            eventDescription:"River Flood Warning",
+            severityCode:3,
+            severity:"Moderate",
+            categories:[
+                {
+                    category:"Met",
+                    categoryCode:2
+                }
+            ],
+            responseTypes:[
+                {
+                    responseType:"Avoid",
+                    responseTypeCode:5
+                }
+            ],
+            urgency:"Unknown",
+            urgencyCode:5,
+            certainty:"Unknown",
+            certaintyCode:5,
+            effectiveTimeLocal:null,
+            effectiveTimeLocalTimeZone:null,
+            expireTimeLocal:"2018-12-20T00:50:00-06:00",
+            expireTimeLocalTimeZone:"CST",
+            expireTimeUTC:1545288600,
+            onsetTimeLocal:null,
+            onsetTimeLocalTimeZone:null,
+            flood:{
+                floodLocationId:"DWYT2",
+                floodLocationName:"Sabine River near Deweyville",
+                floodSeverityCode:"1",
+                floodSeverity:"Minor",
+                floodImmediateCauseCode:"ER",
+                floodImmediateCause:"Excessive Rainfall",
+                floodRecordStatusCode:"NO",
+                floodRecordStatus:"A record flood is not expected",
+                floodStartTimeLocal:"2018-11-04T05:07:00-06:00",
+                floodStartTimeLocalTimeZone:"CST",
+                floodCrestTimeLocal:"2018-12-13T09:00:00-06:00",
+                floodCrestTimeLocalTimeZone:"CST",
+                floodEndTimeLocal:null,
+                floodEndTimeLocalTimeZone:null
+            },
+            areaTypeCode:"C",
+            latitude:30.23,
+            longitude:-93.33,
+            areaId:"LAC019",
+            areaName:"Calcasieu Parish",
+            ianaTimeZone:"America/Chicago",
+            adminDistrictCode:"LA",
+            adminDistrict:"Louisiana",
+            countryCode:"US",
+            countryName:"UNITED STATES OF AMERICA",
+            headlineText:"River Flood Warning is in effect",
+            source:"National Weather Service",
+            disclaimer:null,
+            issueTimeLocal:"2018-12-19T10:51:00-06:00",
+            issueTimeLocalTimeZone:"CST",
+            identifier:"e36df9092f95582ad3b5021bbc480481",
+            processTimeUTC:1545238316,
+            texts:[
+                {
+                    languageCode:"en-US",
+                    description:"The Flood Warning continues for The Sabine River Near Deweyville. * until further notice...or until the warning is cancelled. * At 9:45 AM Wednesday the stage was 24.4 feet. * Minor flooding is occurring and Minor flooding is forecast. * Flood stage is 24.0 feet. * Forecast...The river will remain near 24.4 feet. * Impact...At stages near 24.0 feet...Minor lowland flooding will occur. && ",
+                    instruction:null,
+                    overview:"...The Flood Warning continues for the following rivers in Texas... Neches River Near Town Bluff Neches River at Neches River Saltwater Barrier ...The Flood Warning continues for the following rivers in Louisiana...Texas.. Sabine River Near Deweyville Neches River Near Evadale "
+                }
+            ],
+            polygon:[
+                {
+                    lat:30.57,
+                    lon:-93.63
+                },
+                {
+                    lat:30.11,
+                    lon:-93.64
+                },
+                {
+                    lat:30.11,
+                    lon:-93.78
+                },
+                {
+                    lat:30.31,
+                    lon:-93.81
+                },
+                {
+                    lat:30.62,
+                    lon:-93.78
+                },
+                {
+                    lat:30.57,
+                    lon:-93.63
+                }
+            ],
+            synopsis:null
+        }
+    }
+
+----
+
+getWeatherFeature() - Deprecated
+--------------------------------
+
+.. warning::
+
+    Effective January 1, 2019, this API will be removed. See :ref:`smartapp_get_twc_conditions`, :ref:`smartapp_get_twc_forecast`, :ref:`smartapp_get_twc_alerts`, :ref:`smartapp_get_twc_location`, or :ref:`smartapp_get_twc_alert_detail` for alternative weather APIs.
 
 Calls the Weather Underground API to to return weather forecasts and related data.
 
